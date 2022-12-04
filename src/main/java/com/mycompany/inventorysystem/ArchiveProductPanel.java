@@ -8,12 +8,12 @@ package com.mycompany.inventorysystem;
  *
  * @author LoneDespair
  */
-public class ProductPanel extends javax.swing.JPanel {
+public class ArchiveProductPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form TestPanel
      */
-    public ProductPanel() {
+    public ArchiveProductPanel() {
         initComponents();
     }
 

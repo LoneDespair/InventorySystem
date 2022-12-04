@@ -8,9 +8,9 @@ package com.mycompany.inventorysystem;
  *
  * @author LoneDespair
  */
-public class Product {
-    int id;
-    String name;
+public class Product extends LinkedList.Data{
+    int id = 0;
+    String name = "None";
     int quantity;
     String description;
     

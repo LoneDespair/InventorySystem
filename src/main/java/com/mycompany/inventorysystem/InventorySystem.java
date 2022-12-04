@@ -5,7 +5,9 @@
 
 package com.mycompany.inventorysystem;
 
-import javax.swing.JFrame;
+import java.lang.reflect.Field;
+import java.util.Arrays;
+import java.util.Map;
 
 /**
  *
@@ -16,6 +18,25 @@ public class InventorySystem {
 
     public static void main(String[] args) {
         
+        //new PrimaryForm().setVisible(true);
+        save();
         
     }
+    
+    
+    static public void save() {
+        LinkedList.Node node = new LinkedList.Node();
+        Product product = ((Product)node.data);
+        
+        Field[] fields = Product.class.getDeclaredFields();
+        
+        for (Field field : fields) {
+            System.out.println(field.getName());
+            System.out.println("HERE");
+        }
+        
+        System.out.println(Arrays.toString(fields));
+        
+    }
+    
 }
