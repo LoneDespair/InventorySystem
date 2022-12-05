@@ -15,14 +15,10 @@ public class PurchasePage extends javax.swing.JPanel {
      */
     public PurchasePage() {
         initComponents();
-        setup();
-    }
-    
-    public void setup() {
+        
         PurchaseProduct purchaseProduct = new PurchaseProduct();
         shelf.add(purchaseProduct);
         
-        purchaseProduct.setup();
     }
 
     /**
@@ -35,40 +31,100 @@ public class PurchasePage extends javax.swing.JPanel {
     private void initComponents() {
 
         header = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
         shelf = new javax.swing.JPanel();
+        purchaseProduct1 = new com.mycompany.inventorysystem.PurchaseProduct();
+        purchaseProduct7 = new com.mycompany.inventorysystem.PurchaseProduct();
+        purchaseProduct5 = new com.mycompany.inventorysystem.PurchaseProduct();
         purchaseProduct2 = new com.mycompany.inventorysystem.PurchaseProduct();
+        purchaseProduct3 = new com.mycompany.inventorysystem.PurchaseProduct();
+        purchaseProduct4 = new com.mycompany.inventorysystem.PurchaseProduct();
+        purchaseProduct6 = new com.mycompany.inventorysystem.PurchaseProduct();
+        jPanel1 = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new javax.swing.BoxLayout(this, javax.swing.BoxLayout.Y_AXIS));
 
-        header.setBackground(new java.awt.Color(252, 249, 190));
-        header.setMaximumSize(new java.awt.Dimension(32767, 70));
-        header.setPreferredSize(new java.awt.Dimension(576, 70));
+        header.setBackground(new java.awt.Color(250, 171, 121));
+        header.setMaximumSize(new java.awt.Dimension(32767, 100));
+        header.setMinimumSize(new java.awt.Dimension(0, 100));
+        header.setPreferredSize(new java.awt.Dimension(576, 100));
+
+        jLabel1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(232, 243, 214));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("PURCHASE");
 
         javax.swing.GroupLayout headerLayout = new javax.swing.GroupLayout(header);
         header.setLayout(headerLayout);
         headerLayout.setHorizontalGroup(
             headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 900, Short.MAX_VALUE)
+            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 961, Short.MAX_VALUE)
         );
         headerLayout.setVerticalGroup(
             headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 70, Short.MAX_VALUE)
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
         );
 
         add(header);
 
-        shelf.setBackground(new java.awt.Color(255, 220, 169));
-        shelf.setLayout(new java.awt.GridBagLayout());
-        shelf.add(purchaseProduct2, new java.awt.GridBagConstraints());
+        shelf.setBackground(new java.awt.Color(232, 243, 214));
+        shelf.setLayout(new java.awt.GridLayout(2, 2));
+        shelf.add(purchaseProduct1);
+        shelf.add(purchaseProduct7);
+        shelf.add(purchaseProduct5);
+        shelf.add(purchaseProduct2);
+        shelf.add(purchaseProduct3);
+        shelf.add(purchaseProduct4);
+        shelf.add(purchaseProduct6);
 
-        add(shelf);
+        jScrollPane1.setViewportView(shelf);
+
+        add(jScrollPane1);
+
+        jPanel1.setBackground(new java.awt.Color(255, 220, 169));
+        jPanel1.setMaximumSize(new java.awt.Dimension(32767, 75));
+        jPanel1.setMinimumSize(new java.awt.Dimension(100, 50));
+        jPanel1.setPreferredSize(new java.awt.Dimension(961, 75));
+
+        jButton1.setText("Add to cart");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(639, Short.MAX_VALUE)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(62, 62, 62))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(18, Short.MAX_VALUE)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(15, 15, 15))
+        );
+
+        add(jPanel1);
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel header;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private com.mycompany.inventorysystem.PurchaseProduct purchaseProduct1;
     private com.mycompany.inventorysystem.PurchaseProduct purchaseProduct2;
+    private com.mycompany.inventorysystem.PurchaseProduct purchaseProduct3;
+    private com.mycompany.inventorysystem.PurchaseProduct purchaseProduct4;
+    private com.mycompany.inventorysystem.PurchaseProduct purchaseProduct5;
+    private com.mycompany.inventorysystem.PurchaseProduct purchaseProduct6;
+    private com.mycompany.inventorysystem.PurchaseProduct purchaseProduct7;
     private javax.swing.JPanel shelf;
     // End of variables declaration//GEN-END:variables
 }
