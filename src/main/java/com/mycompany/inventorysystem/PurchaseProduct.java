@@ -4,6 +4,7 @@
  */
 package com.mycompany.inventorysystem;
 
+import java.awt.Dimension;
 import javax.swing.ImageIcon;
 import java.awt.Image;
 
@@ -13,20 +14,22 @@ import java.awt.Image;
  */
 public class PurchaseProduct extends javax.swing.JPanel {
     
-    
-    
     /**
      * Creates new form PurchaseProduct
      */
     public PurchaseProduct() {
         initComponents();
+    }
+    
+    
+    public void setup() {
+        Dimension size = icon.getSize();
         
         ImageIcon imageIcon = new ImageIcon("C:/Users/LoneDespair/Downloads/minecraft_wall.png");
-        Image image = imageIcon.getImage().getScaledInstance(150, 150, Image.SCALE_DEFAULT);
+        Image image = imageIcon.getImage().getScaledInstance(size.width, size.height, Image.SCALE_DEFAULT);
         
         icon.setIcon(new ImageIcon(image));
         System.out.println("Hello there");
-        
     }
 
     /**
@@ -38,36 +41,60 @@ public class PurchaseProduct extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        iconBackground = new javax.swing.JPanel();
         icon = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
 
-        icon.setText("jLabel1");
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton1.setText("jButton1");
+        iconBackground.setBackground(new java.awt.Color(255, 220, 169));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(icon, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 244, Short.MAX_VALUE))
+        javax.swing.GroupLayout iconBackgroundLayout = new javax.swing.GroupLayout(iconBackground);
+        iconBackground.setLayout(iconBackgroundLayout);
+        iconBackgroundLayout.setHorizontalGroup(
+            iconBackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, iconBackgroundLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(icon, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(icon, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(64, 64, 64)
-                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        iconBackgroundLayout.setVerticalGroup(
+            iconBackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, iconBackgroundLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(icon, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
+
+        add(iconBackground, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 130, 120));
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 17)); // NOI18N
+        jLabel2.setText("₱150.00");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(9, 170, 130, 30));
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        jLabel1.setText("Selecta Ice cream");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 130, 30));
+
+        jButton1.setBackground(new java.awt.Color(252, 249, 190));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 150, 200));
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        System.out.println("Pressed product");
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel icon;
+    private javax.swing.JPanel iconBackground;
     private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
 }

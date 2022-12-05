@@ -9,12 +9,20 @@ package com.mycompany.inventorysystem;
  * @author LoneDespair
  */
 public class PurchasePage extends javax.swing.JPanel {
-
+    
     /**
      * Creates new form PurchasePage
      */
     public PurchasePage() {
         initComponents();
+        setup();
+    }
+    
+    public void setup() {
+        PurchaseProduct purchaseProduct = new PurchaseProduct();
+        shelf.add(purchaseProduct);
+        
+        purchaseProduct.setup();
     }
 
     /**
@@ -26,19 +34,41 @@ public class PurchasePage extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+        header = new javax.swing.JPanel();
+        shelf = new javax.swing.JPanel();
+        purchaseProduct2 = new com.mycompany.inventorysystem.PurchaseProduct();
+
+        setBackground(new java.awt.Color(255, 255, 255));
+        setLayout(new javax.swing.BoxLayout(this, javax.swing.BoxLayout.Y_AXIS));
+
+        header.setBackground(new java.awt.Color(252, 249, 190));
+        header.setMaximumSize(new java.awt.Dimension(32767, 70));
+        header.setPreferredSize(new java.awt.Dimension(576, 70));
+
+        javax.swing.GroupLayout headerLayout = new javax.swing.GroupLayout(header);
+        header.setLayout(headerLayout);
+        headerLayout.setHorizontalGroup(
+            headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 900, Short.MAX_VALUE)
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+        headerLayout.setVerticalGroup(
+            headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 70, Short.MAX_VALUE)
         );
+
+        add(header);
+
+        shelf.setBackground(new java.awt.Color(255, 220, 169));
+        shelf.setLayout(new java.awt.GridBagLayout());
+        shelf.add(purchaseProduct2, new java.awt.GridBagConstraints());
+
+        add(shelf);
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel header;
+    private com.mycompany.inventorysystem.PurchaseProduct purchaseProduct2;
+    private javax.swing.JPanel shelf;
     // End of variables declaration//GEN-END:variables
 }

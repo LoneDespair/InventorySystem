@@ -17,9 +17,10 @@ public class InventorySystem {
     
 
     public static void main(String[] args) {
+        new PrimaryForm().setVisible(true);
         
-        //new PrimaryForm().setVisible(true);
-        save();
+        
+        //save();
         
     }
     
