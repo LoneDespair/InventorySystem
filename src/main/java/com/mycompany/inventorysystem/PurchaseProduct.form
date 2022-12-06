@@ -4,7 +4,6 @@
   <NonVisualComponents>
     <Component class="com.mycompany.inventorysystem.ColoredButton" name="button">
       <Properties>
-        <Property name="contentAreaFilled" type="boolean" value="false"/>
         <Property name="focusPainted" type="boolean" value="false"/>
         <Property name="focusable" type="boolean" value="false"/>
       </Properties>

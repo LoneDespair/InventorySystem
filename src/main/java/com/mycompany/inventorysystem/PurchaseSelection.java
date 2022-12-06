@@ -9,6 +9,9 @@ package com.mycompany.inventorysystem;
  * @author LoneDespair
  */
 public class PurchaseSelection extends javax.swing.JPanel {
+    interface ProductListener {
+        void selectProduct(Product product);
+    }
     
     /**
      * Creates new form PurchasePage
@@ -18,8 +21,18 @@ public class PurchaseSelection extends javax.swing.JPanel {
         
         PurchaseProduct purchaseProduct = new PurchaseProduct();
         shelf.add(purchaseProduct);
+    }
+    
+    public void addPurchaseProduct() {
         
     }
+    
+    public void selectProduct(Product product) {
+        
+    }
+    
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -37,10 +50,6 @@ public class PurchaseSelection extends javax.swing.JPanel {
         purchaseProduct1 = new com.mycompany.inventorysystem.PurchaseProduct();
         purchaseProduct7 = new com.mycompany.inventorysystem.PurchaseProduct();
         purchaseProduct5 = new com.mycompany.inventorysystem.PurchaseProduct();
-        purchaseProduct2 = new com.mycompany.inventorysystem.PurchaseProduct();
-        purchaseProduct3 = new com.mycompany.inventorysystem.PurchaseProduct();
-        purchaseProduct4 = new com.mycompany.inventorysystem.PurchaseProduct();
-        purchaseProduct6 = new com.mycompany.inventorysystem.PurchaseProduct();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new javax.swing.BoxLayout(this, javax.swing.BoxLayout.Y_AXIS));
@@ -59,34 +68,30 @@ public class PurchaseSelection extends javax.swing.JPanel {
         header.setLayout(headerLayout);
         headerLayout.setHorizontalGroup(
             headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 961, Short.MAX_VALUE)
+            .addGap(0, 759, Short.MAX_VALUE)
             .addGroup(headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(headerLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addGap(0, 290, Short.MAX_VALUE)
                     .addComponent(jLabel1)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                    .addGap(0, 290, Short.MAX_VALUE)))
         );
         headerLayout.setVerticalGroup(
             headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 100, Short.MAX_VALUE)
             .addGroup(headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(headerLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addGap(0, 26, Short.MAX_VALUE)
                     .addComponent(jLabel1)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                    .addGap(0, 26, Short.MAX_VALUE)))
         );
 
         add(header);
 
         shelf.setBackground(new java.awt.Color(232, 243, 214));
-        shelf.setLayout(new java.awt.GridLayout(2, 2));
+        shelf.setLayout(new java.awt.GridLayout(1, 2));
         shelf.add(purchaseProduct1);
         shelf.add(purchaseProduct7);
         shelf.add(purchaseProduct5);
-        shelf.add(purchaseProduct2);
-        shelf.add(purchaseProduct3);
-        shelf.add(purchaseProduct4);
-        shelf.add(purchaseProduct6);
 
         jScrollPane1.setViewportView(shelf);
 
@@ -99,11 +104,7 @@ public class PurchaseSelection extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private com.mycompany.inventorysystem.PurchaseProduct purchaseProduct1;
-    private com.mycompany.inventorysystem.PurchaseProduct purchaseProduct2;
-    private com.mycompany.inventorysystem.PurchaseProduct purchaseProduct3;
-    private com.mycompany.inventorysystem.PurchaseProduct purchaseProduct4;
     private com.mycompany.inventorysystem.PurchaseProduct purchaseProduct5;
-    private com.mycompany.inventorysystem.PurchaseProduct purchaseProduct6;
     private com.mycompany.inventorysystem.PurchaseProduct purchaseProduct7;
     private javax.swing.JPanel shelf;
     // End of variables declaration//GEN-END:variables

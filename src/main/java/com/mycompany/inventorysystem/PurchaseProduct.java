@@ -14,7 +14,7 @@ import java.awt.Image;
  * @author LoneDespair
  */
 public class PurchaseProduct extends javax.swing.JPanel {
-    
+    Product product;
     Image image;
     
     /**
@@ -24,6 +24,11 @@ public class PurchaseProduct extends javax.swing.JPanel {
         initComponents();
         
         image = new ImageIcon("C:/Users/LoneDespair/Downloads/icecream_1.jpg").getImage();
+    }
+    
+    public PurchaseProduct(Product newProduct) {
+        initComponents();
+        product = newProduct;
     }
 
     /**
