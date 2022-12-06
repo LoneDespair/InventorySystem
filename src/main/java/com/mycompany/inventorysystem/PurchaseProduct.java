@@ -35,12 +35,22 @@ public class PurchaseProduct extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        button = new com.mycompany.inventorysystem.ColoredButton();
         holder = new javax.swing.JPanel();
+        coloredButton1 = new com.mycompany.inventorysystem.ColoredButton();
         nameLabel = new javax.swing.JLabel();
         priceLabel = new javax.swing.JLabel();
         iconBackground = new javax.swing.JPanel();
         icon = new javax.swing.JLabel();
-        button = new com.mycompany.inventorysystem.ColoredButton();
+
+        button.setContentAreaFilled(false);
+        button.setFocusPainted(false);
+        button.setFocusable(false);
+        button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonActionPerformed(evt);
+            }
+        });
 
         setEnabled(false);
         setOpaque(false);
@@ -48,6 +58,7 @@ public class PurchaseProduct extends javax.swing.JPanel {
 
         holder.setBackground(new java.awt.Color(252, 249, 190));
         holder.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        holder.add(coloredButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 200, 280));
 
         nameLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         nameLabel.setForeground(new java.awt.Color(102, 102, 102));
@@ -71,16 +82,6 @@ public class PurchaseProduct extends javax.swing.JPanel {
         iconBackground.add(icon, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 180, 180));
 
         holder.add(iconBackground, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 180, 180));
-
-        button.setContentAreaFilled(false);
-        button.setFocusPainted(false);
-        button.setFocusable(false);
-        button.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonActionPerformed(evt);
-            }
-        });
-        holder.add(button, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 200, 280));
 
         add(holder, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 200, 280));
     }// </editor-fold>//GEN-END:initComponents
@@ -108,6 +109,7 @@ public class PurchaseProduct extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.mycompany.inventorysystem.ColoredButton button;
+    private com.mycompany.inventorysystem.ColoredButton coloredButton1;
     private javax.swing.JPanel holder;
     private javax.swing.JLabel icon;
     private javax.swing.JPanel iconBackground;

@@ -12,16 +12,19 @@ import javax.swing.event.*;
  *
  * @author LoneDespair
  */
-public class ColoredButton extends JButton {
+public class ColoredButton extends JToggleButton {
     Color normalColor = new Color(0, 0, 0, 0);
-    Color hoverColor = new Color(214, 219, 223, 60);
-    Color pressedColor = new Color(214, 219, 223, 100);
+    Color hoverColor = new Color(23, 32, 42, 60);
+    Color selectedColor = new Color(23, 32, 42, 85);
     
     @Override
     public void paint(Graphics graphics) {
-        if (model.isPressed()) graphics.setColor(pressedColor);
+        if (model.isPressed()) graphics.setColor(selectedColor);
+        else if (model.isSelected()) graphics.setColor(selectedColor);
         else if (model.isRollover()) graphics.setColor(hoverColor);
         else graphics.setColor(normalColor);
+        
+        if (model.isRollover()) System.out.println("rollover");
         
         graphics.fillRect(0, 0, getSize().width, getSize().height);
         super.paint(graphics);
@@ -30,6 +33,7 @@ public class ColoredButton extends JButton {
     
     public ColoredButton() {
         setContentAreaFilled(false);
+        setRolloverEnabled(true);
         
         /*
         addChangeListener(new ChangeListener() {

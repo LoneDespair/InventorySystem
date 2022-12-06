@@ -15,7 +15,7 @@ public class PrimaryForm extends javax.swing.JFrame {
      */
     public PrimaryForm() {
         initComponents();
-        purchasePage.setVisible(false);
+        //purchasePage.setVisible(false);
     }
 
     /**
@@ -28,12 +28,19 @@ public class PrimaryForm extends javax.swing.JFrame {
     private void initComponents() {
 
         purchasePage = new com.mycompany.inventorysystem.PurchasePage();
-        testPanel1 = new com.mycompany.inventorysystem.TestPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        getContentPane().add(purchasePage, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 760, 470));
-        getContentPane().add(testPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 770, 470));
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(purchasePage, javax.swing.GroupLayout.DEFAULT_SIZE, 864, Short.MAX_VALUE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(purchasePage, javax.swing.GroupLayout.DEFAULT_SIZE, 415, Short.MAX_VALUE)
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -76,6 +83,5 @@ public class PrimaryForm extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.mycompany.inventorysystem.PurchasePage purchasePage;
-    private com.mycompany.inventorysystem.TestPanel testPanel1;
     // End of variables declaration//GEN-END:variables
 }
