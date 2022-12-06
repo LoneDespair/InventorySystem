@@ -27,7 +27,7 @@ public class PrimaryForm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        purchasePage = new com.mycompany.inventorysystem.PurchasePage();
+        purchasePage = new com.mycompany.inventorysystem.PurchaseSelection();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -82,6 +82,6 @@ public class PrimaryForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private com.mycompany.inventorysystem.PurchasePage purchasePage;
+    private com.mycompany.inventorysystem.PurchaseSelection purchasePage;
     // End of variables declaration//GEN-END:variables
 }

@@ -24,8 +24,6 @@ public class ColoredButton extends JToggleButton {
         else if (model.isRollover()) graphics.setColor(hoverColor);
         else graphics.setColor(normalColor);
         
-        if (model.isRollover()) System.out.println("rollover");
-        
         graphics.fillRect(0, 0, getSize().width, getSize().height);
         super.paint(graphics);
     }

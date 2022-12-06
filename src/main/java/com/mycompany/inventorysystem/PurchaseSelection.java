@@ -8,12 +8,12 @@ package com.mycompany.inventorysystem;
  *
  * @author LoneDespair
  */
-public class PurchasePage extends javax.swing.JPanel {
+public class PurchaseSelection extends javax.swing.JPanel {
     
     /**
      * Creates new form PurchasePage
      */
-    public PurchasePage() {
+    public PurchaseSelection() {
         initComponents();
         
         PurchaseProduct purchaseProduct = new PurchaseProduct();
@@ -41,8 +41,6 @@ public class PurchasePage extends javax.swing.JPanel {
         purchaseProduct3 = new com.mycompany.inventorysystem.PurchaseProduct();
         purchaseProduct4 = new com.mycompany.inventorysystem.PurchaseProduct();
         purchaseProduct6 = new com.mycompany.inventorysystem.PurchaseProduct();
-        footer = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new javax.swing.BoxLayout(this, javax.swing.BoxLayout.Y_AXIS));
@@ -61,11 +59,21 @@ public class PurchasePage extends javax.swing.JPanel {
         header.setLayout(headerLayout);
         headerLayout.setHorizontalGroup(
             headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 961, Short.MAX_VALUE)
+            .addGap(0, 961, Short.MAX_VALUE)
+            .addGroup(headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(headerLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jLabel1)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         headerLayout.setVerticalGroup(
             headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+            .addGap(0, 100, Short.MAX_VALUE)
+            .addGroup(headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(headerLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jLabel1)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
 
         add(header);
@@ -83,39 +91,11 @@ public class PurchasePage extends javax.swing.JPanel {
         jScrollPane1.setViewportView(shelf);
 
         add(jScrollPane1);
-
-        footer.setBackground(new java.awt.Color(255, 220, 169));
-        footer.setMaximumSize(new java.awt.Dimension(32767, 75));
-        footer.setMinimumSize(new java.awt.Dimension(100, 50));
-        footer.setPreferredSize(new java.awt.Dimension(961, 75));
-
-        jButton1.setText("Add to cart");
-
-        javax.swing.GroupLayout footerLayout = new javax.swing.GroupLayout(footer);
-        footer.setLayout(footerLayout);
-        footerLayout.setHorizontalGroup(
-            footerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, footerLayout.createSequentialGroup()
-                .addContainerGap(639, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(62, 62, 62))
-        );
-        footerLayout.setVerticalGroup(
-            footerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, footerLayout.createSequentialGroup()
-                .addContainerGap(16, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(15, 15, 15))
-        );
-
-        add(footer);
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel footer;
     private javax.swing.JPanel header;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private com.mycompany.inventorysystem.PurchaseProduct purchaseProduct1;
