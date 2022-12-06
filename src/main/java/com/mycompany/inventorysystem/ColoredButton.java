@@ -12,32 +12,24 @@ import javax.swing.event.*;
  *
  * @author LoneDespair
  */
-public class ColoredButton extends JToggleButton {
-    
+public class ColoredButton extends JButton {
     Color normalColor = new Color(0, 0, 0, 0);
-    Color hoverColor = new Color(187, 143, 206 );
-    Color pressedColor = new Color(187, 143, 206 );
+    Color hoverColor = new Color(214, 219, 223, 60);
+    Color pressedColor = new Color(214, 219, 223, 100);
     
-    
-    /*
     @Override
     public void paint(Graphics graphics) {
-        ButtonModel model = getModel();
+        if (model.isPressed()) graphics.setColor(pressedColor);
+        else if (model.isRollover()) graphics.setColor(hoverColor);
+        else graphics.setColor(normalColor);
         
-        //if (model.isPressed()) graphics.setColor(pressedColor);
-        //else graphics.setColor(normalColor);
-        
-        //super.paint(graphics);
-    }*/
+        graphics.fillRect(0, 0, getSize().width, getSize().height);
+        super.paint(graphics);
+    }
     
     
     public ColoredButton() {
-        //System.out.println("Added color");
-        //setBackground(pressedColor);
-        //setForeground(normalColor);
-        //setContentAreaFilled(false);
-        
-        
+        setContentAreaFilled(false);
         
         /*
         addChangeListener(new ChangeListener() {
