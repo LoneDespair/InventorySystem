@@ -15,7 +15,8 @@ public class PrimaryForm extends javax.swing.JFrame {
      */
     public PrimaryForm() {
         initComponents();
-        //purchasePage.setVisible(false);
+        //testPanel.setVisible(true);
+        purchasePage.setVisible(false);
     }
 
     /**
@@ -27,20 +28,13 @@ public class PrimaryForm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        purchasePage1 = new com.mycompany.inventorysystem.PurchasePage();
+        purchasePage = new com.mycompany.inventorysystem.PurchasePage();
+        testPanel = new com.mycompany.inventorysystem.TestPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(purchasePage1, javax.swing.GroupLayout.DEFAULT_SIZE, 864, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(purchasePage1, javax.swing.GroupLayout.DEFAULT_SIZE, 415, Short.MAX_VALUE)
-        );
+        getContentPane().setLayout(new java.awt.CardLayout());
+        getContentPane().add(purchasePage, "card2");
+        getContentPane().add(testPanel, "card3");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -82,6 +76,7 @@ public class PrimaryForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private com.mycompany.inventorysystem.PurchasePage purchasePage1;
+    private com.mycompany.inventorysystem.PurchasePage purchasePage;
+    private com.mycompany.inventorysystem.TestPanel testPanel;
     // End of variables declaration//GEN-END:variables
 }

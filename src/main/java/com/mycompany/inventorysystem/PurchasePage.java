@@ -15,7 +15,7 @@ public class PurchasePage extends javax.swing.JPanel {
      */
     public PurchasePage() {
         initComponents();
-        purchaseOption.setVisible(false);
+        //purchaseOption.setVisible(false);
     }
 
     /**
@@ -31,18 +31,6 @@ public class PurchasePage extends javax.swing.JPanel {
         purchaseSelection = new com.mycompany.inventorysystem.PurchaseSelection();
 
         setLayout(new javax.swing.OverlayLayout(this));
-
-        javax.swing.GroupLayout purchaseOptionLayout = new javax.swing.GroupLayout(purchaseOption);
-        purchaseOption.setLayout(purchaseOptionLayout);
-        purchaseOptionLayout.setHorizontalGroup(
-            purchaseOptionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 622, Short.MAX_VALUE)
-        );
-        purchaseOptionLayout.setVerticalGroup(
-            purchaseOptionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 402, Short.MAX_VALUE)
-        );
-
         add(purchaseOption);
         add(purchaseSelection);
     }// </editor-fold>//GEN-END:initComponents
