@@ -98,13 +98,9 @@ public class PurchaseProduct extends javax.swing.JPanel {
         
         int width = image.getWidth(this), height = image.getHeight(this);
         
-        double scalex = (double)iconSize.width / width;
-        double scaley = (double)iconSize.height / height;
-       
-        double ratio = Math.max(scalex, scaley);
+        double ratio = Math.max((double)iconSize.width / width, (double)iconSize.height / height);
         
-        System.out.printf("RATIO %f %f %f", ratio, iconSize.width * ratio, image.getWidth(this) * ratio);
-        image = image.getScaledInstance((int)(ratio * width), (int)(height * ratio), Image.SCALE_DEFAULT);
+        image = image.getScaledInstance((int)(width * ratio), (int)(height * ratio), Image.SCALE_DEFAULT);
         
         icon.setIcon(new ImageIcon(image));
     }//GEN-LAST:event_iconComponentResized
