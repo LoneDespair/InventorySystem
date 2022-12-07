@@ -18,6 +18,8 @@ public class InventorySystem {
 
     public static void main(String[] args) {
         new PrimaryForm().setVisible(true);
+        
+        ObjectSerializer.serialize(new Product(1, "product name", 2, "best thing ever"));
     }
     
     

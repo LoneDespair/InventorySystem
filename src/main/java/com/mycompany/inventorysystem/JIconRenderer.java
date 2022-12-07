@@ -14,7 +14,6 @@ public class JIconRenderer extends javax.swing.JComponent{
     
     @Override
     public void paint(Graphics graphics) {
-        
         super.paint(graphics);
     }
 }
