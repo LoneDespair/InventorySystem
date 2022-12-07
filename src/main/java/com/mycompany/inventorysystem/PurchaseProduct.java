@@ -15,7 +15,8 @@ import java.awt.Image;
  */
 public class PurchaseProduct extends javax.swing.JPanel {
     Product product;
-    Image image;
+    ImageIcon imageIcon = new ImageIcon();
+    
     
     /**
      * Creates new form PurchaseProduct
@@ -23,7 +24,7 @@ public class PurchaseProduct extends javax.swing.JPanel {
     public PurchaseProduct() {
         initComponents();
         
-        image = new ImageIcon("C:/Users/LoneDespair/Downloads/icecream_1.jpg").getImage();
+        imageIcon = new ImageIcon("C:/Users/LoneDespair/Downloads/icecream_1.jpg");
     }
     
     public PurchaseProduct(Product newProduct) {
@@ -96,10 +97,9 @@ public class PurchaseProduct extends javax.swing.JPanel {
     }//GEN-LAST:event_buttonActionPerformed
 
     private void iconComponentResized(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_iconComponentResized
-        if (image == null) {
-            return;
-        }
+        icon.setIcon(ImageResizer.fitImageIcon(imageIcon, icon.getSize()));
         
+        /*
         Dimension iconSize = icon.getSize();
         
         int width = image.getWidth(this), height = image.getHeight(this);
@@ -108,7 +108,8 @@ public class PurchaseProduct extends javax.swing.JPanel {
         
         image = image.getScaledInstance((int)(width * ratio), (int)(height * ratio), Image.SCALE_DEFAULT);
         
-        icon.setIcon(new ImageIcon(image));
+        
+        icon.setIcon(new ImageIcon(image));*/
     }//GEN-LAST:event_iconComponentResized
 
 
