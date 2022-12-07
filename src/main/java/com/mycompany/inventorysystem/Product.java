@@ -10,10 +10,12 @@ package com.mycompany.inventorysystem;
  */
 public class Product extends LinkedList.Data{
     int id = 0;
-    String name = "None";
-    int quantity;
-    String description;
+    String name = "No product name given";
+    int quantity = 0;
+    String description = "No description provided";
     
+    
+    public Product() {}
     
     public Product(int newId, String newName, int newQuantity, String newDescription) {
         id = newId;
@@ -21,6 +23,4 @@ public class Product extends LinkedList.Data{
         quantity = newQuantity;
         description = newDescription;
     }
-    
-    
 }
