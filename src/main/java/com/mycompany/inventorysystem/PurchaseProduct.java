@@ -49,7 +49,6 @@ public class PurchaseProduct extends javax.swing.JPanel {
         iconBackground = new javax.swing.JPanel();
         icon = new javax.swing.JLabel();
 
-        button.setContentAreaFilled(false);
         button.setFocusPainted(false);
         button.setFocusable(false);
         button.addActionListener(new java.awt.event.ActionListener() {
@@ -98,18 +97,6 @@ public class PurchaseProduct extends javax.swing.JPanel {
 
     private void iconComponentResized(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_iconComponentResized
         icon.setIcon(ImageResizer.fitImageIcon(imageIcon, icon.getSize()));
-        
-        /*
-        Dimension iconSize = icon.getSize();
-        
-        int width = image.getWidth(this), height = image.getHeight(this);
-        
-        double ratio = Math.max((double)iconSize.width / width, (double)iconSize.height / height);
-        
-        image = image.getScaledInstance((int)(width * ratio), (int)(height * ratio), Image.SCALE_DEFAULT);
-        
-        
-        icon.setIcon(new ImageIcon(image));*/
     }//GEN-LAST:event_iconComponentResized
 
 
