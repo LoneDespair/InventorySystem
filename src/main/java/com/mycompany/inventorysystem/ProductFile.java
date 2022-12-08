@@ -5,7 +5,7 @@
 package com.mycompany.inventorysystem;
 
 import java.io.File;
-import java.nio.file.Path;
+import java.io.FileWriter;
 import java.nio.file.Paths;
 import java.util.Hashtable;
 import java.util.Scanner;
@@ -15,27 +15,37 @@ import java.util.Scanner;
  * @author LoneDespair
  */
 public class ProductFile {
-    Path path = Paths.get(System.getProperty("user.dir"), "productList.txt");
+    String path = Paths.get(System.getProperty("user.dir"), "productList.txt").toString();
     Hashtable<Integer, Product> table = new Hashtable<>();
     
     public ProductFile() {
         try {
-            for (Scanner scan = new Scanner(path.toFile()); scan.hasNextLine();) {
+            for (Scanner scan = new Scanner(new File(path)); scan.hasNextLine();) {
                 Product product = new Product();
                 ObjectSerializer.deserialize(scan.nextLine(), product);
                 
                 table.put(product.id, product);
             }
-            
-            
         }
         catch (Exception e) {
             System.out.printf("Load productList catch %s\n", e);
         }
     }
     
-    public void load() {
-        
+    public void save() {
+        try {
+            new File(path).createNewFile();
+            FileWriter writer = new FileWriter(path, false);
+            
+            for (Product product : table.values()) {
+                writer.write(ObjectSerializer.serialize(product) + "\n");
+            }
+            
+            writer.close();
+        }
+        catch (Exception e) {
+            System.out.printf("Save productList catch %s\n", e);
+        }
     }
     
 }

@@ -17,29 +17,26 @@ public class InventorySystem {
     
 
     public static void main(String[] args) {
-        ProductFile productFile = new ProductFile();
+        new PrimaryForm().setVisible(true);
         
         /*
-        new PrimaryForm().setVisible(true);
+        ProductFile productFile = new ProductFile();
+        
+        productFile.table.put(4, new Product(4, "yey ", 45, "sudjbhf ds"));
+        
+        productFile.table.put(2, new Product(2, "oni chan ", 69, "lol"));
+        productFile.save();
+        
+        
+        
+        for (Product product : productFile.table.values()) {
+            System.out.printf("%d %s %d %s\n", product.id, product.name, product.quantity, product.description);
+        }
         
         Product product = new Product();
         ObjectSerializer.deserialize("2", product);
         ObjectSerializer.serialize(new Product(1, "product name", 2, "best thing ever"));*/
     }
-    
-    
-    static public void save() {
-        LinkedList.Node node = new LinkedList.Node();
-        Product product = ((Product)node.data);
-        
-        Field[] fields = Product.class.getDeclaredFields();
-        
-        for (Field field : fields) {
-            System.out.println(field.getName());
-            System.out.println("HERE");
-        }
-        
-        System.out.println(Arrays.toString(fields));
         
     }
     
