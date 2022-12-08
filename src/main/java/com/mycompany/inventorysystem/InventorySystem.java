@@ -17,14 +17,14 @@ public class InventorySystem {
     
 
     public static void main(String[] args) {
+        ProductFile productFile = new ProductFile();
+        
+        /*
         new PrimaryForm().setVisible(true);
         
         Product product = new Product();
-        
         ObjectSerializer.deserialize("2", product);
-        
-        System.out.println(product.id);
-        ObjectSerializer.serialize(new Product(1, "product name", 2, "best thing ever"));
+        ObjectSerializer.serialize(new Product(1, "product name", 2, "best thing ever"));*/
     }
     
     
