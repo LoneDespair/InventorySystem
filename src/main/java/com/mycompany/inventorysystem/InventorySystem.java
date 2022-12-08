@@ -36,7 +36,6 @@ public class InventorySystem {
         Product product = new Product();
         ObjectSerializer.deserialize("2", product);
         ObjectSerializer.serialize(new Product(1, "product name", 2, "best thing ever"));*/
-    }
         
     }
     
