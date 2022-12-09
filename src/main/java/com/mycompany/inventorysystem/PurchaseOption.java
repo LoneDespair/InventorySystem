@@ -186,7 +186,7 @@ public class PurchaseOption extends javax.swing.JPanel {
     }//GEN-LAST:event_bgMouseMoved
 
     private void coloredButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_coloredButton1ActionPerformed
-        // TODO add your handling code here:
+        setVisible(false);
     }//GEN-LAST:event_coloredButton1ActionPerformed
 
 

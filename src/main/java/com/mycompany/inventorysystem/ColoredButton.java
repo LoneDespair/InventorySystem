@@ -14,12 +14,14 @@ import javax.swing.event.*;
  */
 public class ColoredButton extends JButton {
     Color normalColor = new Color(0, 0, 0, 0);
-    Color hoverColor = new Color(23, 32, 42, 60);
-    Color selectedColor = new Color(23, 32, 42, 85);
+    Color hoverColor = new Color(23, 32, 42, 50);
+    Color selectedColor = new Color(23, 32, 42, 80);
+    Color pressedColor = new Color(23, 32, 42, 95);
     
     @Override
     public void paint(Graphics graphics) {
-        if (model.isSelected()) graphics.setColor(selectedColor);
+        if (model.isPressed()) graphics.setColor(pressedColor);
+        else if (model.isSelected()) graphics.setColor(selectedColor);
         else if (model.isRollover()) graphics.setColor(hoverColor);
         else graphics.setColor(normalColor);
         
