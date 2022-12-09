@@ -53,8 +53,9 @@ public class PurchaseOption extends javax.swing.JPanel {
         setLayout(new javax.swing.OverlayLayout(this));
 
         content.setBackground(new java.awt.Color(252, 249, 190));
-        content.setMaximumSize(new java.awt.Dimension(635, 250));
-        content.setMinimumSize(new java.awt.Dimension(635, 250));
+        content.setMaximumSize(new java.awt.Dimension(624, 250));
+        content.setMinimumSize(new java.awt.Dimension(624, 250));
+        content.setPreferredSize(new java.awt.Dimension(624, 250));
 
         iconBg.setBackground(new java.awt.Color(255, 220, 169));
         iconBg.setMaximumSize(new java.awt.Dimension(200, 200));

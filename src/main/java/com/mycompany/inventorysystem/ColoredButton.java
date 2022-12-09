@@ -19,9 +19,7 @@ public class ColoredButton extends JButton {
     
     @Override
     public void paint(Graphics graphics) {
-        
         if (model.isSelected()) graphics.setColor(selectedColor);
-            
         else if (model.isRollover()) graphics.setColor(hoverColor);
         else graphics.setColor(normalColor);
         
