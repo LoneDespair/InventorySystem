@@ -14,6 +14,8 @@ import javax.swing.ImageIcon;
  */
 public class ImageResizer {
     public static ImageIcon fitImageIcon(ImageIcon imageIcon, Dimension targetSize) {
+        if (imageIcon == null) return imageIcon;
+        
         int width = imageIcon.getIconWidth(), height = imageIcon.getIconHeight();
 
         double ratio = Math.max((double)targetSize.width / width, (double)targetSize.height / height);

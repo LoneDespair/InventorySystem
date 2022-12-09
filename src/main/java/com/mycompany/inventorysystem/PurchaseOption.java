@@ -21,7 +21,10 @@ public class PurchaseOption extends javax.swing.JPanel {
         
         inputConsumer.setBackground(transparent);
         bg.setBackground(new Color(23, 32, 42, 100));
-        
+    }
+    
+    public void open(Product product) {
+        setVisible(true);
     }
 
     /**

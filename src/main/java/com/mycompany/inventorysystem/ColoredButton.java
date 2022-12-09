@@ -12,7 +12,7 @@ import javax.swing.event.*;
  *
  * @author LoneDespair
  */
-public class ColoredButton extends JToggleButton {
+public class ColoredButton extends JButton {
     Color normalColor = new Color(0, 0, 0, 0);
     Color hoverColor = new Color(23, 32, 42, 60);
     Color selectedColor = new Color(23, 32, 42, 85);

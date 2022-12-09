@@ -9,27 +9,34 @@ package com.mycompany.inventorysystem;
  * @author LoneDespair
  */
 public class PurchaseSelection extends javax.swing.JPanel {
-    interface ProductListener {
-        void selectProduct(Product product);
-    }
+    PurchaseOption purchaseOption = null;
     
     /**
      * Creates new form PurchasePage
      */
     public PurchaseSelection() {
         initComponents();
-        
-        PurchaseProduct purchaseProduct = new PurchaseProduct();
-        shelf.add(purchaseProduct);
     }
+    
+    public void setup(PurchaseOption newPurchaseOption) {
+        purchaseOption = newPurchaseOption;
+    }
+    
+    
+    public void addProduct(Product product) {
+        shelf.add(new PurchaseProduct(product, purchaseOption));
+    }
+    
+    
     
     public void addPurchaseProduct() {
         
     }
     
-    public void selectProduct(Product product) {
-        
+    public void select(PurchaseProduct newSelected) {
     }
+    
+    
     
     
     
@@ -47,9 +54,6 @@ public class PurchaseSelection extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         shelf = new javax.swing.JPanel();
-        purchaseProduct1 = new com.mycompany.inventorysystem.PurchaseProduct();
-        purchaseProduct7 = new com.mycompany.inventorysystem.PurchaseProduct();
-        purchaseProduct5 = new com.mycompany.inventorysystem.PurchaseProduct();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new javax.swing.BoxLayout(this, javax.swing.BoxLayout.Y_AXIS));
@@ -89,10 +93,6 @@ public class PurchaseSelection extends javax.swing.JPanel {
 
         shelf.setBackground(new java.awt.Color(232, 243, 214));
         shelf.setLayout(new java.awt.GridLayout(1, 2));
-        shelf.add(purchaseProduct1);
-        shelf.add(purchaseProduct7);
-        shelf.add(purchaseProduct5);
-
         jScrollPane1.setViewportView(shelf);
 
         add(jScrollPane1);
@@ -103,9 +103,6 @@ public class PurchaseSelection extends javax.swing.JPanel {
     private javax.swing.JPanel header;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private com.mycompany.inventorysystem.PurchaseProduct purchaseProduct1;
-    private com.mycompany.inventorysystem.PurchaseProduct purchaseProduct5;
-    private com.mycompany.inventorysystem.PurchaseProduct purchaseProduct7;
     private javax.swing.JPanel shelf;
     // End of variables declaration//GEN-END:variables
 }

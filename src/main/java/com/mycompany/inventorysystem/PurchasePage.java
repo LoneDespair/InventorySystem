@@ -15,7 +15,12 @@ public class PurchasePage extends javax.swing.JPanel {
      */
     public PurchasePage() {
         initComponents();
-        //purchaseOption.setVisible(false);
+        purchaseSelection.setup(purchaseOption);
+        purchaseOption.setVisible(false);
+        
+        for (int idx = 0; idx < 3; idx++) {
+            purchaseSelection.addProduct(new Product());
+        }
     }
 
     /**

@@ -14,8 +14,10 @@ import java.awt.Image;
  * @author LoneDespair
  */
 public class PurchaseProduct extends javax.swing.JPanel {
+    PurchaseOption purchaseOption = null;
+    
     Product product;
-    ImageIcon imageIcon = new ImageIcon();
+    ImageIcon imageIcon = null;
     
     
     /**
@@ -27,9 +29,11 @@ public class PurchaseProduct extends javax.swing.JPanel {
         imageIcon = new ImageIcon("C:/Users/LoneDespair/Downloads/icecream_1.jpg");
     }
     
-    public PurchaseProduct(Product newProduct) {
+    public PurchaseProduct(Product newProduct, PurchaseOption newPurchaseOption) {
         initComponents();
         product = newProduct;
+        
+        purchaseOption = newPurchaseOption;
     }
 
     /**
@@ -63,6 +67,12 @@ public class PurchaseProduct extends javax.swing.JPanel {
 
         holder.setBackground(new java.awt.Color(252, 249, 190));
         holder.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        coloredButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                coloredButton1ActionPerformed(evt);
+            }
+        });
         holder.add(coloredButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 200, 280));
 
         nameLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -98,6 +108,11 @@ public class PurchaseProduct extends javax.swing.JPanel {
     private void iconComponentResized(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_iconComponentResized
         icon.setIcon(ImageResizer.fitImageIcon(imageIcon, icon.getSize()));
     }//GEN-LAST:event_iconComponentResized
+
+    private void coloredButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_coloredButton1ActionPerformed
+        if (purchaseOption == null) System.out.println("Purchase option is null");
+        else purchaseOption.setVisible(true);
+    }//GEN-LAST:event_coloredButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
