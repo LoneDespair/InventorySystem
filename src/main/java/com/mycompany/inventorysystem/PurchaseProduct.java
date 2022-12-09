@@ -124,13 +124,13 @@ public class PurchaseProduct extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void iconComponentResized(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_iconComponentResized
-        System.out.println("RESIZED");
         icon.setIcon(ImageResizer.fitImageIcon(imageIcon, icon.getSize()));
     }//GEN-LAST:event_iconComponentResized
 
     private void buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonActionPerformed
         if (purchaseOption == null) System.out.println("Purchase option is null");
         else {
+            button.getModel().setArmed(false);
             button.getModel().setRollover(false);
             button.getModel().setSelected(false);
             button.getModel().setPressed(false);

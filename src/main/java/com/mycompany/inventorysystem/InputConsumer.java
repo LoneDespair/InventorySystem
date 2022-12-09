@@ -16,7 +16,6 @@ import java.awt.event.MouseListener;
 public class InputConsumer extends javax.swing.JPanel{
     
     public InputConsumer() {
-        System.out.println("Addeddd");
         addMouseListener(new MouseEar());
     }
     

@@ -31,6 +31,8 @@ public class ColoredButton extends JButton {
     public ColoredButton() {
         setContentAreaFilled(false);
         setRolloverEnabled(true);
+        setBorderPainted(false);
+        setFocusable(false);
         
         /*
         addChangeListener(new ChangeListener() {
