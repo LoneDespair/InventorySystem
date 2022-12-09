@@ -15,7 +15,7 @@ import java.util.Scanner;
  * @author LoneDespair
  */
 public class ProductFile {
-    String path = Paths.get(System.getProperty("user.dir"), "productList.txt").toString();
+    String path = Paths.get(System.getProperty("user.dir"), "ProductList.txt").toString();
     Hashtable<Integer, Product> table = new Hashtable<>();
     
     public ProductFile() {
