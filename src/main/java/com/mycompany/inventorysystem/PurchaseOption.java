@@ -19,12 +19,14 @@ public class PurchaseOption extends javax.swing.JPanel {
     public PurchaseOption() {
         initComponents();
         
-        inputConsumer.setBackground(transparent);
+        //inputConsumer.setBackground(transparent);
         bg.setBackground(new Color(23, 32, 42, 100));
     }
     
     public void open(Product product) {
+        System.out.print("Openned");
         setVisible(true);
+        
     }
 
     /**
@@ -36,7 +38,7 @@ public class PurchaseOption extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        content = new javax.swing.JPanel();
+        content = new com.mycompany.inventorysystem.InputConsumer();
         iconBg = new javax.swing.JPanel();
         jIconRenderer1 = new com.mycompany.inventorysystem.JIconRenderer();
         jSpinner1 = new javax.swing.JSpinner();
@@ -45,16 +47,14 @@ public class PurchaseOption extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
-        bg = new javax.swing.JPanel();
-        inputConsumer = new javax.swing.JTextField();
+        bg = new com.mycompany.inventorysystem.InputConsumer();
 
         setBackground(new java.awt.Color(51, 51, 255));
         setLayout(new javax.swing.OverlayLayout(this));
 
         content.setBackground(new java.awt.Color(252, 249, 190));
-        content.setMaximumSize(new java.awt.Dimension(624, 250));
-        content.setMinimumSize(new java.awt.Dimension(624, 250));
-        content.setPreferredSize(new java.awt.Dimension(635, 250));
+        content.setMaximumSize(new java.awt.Dimension(635, 250));
+        content.setMinimumSize(new java.awt.Dimension(635, 250));
 
         iconBg.setBackground(new java.awt.Color(255, 220, 169));
         iconBg.setMaximumSize(new java.awt.Dimension(200, 200));
@@ -113,7 +113,7 @@ public class PurchaseOption extends javax.swing.JPanel {
                             .addGap(18, 18, 18)
                             .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         contentLayout.setVerticalGroup(
             contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -138,7 +138,16 @@ public class PurchaseOption extends javax.swing.JPanel {
 
         add(content);
 
-        bg.setMaximumSize(new java.awt.Dimension(2147483647, 2147483647));
+        bg.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                bgMouseMoved(evt);
+            }
+        });
+        bg.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                bgMousePressed(evt);
+            }
+        });
 
         javax.swing.GroupLayout bgLayout = new javax.swing.GroupLayout(bg);
         bg.setLayout(bgLayout);
@@ -152,9 +161,6 @@ public class PurchaseOption extends javax.swing.JPanel {
         );
 
         add(bg);
-
-        inputConsumer.setEditable(false);
-        add(inputConsumer);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -165,12 +171,19 @@ public class PurchaseOption extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void bgMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bgMousePressed
+        setVisible(false);
+    }//GEN-LAST:event_bgMousePressed
+
+    private void bgMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bgMouseMoved
+           
+    }//GEN-LAST:event_bgMouseMoved
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel bg;
-    private javax.swing.JPanel content;
+    private com.mycompany.inventorysystem.InputConsumer bg;
+    private com.mycompany.inventorysystem.InputConsumer content;
     private javax.swing.JPanel iconBg;
-    private javax.swing.JTextField inputConsumer;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private com.mycompany.inventorysystem.JIconRenderer jIconRenderer1;

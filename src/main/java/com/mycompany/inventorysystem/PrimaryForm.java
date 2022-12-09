@@ -16,7 +16,7 @@ public class PrimaryForm extends javax.swing.JFrame {
     public PrimaryForm() {
         initComponents();
         //testPanel.setVisible(true);
-        purchasePage.setVisible(false);
+        //purchasePage.setVisible(false);
     }
 
     /**
