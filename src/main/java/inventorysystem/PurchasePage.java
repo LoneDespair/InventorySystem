@@ -11,7 +11,7 @@ import java.nio.file.Paths;
  * @author LoneDespair
  */
 public class PurchasePage extends javax.swing.JPanel {
-
+    
     static final String path = Paths.get(System.getProperty("user.dir"), "src/main/java/inventorysystem/Default.png").toString();
     
     /**
@@ -23,7 +23,9 @@ public class PurchasePage extends javax.swing.JPanel {
         purchaseOption.setVisible(false);
         
         for (int idx = 0; idx < 3; idx++) {
-            purchaseSelection.addProduct(new Product());
+            Product product = new Product();
+            product.loadIcon(path);
+            purchaseSelection.addProduct(product);
         }
     }
 

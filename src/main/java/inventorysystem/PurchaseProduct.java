@@ -48,7 +48,6 @@ public class PurchaseProduct extends javax.swing.JPanel {
         button = new inventorysystem.ColoredButton();
         nameLabel = new javax.swing.JLabel();
         priceLabel = new javax.swing.JLabel();
-        iconBackground = new javax.swing.JPanel();
         icon = new javax.swing.JLabel();
 
         setEnabled(false);
@@ -104,19 +103,15 @@ public class PurchaseProduct extends javax.swing.JPanel {
         priceLabel.setText("₱150.00");
         holder.add(priceLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 240, 130, 30));
 
-        iconBackground.setBackground(new java.awt.Color(255, 220, 169));
-        iconBackground.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        icon.setBackground(new java.awt.Color(250, 171, 121));
+        icon.setBackground(new java.awt.Color(255, 220, 169));
         icon.setFocusable(false);
+        icon.setOpaque(true);
         icon.addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentResized(java.awt.event.ComponentEvent evt) {
                 iconComponentResized(evt);
             }
         });
-        iconBackground.add(icon, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 180, 180));
-
-        holder.add(iconBackground, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 180, 180));
+        holder.add(icon, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 180, 180));
 
         add(holder, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 200, 280));
     }// </editor-fold>//GEN-END:initComponents
@@ -157,7 +152,6 @@ public class PurchaseProduct extends javax.swing.JPanel {
     private inventorysystem.ColoredButton button;
     private javax.swing.JPanel holder;
     private javax.swing.JLabel icon;
-    private javax.swing.JPanel iconBackground;
     private javax.swing.JLabel nameLabel;
     private javax.swing.JLabel priceLabel;
     // End of variables declaration//GEN-END:variables
