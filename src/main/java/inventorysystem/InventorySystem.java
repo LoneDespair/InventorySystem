@@ -17,7 +17,6 @@ import javax.swing.UIManager;
 public class InventorySystem {
     public static void main(String[] args) {
         try {
-            System.out.println("Set look and feel");
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         }
         catch (Exception e) {
