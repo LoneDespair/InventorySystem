@@ -39,16 +39,20 @@ public class TestPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        inputConsumer1 = new com.mycompany.inventorysystem.InputConsumer();
+        jImagePicker1 = new com.mycompany.inventorysystem.JImagePicker();
 
+        setBackground(new java.awt.Color(255, 255, 204));
         setEnabled(false);
+        setOpaque(false);
         setLayout(new javax.swing.OverlayLayout(this));
-        add(inputConsumer1);
+        add(jImagePicker1);
+
+        getAccessibleContext().setAccessibleName("");
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private com.mycompany.inventorysystem.InputConsumer inputConsumer1;
+    private com.mycompany.inventorysystem.JImagePicker jImagePicker1;
     // End of variables declaration//GEN-END:variables
 
     private void addChangeListner(ChangeListener changeListener) {

@@ -8,15 +8,22 @@ package com.mycompany.inventorysystem;
 import java.lang.reflect.Field;
 import java.util.Arrays;
 import java.util.Map;
+import javax.swing.UIManager;
 
 /**
  *
  * @author LoneDespair
  */
 public class InventorySystem {
-    
-
     public static void main(String[] args) {
+        try {
+            System.out.println("Set look and feel");
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+        }
+        catch (Exception e) {
+            System.out.println("Errrorr");
+        }
+        
         new PrimaryForm().setVisible(true);
     }
     

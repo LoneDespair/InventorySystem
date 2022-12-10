@@ -25,13 +25,12 @@ public class PurchaseProduct extends javax.swing.JPanel {
      */
     public PurchaseProduct() {
         initComponents();
-        
-        imageIcon = new ImageIcon("C:/Users/LoneDespair/Downloads/icecream_1.jpg");
     }
     
     public PurchaseProduct(Product newProduct, PurchaseOption newPurchaseOption) {
         initComponents();
         product = newProduct;
+        imageIcon = newProduct.icon;
         
         purchaseOption = newPurchaseOption;
     }

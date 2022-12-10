@@ -4,6 +4,7 @@
  */
 package com.mycompany.inventorysystem;
 
+
 /**
  *
  * @author LoneDespair
