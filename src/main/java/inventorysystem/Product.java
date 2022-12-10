@@ -20,7 +20,7 @@ public class Product extends LinkedList.Data{
     int id = 0;
     String name = "No product name given";
     int quantity = 0;
-    int price = 0;
+    double price = 0;
     BufferedImage image;
 
     
@@ -43,7 +43,7 @@ public class Product extends LinkedList.Data{
     }
     
     
-    public Product(int newId, String newName, int newQuantity, int newPrice) {
+    public Product(int newId, String newName, int newQuantity, double newPrice) {
         id = newId;
         name = newName;
         quantity = newQuantity;

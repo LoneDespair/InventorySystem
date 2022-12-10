@@ -20,8 +20,8 @@ import javax.swing.table.DefaultTableModel;
  */
 public class ProductListUpdate {
     Product product = new Product();
-    String listFilePath = Paths.get(System.getProperty("user.dir"),"src","productlisttestpkg","productList.txt").toString();
-    String tempFilePath = Paths.get(System.getProperty("user.dir"),"src","productlisttestpkg","temp.txt").toString();
+    String listFilePath = Paths.get(System.getProperty("user.dir"),"src/main/java/inventorysystem","productList.txt").toString();
+    String tempFilePath = Paths.get(System.getProperty("user.dir"),"src/main/java/inventorysystem","temp.txt").toString();
     HashMap <Integer, Product> hashTable = new HashMap <Integer, Product>();
     
     public void update(DefaultTableModel listModel, JTable listTable) {
@@ -31,7 +31,7 @@ public class ProductListUpdate {
                 product.id = Integer.parseInt(String.valueOf(listModel.getValueAt(i, 0)));
                 product.name = String.valueOf(listModel.getValueAt(i, 1));
                 product.quantity = Integer.parseInt(String.valueOf(listModel.getValueAt(i, 2)));
-                product.price = Integer.parseInt(String.valueOf(listModel.getValueAt(i, 3)));
+                product.price = Double.parseDouble(String.valueOf(listModel.getValueAt(i, 3)));
                 writer.write(String.format("%04d %20s %15d %20.2f\n", product.id, product.name, product.quantity, product.price));            
             }
             writer.close();

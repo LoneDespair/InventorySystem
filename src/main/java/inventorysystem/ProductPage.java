@@ -4,7 +4,10 @@
  */
 package inventorysystem;
 
+import static inventorysystem.PurchasePage.path;
+import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -15,11 +18,14 @@ import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Scanner;
+import javax.imageio.ImageIO;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
+
+import javax.swing.JFileChooser;
 
 /**
  *
@@ -28,8 +34,8 @@ import javax.swing.table.TableRowSorter;
 public class ProductPage extends javax.swing.JPanel {
     Product product = new Product();
     ProductListUpdate updater = new ProductListUpdate();
-    String listFilePath = Paths.get(System.getProperty("user.dir"),"src","src/main/java/inventorysystem","productList.txt").toString();
-    String tempFilePath = Paths.get(System.getProperty("user.dir"),"src","productlisttestpkg","temp.txt").toString();
+    String listFilePath = Paths.get(System.getProperty("user.dir"),"src/main/java/inventorysystem/productList.txt").toString();
+    String tempFilePath = Paths.get(System.getProperty("user.dir"),"src/main/java/inventorysystem/temp.txt").toString();
     HashMap <Integer, Product> hashTable = new HashMap <Integer, Product>();    
     DefaultTableModel model;
     JTable table;
@@ -39,8 +45,39 @@ public class ProductPage extends javax.swing.JPanel {
      */
     public ProductPage() {
         initComponents();
+        populate();
+        sort();
     }
 
+    private void sort() {
+        model = (DefaultTableModel)jTable1.getModel();
+        table = jTable1;
+        TableRowSorter <DefaultTableModel> sorter = new TableRowSorter <DefaultTableModel> (model);
+        table.setRowSorter(sorter);
+    }
+    
+    private void populate() {
+        String itemLine = new String();
+        String[] itemDetails = new String[4];
+        model = (DefaultTableModel)jTable1.getModel();
+        int i;
+        try(FileReader file = new FileReader(listFilePath)) {            
+            Scanner scan = new Scanner(file);                                   
+            for(i=model.getRowCount()-1; i>=0; i--)
+                model.removeRow(i);
+                    
+            while(scan.hasNext()) {
+                itemLine = scan.nextLine();
+                itemDetails = itemLine.split("\\s+");
+                model.addRow(itemDetails);                                       
+            }             
+            file.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -219,6 +256,11 @@ public class ProductPage extends javax.swing.JPanel {
         jLabel11.setText("Image");
 
         selectImage.setText("No image selected");
+        selectImage.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                selectImageActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -357,7 +399,7 @@ public class ProductPage extends javax.swing.JPanel {
         String[] itemDetails = new String[4];
         String newName = newNameField.getText();
         int newQty = Integer.parseInt(newQtyField.getText());
-        int newPrice = Integer.parseInt(newPriceField.getText());
+        double newPrice = Double.parseDouble(newPriceField.getText());
         int i;
         for(i=0; i<=model.getRowCount()-1; i++) {
             if(String.valueOf(model.getValueAt(i, 1)).equalsIgnoreCase(newName)) {
@@ -445,6 +487,24 @@ public class ProductPage extends javax.swing.JPanel {
         model.removeRow(i);
         updater.update(model, table);
     }//GEN-LAST:event_btnClearActionPerformed
+
+    private void selectImageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectImageActionPerformed
+        JFileChooser fileChooser = new JFileChooser();
+        
+        if (fileChooser.showSaveDialog(null) == 0) {
+            System.out.printf("Successs %s\n", fileChooser.getSelectedFile().getAbsolutePath());
+            
+            /*
+            BufferedImage image = ImageIO.read(fileChooser.getSelectedFile());
+            ByteArrayOutputStream stream = new ByteArrayOutputStream();
+            ImageIO.write(image, "png", stream);
+            String textIcon = Base64.getEncoder().encodeToString(stream.toByteArray())*/
+            
+        }
+        else {
+            System.out.println("cancel");
+        }
+    }//GEN-LAST:event_selectImageActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
