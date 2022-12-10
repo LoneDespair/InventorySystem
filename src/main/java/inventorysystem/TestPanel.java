@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package com.mycompany.inventorysystem;
+package inventorysystem;
 
 import java.awt.Color;
 import java.awt.event.ActionEvent;
@@ -39,7 +39,7 @@ public class TestPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jImagePicker1 = new com.mycompany.inventorysystem.JImagePicker();
+        jImagePicker1 = new inventorysystem.JImagePicker();
 
         setBackground(new java.awt.Color(255, 255, 204));
         setEnabled(false);
@@ -52,7 +52,7 @@ public class TestPanel extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private com.mycompany.inventorysystem.JImagePicker jImagePicker1;
+    private inventorysystem.JImagePicker jImagePicker1;
     // End of variables declaration//GEN-END:variables
 
     private void addChangeListner(ChangeListener changeListener) {

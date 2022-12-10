@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package com.mycompany.inventorysystem;
+package inventorysystem;
 
 
 /**
@@ -29,8 +29,8 @@ public class PrimaryForm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        purchasePage = new com.mycompany.inventorysystem.PurchasePage();
-        testPanel = new com.mycompany.inventorysystem.TestPanel();
+        purchasePage = new inventorysystem.PurchasePage();
+        testPanel = new inventorysystem.TestPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new java.awt.CardLayout());
@@ -77,7 +77,7 @@ public class PrimaryForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private com.mycompany.inventorysystem.PurchasePage purchasePage;
-    private com.mycompany.inventorysystem.TestPanel testPanel;
+    private inventorysystem.PurchasePage purchasePage;
+    private inventorysystem.TestPanel testPanel;
     // End of variables declaration//GEN-END:variables
 }

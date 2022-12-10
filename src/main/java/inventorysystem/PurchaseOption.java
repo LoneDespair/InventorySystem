@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package com.mycompany.inventorysystem;
+package inventorysystem;
 
 import java.awt.Color;
 
@@ -37,16 +37,16 @@ public class PurchaseOption extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        content = new com.mycompany.inventorysystem.InputConsumer();
+        content = new inventorysystem.InputConsumer();
         iconBg = new javax.swing.JPanel();
-        jIconRenderer1 = new com.mycompany.inventorysystem.JIconRenderer();
+        jIconRenderer1 = new inventorysystem.JIconRenderer();
         jSpinner1 = new javax.swing.JSpinner();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        coloredButton1 = new com.mycompany.inventorysystem.ColoredButton();
-        bg = new com.mycompany.inventorysystem.InputConsumer();
+        coloredButton1 = new inventorysystem.ColoredButton();
+        bg = new inventorysystem.InputConsumer();
 
         setBackground(new java.awt.Color(51, 51, 255));
         setLayout(new javax.swing.OverlayLayout(this));
@@ -191,12 +191,12 @@ public class PurchaseOption extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private com.mycompany.inventorysystem.InputConsumer bg;
-    private com.mycompany.inventorysystem.ColoredButton coloredButton1;
-    private com.mycompany.inventorysystem.InputConsumer content;
+    private inventorysystem.InputConsumer bg;
+    private inventorysystem.ColoredButton coloredButton1;
+    private inventorysystem.InputConsumer content;
     private javax.swing.JPanel iconBg;
     private javax.swing.JButton jButton1;
-    private com.mycompany.inventorysystem.JIconRenderer jIconRenderer1;
+    private inventorysystem.JIconRenderer jIconRenderer1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

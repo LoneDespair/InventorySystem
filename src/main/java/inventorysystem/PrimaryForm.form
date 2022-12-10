@@ -23,14 +23,14 @@
 
   <Layout class="org.netbeans.modules.form.compat2.layouts.DesignCardLayout"/>
   <SubComponents>
-    <Component class="com.mycompany.inventorysystem.PurchasePage" name="purchasePage">
+    <Component class="inventorysystem.PurchasePage" name="purchasePage">
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
           <CardConstraints cardName="card2"/>
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="com.mycompany.inventorysystem.TestPanel" name="testPanel">
+    <Component class="inventorysystem.TestPanel" name="testPanel">
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
           <CardConstraints cardName="card3"/>

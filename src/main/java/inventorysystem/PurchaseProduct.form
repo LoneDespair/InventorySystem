@@ -53,7 +53,7 @@
         <Property name="useNullLayout" type="boolean" value="false"/>
       </Layout>
       <SubComponents>
-        <Component class="com.mycompany.inventorysystem.ColoredButton" name="button">
+        <Component class="inventorysystem.ColoredButton" name="button">
           <Properties>
             <Property name="focusPainted" type="boolean" value="false"/>
             <Property name="requestFocusEnabled" type="boolean" value="false"/>

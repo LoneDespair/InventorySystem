@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package com.mycompany.inventorysystem;
+package inventorysystem;
 
 import javax.swing.ImageIcon;
 
@@ -38,9 +38,9 @@ public class JImagePicker extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        content = new com.mycompany.inventorysystem.InputConsumer();
+        content = new inventorysystem.InputConsumer();
         fileChooser = new javax.swing.JFileChooser();
-        inputConsumer1 = new com.mycompany.inventorysystem.InputConsumer();
+        inputConsumer1 = new inventorysystem.InputConsumer();
 
         setBackground(new java.awt.Color(255, 255, 204));
         setOpaque(false);
@@ -92,8 +92,8 @@ public class JImagePicker extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private com.mycompany.inventorysystem.InputConsumer content;
+    private inventorysystem.InputConsumer content;
     private javax.swing.JFileChooser fileChooser;
-    private com.mycompany.inventorysystem.InputConsumer inputConsumer1;
+    private inventorysystem.InputConsumer inputConsumer1;
     // End of variables declaration//GEN-END:variables
 }

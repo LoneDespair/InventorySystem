@@ -2,7 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package com.mycompany.inventorysystem;
+package inventorysystem;
+
+import java.nio.file.Paths;
 
 /**
  *
@@ -10,6 +12,8 @@ package com.mycompany.inventorysystem;
  */
 public class PurchasePage extends javax.swing.JPanel {
 
+    static final String path = Paths.get(System.getProperty("user.dir"), "src/main/java/inventorysystem/Default.png").toString();
+    
     /**
      * Creates new form PurchasePage
      */
@@ -32,8 +36,8 @@ public class PurchasePage extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        purchaseOption = new com.mycompany.inventorysystem.PurchaseOption();
-        purchaseSelection = new com.mycompany.inventorysystem.PurchaseSelection();
+        purchaseOption = new inventorysystem.PurchaseOption();
+        purchaseSelection = new inventorysystem.PurchaseSelection();
 
         setLayout(new javax.swing.OverlayLayout(this));
         add(purchaseOption);
@@ -42,7 +46,7 @@ public class PurchasePage extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private com.mycompany.inventorysystem.PurchaseOption purchaseOption;
-    private com.mycompany.inventorysystem.PurchaseSelection purchaseSelection;
+    private inventorysystem.PurchaseOption purchaseOption;
+    private inventorysystem.PurchaseSelection purchaseSelection;
     // End of variables declaration//GEN-END:variables
 }

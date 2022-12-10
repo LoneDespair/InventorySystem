@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package com.mycompany.inventorysystem;
+package inventorysystem;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -30,7 +30,7 @@ public class PurchaseProduct extends javax.swing.JPanel {
     public PurchaseProduct(Product newProduct, PurchaseOption newPurchaseOption) {
         initComponents();
         product = newProduct;
-        imageIcon = newProduct.icon;
+        imageIcon = new ImageIcon(newProduct.image);
         
         purchaseOption = newPurchaseOption;
     }
@@ -45,7 +45,7 @@ public class PurchaseProduct extends javax.swing.JPanel {
     private void initComponents() {
 
         holder = new javax.swing.JPanel();
-        button = new com.mycompany.inventorysystem.ColoredButton();
+        button = new inventorysystem.ColoredButton();
         nameLabel = new javax.swing.JLabel();
         priceLabel = new javax.swing.JLabel();
         iconBackground = new javax.swing.JPanel();
@@ -78,7 +78,6 @@ public class PurchaseProduct extends javax.swing.JPanel {
         holder.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         button.setFocusPainted(false);
-        button.setFocusable(false);
         button.setRequestFocusEnabled(false);
         button.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -155,7 +154,7 @@ public class PurchaseProduct extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private com.mycompany.inventorysystem.ColoredButton button;
+    private inventorysystem.ColoredButton button;
     private javax.swing.JPanel holder;
     private javax.swing.JLabel icon;
     private javax.swing.JPanel iconBackground;
