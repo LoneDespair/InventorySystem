@@ -26,6 +26,8 @@ public class ProductListUpdate {
     public void update(DefaultTableModel listModel, JTable listTable) {
         int i;
         try(FileWriter writer = new FileWriter(tempFilePath)) {
+            ProductList.hashTable.clear();
+            
             for(i=0; i<=listModel.getRowCount()-1; i++) {
                 Product product = new Product();
                 product.id = Integer.parseInt(String.valueOf(listModel.getValueAt(i, 0)));
@@ -34,8 +36,7 @@ public class ProductListUpdate {
                 product.price = Double.parseDouble(String.valueOf(listModel.getValueAt(i, 3)));
                 writer.write(String.format("%04d %20s %15d %20.2f\n", product.id, product.name, product.quantity, product.price));            
                 
-                
-                
+                ProductList.hashTable.put(product.id, product);
             }
             writer.close();
             File listFile = new File(listFilePath);

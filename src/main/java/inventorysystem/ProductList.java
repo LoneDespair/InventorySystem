@@ -85,10 +85,7 @@ public class ProductList extends javax.swing.JPanel {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        
-        
 
-        
         
     }
     
