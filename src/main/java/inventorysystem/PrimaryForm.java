@@ -29,7 +29,7 @@ public class PrimaryForm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        productPage = new inventorysystem.ProductPage();
+        productPage = new inventorysystem.ProductList();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new java.awt.CardLayout());
@@ -75,6 +75,6 @@ public class PrimaryForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private inventorysystem.ProductPage productPage;
+    private inventorysystem.ProductList productPage;
     // End of variables declaration//GEN-END:variables
 }

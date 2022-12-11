@@ -8,7 +8,7 @@ import java.nio.file.Paths;
 
 /**
  *
- * @author LoneDespair
+ * @author BWISITA
  */
 public class PurchasePage extends javax.swing.JPanel {
     

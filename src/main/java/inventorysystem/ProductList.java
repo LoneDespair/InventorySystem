@@ -31,19 +31,19 @@ import javax.swing.JFileChooser;
  *
  * @author LoneDespair
  */
-public class ProductPage extends javax.swing.JPanel {
+public class ProductList extends javax.swing.JPanel {
     Product product = new Product();
     ProductListUpdate updater = new ProductListUpdate();
     String listFilePath = Paths.get(System.getProperty("user.dir"),"src/main/java/inventorysystem/productList.txt").toString();
     String tempFilePath = Paths.get(System.getProperty("user.dir"),"src/main/java/inventorysystem/temp.txt").toString();
-    HashMap <Integer, Product> hashTable = new HashMap <Integer, Product>();    
+    static HashMap <Integer, Product> hashTable = new HashMap <Integer, Product>();    
     DefaultTableModel model;
     JTable table;
     
     /**
      * Creates new form ProductPage
      */
-    public ProductPage() {
+    public ProductList() {
         initComponents();
         populate();
         sort();
@@ -65,16 +65,31 @@ public class ProductPage extends javax.swing.JPanel {
             Scanner scan = new Scanner(file);                                   
             for(i=model.getRowCount()-1; i>=0; i--)
                 model.removeRow(i);
-                    
+            
             while(scan.hasNext()) {
                 itemLine = scan.nextLine();
                 itemDetails = itemLine.split("\\s+");
-                model.addRow(itemDetails);                                       
+                model.addRow(itemDetails);       
+                
+                Scanner productScan = new Scanner(itemLine).useDelimiter("\\s+");
+                Product product = new Product();
+
+                product.id = Integer.parseInt(productScan.next());
+                product.name = productScan.next();
+                product.quantity = Integer.parseInt(productScan.next());
+                product.price = Double.parseDouble(productScan.next());
+                
+                hashTable.put(product.id, product);
             }             
             file.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
+        
+        
+
+        
+        
     }
     
     
@@ -173,9 +188,16 @@ public class ProductPage extends javax.swing.JPanel {
                 "Item ID", "Name", "Stock Qty", "Price"
             }
         ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.Double.class
+            };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false
             };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
@@ -446,11 +468,15 @@ public class ProductPage extends javax.swing.JPanel {
         String editName = itemSelectName.getText();
         String editQty = itemSelectQty.getText();
         String editPrice = itemSelectPrice.getText();
-
+        
         if(!editName.isEmpty() && !editQty.isEmpty() && !editPrice.isEmpty()) {
             model.setValueAt(editName.toUpperCase(), rowSelected, 1);
             model.setValueAt(editQty, rowSelected, 2);
             model.setValueAt(editPrice, rowSelected, 3);
+            
+            //int id = Integer.parseInt(String.valueOf(model.getValueAt(rowSelected, 0)));
+            
+            
             updater.update(model, table);
         }
         else

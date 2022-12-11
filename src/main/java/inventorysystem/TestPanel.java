@@ -26,9 +26,7 @@ public class TestPanel extends javax.swing.JPanel {
         
     }
     
-    public void listen(ActionEvent e) {
-        
-    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -39,20 +37,15 @@ public class TestPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jImagePicker1 = new inventorysystem.JImagePicker();
-
         setBackground(new java.awt.Color(255, 255, 204));
         setEnabled(false);
         setOpaque(false);
         setLayout(new javax.swing.OverlayLayout(this));
-        add(jImagePicker1);
-
         getAccessibleContext().setAccessibleName("");
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private inventorysystem.JImagePicker jImagePicker1;
     // End of variables declaration//GEN-END:variables
 
     private void addChangeListner(ChangeListener changeListener) {

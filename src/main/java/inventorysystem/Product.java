@@ -9,6 +9,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.nio.file.Paths;
 import java.util.Base64;
+import java.util.Scanner;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 
@@ -26,6 +27,14 @@ public class Product extends LinkedList.Data{
     
     public Product() { }
     
+    public Product(int newId, String newName, int newQuantity, double newPrice) {
+        id = newId;
+        name = newName;
+        quantity = newQuantity;
+        price = newPrice;
+    }
+    
+    
     public void loadIcon(String path) {
         System.out.println(path);
         
@@ -40,13 +49,5 @@ public class Product extends LinkedList.Data{
         catch (Exception e) {
             System.out.printf("Load icon catch:\n %s\n", e);
         }
-    }
-    
-    
-    public Product(int newId, String newName, int newQuantity, double newPrice) {
-        id = newId;
-        name = newName;
-        quantity = newQuantity;
-        price = newPrice;
     }
 }
