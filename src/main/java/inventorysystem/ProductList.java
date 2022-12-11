@@ -40,6 +40,8 @@ public class ProductList extends javax.swing.JPanel {
     DefaultTableModel model;
     JTable table;
     
+    PurchasePage purchasePage;
+    
     /**
      * Creates new form ProductPage
      */
@@ -101,7 +103,6 @@ public class ProductList extends javax.swing.JPanel {
 
         HeaderPanel = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
         btnUpdate = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -127,43 +128,33 @@ public class ProductList extends javax.swing.JPanel {
         btnClear = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
         selectImage = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(232, 243, 214));
 
         HeaderPanel.setBackground(new java.awt.Color(250, 171, 120));
+        HeaderPanel.setMinimumSize(new java.awt.Dimension(800, 108));
 
         jLabel1.setFont(new java.awt.Font("Century Gothic", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(232, 243, 214));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("PRODUCT LIST");
 
-        jButton1.setText("back");
-
         javax.swing.GroupLayout HeaderPanelLayout = new javax.swing.GroupLayout(HeaderPanel);
         HeaderPanel.setLayout(HeaderPanelLayout);
         HeaderPanelLayout.setHorizontalGroup(
             HeaderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(HeaderPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jButton1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(HeaderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(HeaderPanelLayout.createSequentialGroup()
-                    .addGap(95, 95, 95)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 609, Short.MAX_VALUE)
-                    .addGap(96, 96, 96)))
+                .addGap(95, 95, 95)
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 609, Short.MAX_VALUE)
+                .addGap(96, 96, 96))
         );
         HeaderPanelLayout.setVerticalGroup(
             HeaderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(HeaderPanelLayout.createSequentialGroup()
-                .addGap(43, 43, 43)
-                .addComponent(jButton1)
-                .addContainerGap(43, Short.MAX_VALUE))
-            .addGroup(HeaderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(HeaderPanelLayout.createSequentialGroup()
-                    .addGap(27, 27, 27)
-                    .addComponent(jLabel1)
-                    .addContainerGap(34, Short.MAX_VALUE)))
+                .addGap(27, 27, 27)
+                .addComponent(jLabel1)
+                .addContainerGap(34, Short.MAX_VALUE))
         );
 
         btnUpdate.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
@@ -185,16 +176,9 @@ public class ProductList extends javax.swing.JPanel {
                 "Item ID", "Name", "Stock Qty", "Price"
             }
         ) {
-            Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.Double.class
-            };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false
             };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
@@ -281,6 +265,13 @@ public class ProductList extends javax.swing.JPanel {
             }
         });
 
+        jButton1.setText("purchase");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -332,7 +323,10 @@ public class ProductList extends javax.swing.JPanel {
                                         .addComponent(searchField))))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(129, 129, 129)
-                                .addComponent(btnAddItem))))
+                                .addComponent(btnAddItem))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(118, 118, 118)
+                                .addComponent(jButton1))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(47, 47, 47)
                         .addComponent(btnUpdate)
@@ -387,7 +381,9 @@ public class ProductList extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnEditItem)
-                            .addComponent(btnDeleteItem)))
+                            .addComponent(btnDeleteItem))
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton1))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 440, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -528,6 +524,14 @@ public class ProductList extends javax.swing.JPanel {
             System.out.println("cancel");
         }
     }//GEN-LAST:event_selectImageActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        if (purchasePage != null) {
+            purchasePage.open();
+        } else {
+            System.out.println("Failed to open purchase page");
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

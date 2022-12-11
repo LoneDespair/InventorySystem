@@ -36,7 +36,7 @@ public class ProductListUpdate {
                 product.price = Double.parseDouble(String.valueOf(listModel.getValueAt(i, 3)));
                 writer.write(String.format("%04d %20s %15d %20.2f\n", product.id, product.name, product.quantity, product.price));            
                 
-                ProductList.hashTable.put(product.id, product);
+                //ProductList.hashTable.put(product.id, product);
             }
             writer.close();
             File listFile = new File(listFilePath);
