@@ -214,17 +214,19 @@
             </Property>
           </Properties>
 
-          <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBoxLayout">
-            <Property name="axis" type="int" value="1"/>
+          <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridLayout">
+            <Property name="columns" type="int" value="1"/>
+            <Property name="rows" type="int" value="4"/>
+            <Property name="verticalGap" type="int" value="6"/>
           </Layout>
           <SubComponents>
-            <Component class="inventorysystem.CartGrocery" name="cartGrocery3">
-            </Component>
             <Component class="inventorysystem.CartGrocery" name="cartGrocery1">
+            </Component>
+            <Component class="inventorysystem.CartGrocery" name="cartGrocery2">
             </Component>
             <Component class="inventorysystem.CartGrocery" name="cartGrocery4">
             </Component>
-            <Component class="inventorysystem.CartGrocery" name="cartGrocery5">
+            <Component class="inventorysystem.CartGrocery" name="cartGrocery3">
             </Component>
           </SubComponents>
         </Container>

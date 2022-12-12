@@ -38,10 +38,10 @@ public class CartPage extends javax.swing.JPanel {
         jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         shelf = new javax.swing.JPanel();
-        cartGrocery3 = new inventorysystem.CartGrocery();
         cartGrocery1 = new inventorysystem.CartGrocery();
+        cartGrocery2 = new inventorysystem.CartGrocery();
         cartGrocery4 = new inventorysystem.CartGrocery();
-        cartGrocery5 = new inventorysystem.CartGrocery();
+        cartGrocery3 = new inventorysystem.CartGrocery();
 
         setBackground(new java.awt.Color(232, 243, 214));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -141,11 +141,11 @@ public class CartPage extends javax.swing.JPanel {
 
         shelf.setBackground(new java.awt.Color(232, 243, 214));
         shelf.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(232, 243, 214), 6));
-        shelf.setLayout(new javax.swing.BoxLayout(shelf, javax.swing.BoxLayout.Y_AXIS));
-        shelf.add(cartGrocery3);
+        shelf.setLayout(new java.awt.GridLayout(4, 1, 0, 6));
         shelf.add(cartGrocery1);
+        shelf.add(cartGrocery2);
         shelf.add(cartGrocery4);
-        shelf.add(cartGrocery5);
+        shelf.add(cartGrocery3);
 
         jScrollPane1.setViewportView(shelf);
 
@@ -155,9 +155,9 @@ public class CartPage extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private inventorysystem.CartGrocery cartGrocery1;
+    private inventorysystem.CartGrocery cartGrocery2;
     private inventorysystem.CartGrocery cartGrocery3;
     private inventorysystem.CartGrocery cartGrocery4;
-    private inventorysystem.CartGrocery cartGrocery5;
     private javax.swing.JPanel header;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;

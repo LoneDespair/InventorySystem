@@ -49,10 +49,10 @@ public class PurchaseProduct extends javax.swing.JPanel {
     private void initComponents() {
 
         holder = new javax.swing.JPanel();
+        button = new inventorysystem.ColoredButton();
         nameLabel = new javax.swing.JLabel();
         priceLabel = new javax.swing.JLabel();
         displayIcon = new javax.swing.JLabel();
-        button = new inventorysystem.ColoredButton();
 
         setEnabled(false);
         setFocusable(false);
@@ -84,26 +84,6 @@ public class PurchaseProduct extends javax.swing.JPanel {
         });
         holder.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        nameLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        nameLabel.setForeground(new java.awt.Color(102, 102, 102));
-        nameLabel.setText("Selecta Ice cream");
-        holder.add(nameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, 170, 30));
-
-        priceLabel.setFont(new java.awt.Font("Segoe UI", 0, 17)); // NOI18N
-        priceLabel.setForeground(new java.awt.Color(250, 171, 121));
-        priceLabel.setText("₱150.00");
-        holder.add(priceLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, 130, 30));
-
-        displayIcon.setBackground(new java.awt.Color(255, 220, 169));
-        displayIcon.setFocusable(false);
-        displayIcon.setOpaque(true);
-        displayIcon.addComponentListener(new java.awt.event.ComponentAdapter() {
-            public void componentResized(java.awt.event.ComponentEvent evt) {
-                displayIconComponentResized(evt);
-            }
-        });
-        holder.add(displayIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 155, 155));
-
         button.setFocusPainted(false);
         button.setRequestFocusEnabled(false);
         button.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -120,6 +100,26 @@ public class PurchaseProduct extends javax.swing.JPanel {
             }
         });
         holder.add(button, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 175, 235));
+
+        nameLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        nameLabel.setForeground(new java.awt.Color(102, 102, 102));
+        nameLabel.setText("Selecta Ice cream");
+        holder.add(nameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, 160, 30));
+
+        priceLabel.setFont(new java.awt.Font("Segoe UI", 0, 17)); // NOI18N
+        priceLabel.setForeground(new java.awt.Color(250, 171, 121));
+        priceLabel.setText("₱150.00");
+        holder.add(priceLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, 130, 30));
+
+        displayIcon.setBackground(new java.awt.Color(255, 220, 169));
+        displayIcon.setFocusable(false);
+        displayIcon.setOpaque(true);
+        displayIcon.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentResized(java.awt.event.ComponentEvent evt) {
+                displayIconComponentResized(evt);
+            }
+        });
+        holder.add(displayIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 155, 155));
 
         add(holder, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 175, 235));
     }// </editor-fold>//GEN-END:initComponents
