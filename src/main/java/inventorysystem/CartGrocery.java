@@ -16,6 +16,10 @@ public class CartGrocery extends javax.swing.JPanel {
     public CartGrocery() {
         initComponents();
     }
+    
+    public CartGrocery(Grocery grocery) {
+        
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -36,7 +40,7 @@ public class CartGrocery extends javax.swing.JPanel {
         setBackground(new java.awt.Color(252, 249, 190));
         setEnabled(false);
         setMaximumSize(new java.awt.Dimension(32767, 117));
-        setMinimumSize(new java.awt.Dimension(0, 117));
+        setMinimumSize(new java.awt.Dimension(75, 117));
         setName(""); // NOI18N
         setPreferredSize(new java.awt.Dimension(0, 117));
         setRequestFocusEnabled(false);
@@ -78,7 +82,7 @@ public class CartGrocery extends javax.swing.JPanel {
                         .addContainerGap(200, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 198, Short.MAX_VALUE)
                         .addGap(18, 18, 18)
                         .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)

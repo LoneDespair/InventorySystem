@@ -14,7 +14,11 @@ import javax.swing.ImageIcon;
 public class PurchaseOption extends javax.swing.JPanel {
     Color transparent = new Color(0, 0, 0, 0);
     ImageIcon imageIcon = null;
-
+    Product product;
+    CartPage cartPage;
+    
+    
+    
     /**
      * Creates new form PurchaseOption
      */
@@ -25,12 +29,17 @@ public class PurchaseOption extends javax.swing.JPanel {
         bg.setBackground(new Color(23, 32, 42, 100));
     }
     
-    public void open(Product product) {
+    public void setup(CartPage newCartPage) {
+        cartPage = newCartPage;
+    }
+    
+    public void open(Product newProduct) {
         setVisible(true);
+        product = newProduct;
         
-        nameLabel.setText(product.name);
-        priceLabel.setText(product.getStringPrice());
-        imageIcon = FallbackIcon.getIcon(product.image);
+        nameLabel.setText(newProduct.name);
+        priceLabel.setText(newProduct.getStringPrice());
+        imageIcon = FallbackIcon.getIcon(newProduct.image);
         displayIcon.setIcon(ImageResizer.fitImageIcon(imageIcon, displayIcon.getSize()));
     }
     
@@ -46,7 +55,7 @@ public class PurchaseOption extends javax.swing.JPanel {
 
         content = new inventorysystem.InputConsumer();
         displayIcon = new javax.swing.JLabel();
-        jSpinner1 = new javax.swing.JSpinner();
+        quantitySpinner = new javax.swing.JSpinner();
         jLabel1 = new javax.swing.JLabel();
         nameLabel = new javax.swing.JLabel();
         priceLabel = new javax.swing.JLabel();
@@ -70,9 +79,9 @@ public class PurchaseOption extends javax.swing.JPanel {
             }
         });
 
-        jSpinner1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jSpinner1.setMaximumSize(new java.awt.Dimension(75, 32767));
-        jSpinner1.setMinimumSize(new java.awt.Dimension(75, 22));
+        quantitySpinner.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        quantitySpinner.setMaximumSize(new java.awt.Dimension(75, 32767));
+        quantitySpinner.setMinimumSize(new java.awt.Dimension(75, 22));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(102, 102, 102));
@@ -124,7 +133,7 @@ public class PurchaseOption extends javax.swing.JPanel {
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, contentLayout.createSequentialGroup()
                                 .addComponent(jLabel1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(quantitySpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addContainerGap(213, Short.MAX_VALUE))))
             .addGroup(contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, contentLayout.createSequentialGroup()
@@ -141,7 +150,7 @@ public class PurchaseOption extends javax.swing.JPanel {
                 .addComponent(priceLabel)
                 .addGap(32, 32, 32)
                 .addGroup(contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jSpinner1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(quantitySpinner, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(cartButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -184,7 +193,9 @@ public class PurchaseOption extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void cartButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cartButtonActionPerformed
-        // TODO add your handling code here:
+        if (cartPage != null) {
+            cartPage.addGrocery(new Grocery(product, (Integer)quantitySpinner.getValue()));
+        }
     }//GEN-LAST:event_cartButtonActionPerformed
 
     private void bgMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bgMousePressed
@@ -211,8 +222,8 @@ public class PurchaseOption extends javax.swing.JPanel {
     private inventorysystem.InputConsumer content;
     private javax.swing.JLabel displayIcon;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JSpinner jSpinner1;
     private javax.swing.JLabel nameLabel;
     private javax.swing.JLabel priceLabel;
+    private javax.swing.JSpinner quantitySpinner;
     // End of variables declaration//GEN-END:variables
 }

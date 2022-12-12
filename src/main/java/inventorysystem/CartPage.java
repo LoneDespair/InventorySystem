@@ -4,18 +4,36 @@
  */
 package inventorysystem;
 
+import java.util.HashMap;
+
 /**
  *
  * @author LoneDespair
  */
 public class CartPage extends javax.swing.JPanel {
-
+    HashMap <Integer, Grocery> table = new HashMap<>();
+    
     /**
      * Creates new form CartPage
      */
     public CartPage() {
         initComponents();
     }
+    
+    public void open() {
+        for (Grocery grocery : table.values()) {
+            shelf.add(new CartGrocery(grocery));
+        }
+    }
+    
+    public void addGrocery(Grocery newGrocery) {
+        int id = newGrocery.product.id;
+        Grocery existingGrocery = table.getOrDefault(id, null);
+        
+        if (existingGrocery != null) existingGrocery.count += newGrocery.count;
+        else table.put(id, newGrocery);
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
