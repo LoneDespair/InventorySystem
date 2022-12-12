@@ -50,7 +50,7 @@ public class PurchaseOption extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         nameLabel = new javax.swing.JLabel();
         priceLabel = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        cartButton = new javax.swing.JButton();
         coloredButton1 = new inventorysystem.ColoredButton();
         bg = new inventorysystem.InputConsumer();
 
@@ -87,11 +87,11 @@ public class PurchaseOption extends javax.swing.JPanel {
         priceLabel.setForeground(new java.awt.Color(250, 171, 121));
         priceLabel.setText("₱0.00");
 
-        jButton1.setForeground(new java.awt.Color(102, 102, 102));
-        jButton1.setText("Add to cart");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        cartButton.setForeground(new java.awt.Color(102, 102, 102));
+        cartButton.setText("Add to cart");
+        cartButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                cartButtonActionPerformed(evt);
             }
         });
 
@@ -120,7 +120,7 @@ public class PurchaseOption extends javax.swing.JPanel {
                     .addGroup(contentLayout.createSequentialGroup()
                         .addGroup(contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(priceLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cartButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, contentLayout.createSequentialGroup()
                                 .addComponent(jLabel1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -144,7 +144,7 @@ public class PurchaseOption extends javax.swing.JPanel {
                     .addComponent(jSpinner1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cartButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(42, Short.MAX_VALUE))
             .addGroup(contentLayout.createSequentialGroup()
                 .addComponent(coloredButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -183,9 +183,9 @@ public class PurchaseOption extends javax.swing.JPanel {
         add(bg);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void cartButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cartButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_cartButtonActionPerformed
 
     private void bgMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bgMousePressed
         setVisible(false);
@@ -206,10 +206,10 @@ public class PurchaseOption extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private inventorysystem.InputConsumer bg;
+    private javax.swing.JButton cartButton;
     private inventorysystem.ColoredButton coloredButton1;
     private inventorysystem.InputConsumer content;
     private javax.swing.JLabel displayIcon;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JSpinner jSpinner1;
     private javax.swing.JLabel nameLabel;
