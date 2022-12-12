@@ -4,9 +4,9 @@
  */
 package inventorysystem;
 
-import static inventorysystem.PurchasePage.path;
 import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
+import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -16,9 +16,11 @@ import java.io.IOException;
 //import java.lang.System.Logger;
 //import java.lang.System.Logger.Level;
 import java.nio.file.Paths;
+import java.util.Base64;
 import java.util.HashMap;
 import java.util.Scanner;
 import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.RowFilter;
@@ -32,13 +34,22 @@ import javax.swing.JFileChooser;
  * @author LoneDespair
  */
 public class ProductList extends javax.swing.JPanel {
-    Product product = new Product();
+    //Product product = new Product();
     ProductListUpdate updater = new ProductListUpdate();
     String listFilePath = Paths.get(System.getProperty("user.dir"),"src/main/java/inventorysystem/productList.txt").toString();
     String tempFilePath = Paths.get(System.getProperty("user.dir"),"src/main/java/inventorysystem/temp.txt").toString();
     static HashMap <Integer, Product> hashTable = new HashMap <Integer, Product>();    
     DefaultTableModel model;
     JTable table;
+    
+    BufferedImage selectedImage;
+                
+            /*
+            BufferedImage image = ImageIO.read(fileChooser.getSelectedFile());
+            ByteArrayOutputStream stream = new ByteArrayOutputStream();
+            ImageIO.write(image, "png", stream);
+            String textIcon = Base64.getEncoder().encodeToString(stream.toByteArray())*/
+    
     
     PurchasePage purchasePage;
     
@@ -80,6 +91,11 @@ public class ProductList extends javax.swing.JPanel {
                 product.name = productScan.next();
                 product.quantity = Integer.parseInt(productScan.next());
                 product.price = Double.parseDouble(productScan.next());
+                
+                if (productScan.hasNext()) {
+                    product.image = ImageIO.read(new ByteArrayInputStream(Base64.getDecoder().decode(productScan.next())));
+                    
+                }
                 
                 hashTable.put(product.id, product);
             }             
@@ -424,6 +440,8 @@ public class ProductList extends javax.swing.JPanel {
         }
 
         if(!newNameField.getText().isEmpty() && !newQtyField.getText().isEmpty() && !newPriceField.getText().isEmpty()) {
+            Product product = new Product();
+            
             if(model.getRowCount()!=0)
             product.id = Integer.parseInt(String.valueOf(model.getValueAt(model.getRowCount()-1, 0)))+1;
             else
@@ -431,6 +449,8 @@ public class ProductList extends javax.swing.JPanel {
             product.name = newName.toUpperCase();
             product.quantity = newQty;
             product.price = newPrice;
+            product.image = selectedImage;
+            selectedImage = null;
             itemDetails[0] = String.format("%04d", product.id);
             itemDetails[1] = product.name;
             itemDetails[2] = String.valueOf(product.quantity);
@@ -439,6 +459,7 @@ public class ProductList extends javax.swing.JPanel {
             newNameField.setText(null);
             newQtyField.setText(null);
             newPriceField.setText(null);
+            hashTable.put(product.id, product);
 
             updater.update(model, table);
         }
@@ -467,8 +488,12 @@ public class ProductList extends javax.swing.JPanel {
             model.setValueAt(editQty, rowSelected, 2);
             model.setValueAt(editPrice, rowSelected, 3);
             
-            //int id = Integer.parseInt(String.valueOf(model.getValueAt(rowSelected, 0)));
+            int id = Integer.parseInt(String.valueOf(model.getValueAt(rowSelected, 0)));
+            Product product = hashTable.get(id);
             
+            product.name = editName;
+            product.quantity = Integer.parseInt(editQty);
+            product.price = Double.parseDouble(editPrice);
             
             updater.update(model, table);
         }
@@ -513,6 +538,13 @@ public class ProductList extends javax.swing.JPanel {
         if (fileChooser.showSaveDialog(null) == 0) {
             System.out.printf("Successs %s\n", fileChooser.getSelectedFile().getAbsolutePath());
             
+            try {
+                selectedImage = ImageIO.read(fileChooser.getSelectedFile());
+                
+            }
+            catch (Exception e) {
+                System.out.println("Failed to set selectedImage");
+            }
             /*
             BufferedImage image = ImageIO.read(fileChooser.getSelectedFile());
             ByteArrayOutputStream stream = new ByteArrayOutputStream();

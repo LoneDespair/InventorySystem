@@ -12,9 +12,6 @@ import java.util.HashMap;
  * @author BWISITA
  */
 public class PurchasePage extends javax.swing.JPanel {
-    static final String path = Paths.get(System.getProperty("user.dir"), "src/main/java/inventorysystem/Default.png").toString();
-    
-    
     /**
      * Creates new form PurchasePage
      */

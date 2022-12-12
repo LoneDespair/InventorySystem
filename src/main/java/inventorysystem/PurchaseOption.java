@@ -5,6 +5,7 @@
 package inventorysystem;
 
 import java.awt.Color;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -12,6 +13,7 @@ import java.awt.Color;
  */
 public class PurchaseOption extends javax.swing.JPanel {
     Color transparent = new Color(0, 0, 0, 0);
+    ImageIcon imageIcon = null;
 
     /**
      * Creates new form PurchaseOption
@@ -28,7 +30,10 @@ public class PurchaseOption extends javax.swing.JPanel {
         
         nameLabel.setText(product.name);
         priceLabel.setText(product.getStringPrice());
+        imageIcon = FallbackIcon.getIcon(product.image);
+        displayIcon.setIcon(ImageResizer.fitImageIcon(imageIcon, displayIcon.getSize()));
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -40,8 +45,7 @@ public class PurchaseOption extends javax.swing.JPanel {
     private void initComponents() {
 
         content = new inventorysystem.InputConsumer();
-        iconBg = new javax.swing.JPanel();
-        jIconRenderer1 = new inventorysystem.JIconRenderer();
+        displayIcon = new javax.swing.JLabel();
         jSpinner1 = new javax.swing.JSpinner();
         jLabel1 = new javax.swing.JLabel();
         nameLabel = new javax.swing.JLabel();
@@ -58,11 +62,13 @@ public class PurchaseOption extends javax.swing.JPanel {
         content.setMinimumSize(new java.awt.Dimension(624, 250));
         content.setPreferredSize(new java.awt.Dimension(624, 250));
 
-        iconBg.setBackground(new java.awt.Color(255, 220, 169));
-        iconBg.setMaximumSize(new java.awt.Dimension(200, 200));
-        iconBg.setMinimumSize(new java.awt.Dimension(200, 200));
-        iconBg.setLayout(new java.awt.CardLayout());
-        iconBg.add(jIconRenderer1, "card2");
+        displayIcon.setBackground(new java.awt.Color(255, 220, 169));
+        displayIcon.setOpaque(true);
+        displayIcon.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentResized(java.awt.event.ComponentEvent evt) {
+                displayIconComponentResized(evt);
+            }
+        });
 
         jSpinner1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jSpinner1.setMaximumSize(new java.awt.Dimension(75, 32767));
@@ -105,47 +111,49 @@ public class PurchaseOption extends javax.swing.JPanel {
         contentLayout.setHorizontalGroup(
             contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(contentLayout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addComponent(iconBg, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(243, 243, 243)
                 .addGroup(contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(contentLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(coloredButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(contentLayout.createSequentialGroup()
-                        .addComponent(priceLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(nameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(contentLayout.createSequentialGroup()
                         .addGroup(contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(priceLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jButton1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, contentLayout.createSequentialGroup()
                                 .addComponent(jLabel1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(213, Short.MAX_VALUE))
-                    .addComponent(nameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addContainerGap(213, Short.MAX_VALUE))))
+            .addGroup(contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, contentLayout.createSequentialGroup()
+                    .addContainerGap(24, Short.MAX_VALUE)
+                    .addComponent(displayIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(400, Short.MAX_VALUE)))
         );
         contentLayout.setVerticalGroup(
             contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(contentLayout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addGroup(contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(iconBg, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(contentLayout.createSequentialGroup()
-                        .addGap(8, 8, 8)
-                        .addComponent(nameLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(priceLabel)
-                        .addGap(32, 32, 32)
-                        .addGroup(contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jSpinner1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addGap(33, 33, 33)
+                .addComponent(nameLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(priceLabel)
+                .addGap(32, 32, 32)
+                .addGroup(contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jSpinner1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(42, Short.MAX_VALUE))
             .addGroup(contentLayout.createSequentialGroup()
                 .addComponent(coloredButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, contentLayout.createSequentialGroup()
+                    .addContainerGap(25, Short.MAX_VALUE)
+                    .addComponent(displayIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(25, Short.MAX_VALUE)))
         );
 
         add(content);
@@ -191,14 +199,17 @@ public class PurchaseOption extends javax.swing.JPanel {
         setVisible(false);
     }//GEN-LAST:event_coloredButton1ActionPerformed
 
+    private void displayIconComponentResized(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_displayIconComponentResized
+        displayIcon.setIcon(ImageResizer.fitImageIcon(imageIcon, displayIcon.getSize()));
+    }//GEN-LAST:event_displayIconComponentResized
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private inventorysystem.InputConsumer bg;
     private inventorysystem.ColoredButton coloredButton1;
     private inventorysystem.InputConsumer content;
-    private javax.swing.JPanel iconBg;
+    private javax.swing.JLabel displayIcon;
     private javax.swing.JButton jButton1;
-    private inventorysystem.JIconRenderer jIconRenderer1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JSpinner jSpinner1;
     private javax.swing.JLabel nameLabel;

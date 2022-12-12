@@ -33,6 +33,8 @@ public class PurchaseProduct extends javax.swing.JPanel {
         nameLabel.setText(product.name);
         priceLabel.setText(product.getStringPrice());
         
+        imageIcon = FallbackIcon.getIcon(product.image);
+        
         //imageIcon = new ImageIcon(newProduct.image);
         purchaseOption = newPurchaseOption;
     }
@@ -49,7 +51,7 @@ public class PurchaseProduct extends javax.swing.JPanel {
         holder = new javax.swing.JPanel();
         nameLabel = new javax.swing.JLabel();
         priceLabel = new javax.swing.JLabel();
-        icon = new javax.swing.JLabel();
+        displayIcon = new javax.swing.JLabel();
         button = new inventorysystem.ColoredButton();
 
         setEnabled(false);
@@ -92,15 +94,15 @@ public class PurchaseProduct extends javax.swing.JPanel {
         priceLabel.setText("₱150.00");
         holder.add(priceLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, 130, 30));
 
-        icon.setBackground(new java.awt.Color(255, 220, 169));
-        icon.setFocusable(false);
-        icon.setOpaque(true);
-        icon.addComponentListener(new java.awt.event.ComponentAdapter() {
+        displayIcon.setBackground(new java.awt.Color(255, 220, 169));
+        displayIcon.setFocusable(false);
+        displayIcon.setOpaque(true);
+        displayIcon.addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentResized(java.awt.event.ComponentEvent evt) {
-                iconComponentResized(evt);
+                displayIconComponentResized(evt);
             }
         });
-        holder.add(icon, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 155, 155));
+        holder.add(displayIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 155, 155));
 
         button.setFocusPainted(false);
         button.setRequestFocusEnabled(false);
@@ -122,9 +124,9 @@ public class PurchaseProduct extends javax.swing.JPanel {
         add(holder, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 175, 235));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void iconComponentResized(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_iconComponentResized
-        icon.setIcon(ImageResizer.fitImageIcon(imageIcon, icon.getSize()));
-    }//GEN-LAST:event_iconComponentResized
+    private void displayIconComponentResized(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_displayIconComponentResized
+        displayIcon.setIcon(ImageResizer.fitImageIcon(imageIcon, displayIcon.getSize()));
+    }//GEN-LAST:event_displayIconComponentResized
 
     private void buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonActionPerformed
         if (purchaseOption == null) System.out.println("Purchase option is null");
@@ -156,8 +158,8 @@ public class PurchaseProduct extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private inventorysystem.ColoredButton button;
+    private javax.swing.JLabel displayIcon;
     private javax.swing.JPanel holder;
-    private javax.swing.JLabel icon;
     private javax.swing.JLabel nameLabel;
     private javax.swing.JLabel priceLabel;
     // End of variables declaration//GEN-END:variables

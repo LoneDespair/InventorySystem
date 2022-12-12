@@ -20,6 +20,8 @@ public class ImageResizer {
 
         double ratio = Math.max((double)targetSize.width / width, (double)targetSize.height / height);
         Image image = imageIcon.getImage().getScaledInstance((int)(width * ratio), (int)(height * ratio), Image.SCALE_DEFAULT);
+        
+        
         imageIcon.setImage(image);
         
         return imageIcon;

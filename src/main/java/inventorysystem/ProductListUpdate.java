@@ -13,6 +13,9 @@ import java.nio.file.Paths;
 import java.util.HashMap;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import java.io.ByteArrayOutputStream;
+import java.util.Base64;
+import javax.imageio.ImageIO;
 
 /**
  *
@@ -25,25 +28,39 @@ public class ProductListUpdate {
     
     public void update(DefaultTableModel listModel, JTable listTable) {
         int i;
-        try(FileWriter writer = new FileWriter(tempFilePath)) {
-            ProductList.hashTable.clear();
-            
-            for(i=0; i<=listModel.getRowCount()-1; i++) {
+        try {
+            FileWriter writer = new FileWriter(tempFilePath);
+            /*for(i=0; i<=listModel.getRowCount()-1; i++) {
                 Product product = new Product();
                 product.id = Integer.parseInt(String.valueOf(listModel.getValueAt(i, 0)));
                 product.name = String.valueOf(listModel.getValueAt(i, 1));
                 product.quantity = Integer.parseInt(String.valueOf(listModel.getValueAt(i, 2)));
-                product.price = Double.parseDouble(String.valueOf(listModel.getValueAt(i, 3)));
-                writer.write(String.format("%04d %20s %15d %20.2f\n", product.id, product.name, product.quantity, product.price));            
+                product.price = Double.parseDouble(String.valueOf(listModel.getValueAt(i, 3)));*/
+            
+            for (Product product : ProductList.hashTable.values()) {
+                String textIcon = "";
                 
-                //ProductList.hashTable.put(product.id, product);
+                if (product.image != null) {
+                    ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                    ImageIO.write(product.image, "png", stream);
+                    textIcon = " " + Base64.getEncoder().encodeToString(stream.toByteArray());
+                    System.out.println("Successfully saved an image " + product.name);
+                }
+                
+                writer.write(String.format("%04d %20s %15d %20.2f%s\n", product.id, product.name, product.quantity, product.price, textIcon));
             }
             writer.close();
             File listFile = new File(listFilePath);
             File tempFile = new File(tempFilePath);
             listFile.delete();
             tempFile.renameTo(listFile);
-        } catch (IOException e) {
+            /*
+            BufferedImage image = ImageIO.read(fileChooser.getSelectedFile());
+            ByteArrayOutputStream stream = new ByteArrayOutputStream();
+            ImageIO.write(image, "png", stream);
+            String textIcon = Base64.getEncoder().encodeToString(stream.toByteArray())*/
+        }
+        catch (IOException e) {
             e.printStackTrace();
         }
           
