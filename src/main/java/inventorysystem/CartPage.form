@@ -222,12 +222,6 @@
           <SubComponents>
             <Component class="inventorysystem.CartGrocery" name="cartGrocery1">
             </Component>
-            <Component class="inventorysystem.CartGrocery" name="cartGrocery2">
-            </Component>
-            <Component class="inventorysystem.CartGrocery" name="cartGrocery4">
-            </Component>
-            <Component class="inventorysystem.CartGrocery" name="cartGrocery3">
-            </Component>
           </SubComponents>
         </Container>
       </SubComponents>
