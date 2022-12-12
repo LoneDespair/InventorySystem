@@ -5,14 +5,15 @@
 package inventorysystem;
 
 import java.nio.file.Paths;
+import java.util.HashMap;
 
 /**
  *
  * @author BWISITA
  */
 public class PurchasePage extends javax.swing.JPanel {
-    
     static final String path = Paths.get(System.getProperty("user.dir"), "src/main/java/inventorysystem/Default.png").toString();
+    
     
     /**
      * Creates new form PurchasePage
@@ -33,6 +34,8 @@ public class PurchasePage extends javax.swing.JPanel {
     
     public void open() {
         setVisible(true);
+        purchaseSelection.open();
+        
     }
 
     /**

@@ -30,8 +30,10 @@ public class PurchaseProduct extends javax.swing.JPanel {
     public PurchaseProduct(Product newProduct, PurchaseOption newPurchaseOption) {
         initComponents();
         product = newProduct;
-        imageIcon = new ImageIcon(newProduct.image);
+        nameLabel.setText(product.name);
+        priceLabel.setText(String.format("₱%.2f", product.price));
         
+        //imageIcon = new ImageIcon(newProduct.image);
         purchaseOption = newPurchaseOption;
     }
 
@@ -45,14 +47,16 @@ public class PurchaseProduct extends javax.swing.JPanel {
     private void initComponents() {
 
         holder = new javax.swing.JPanel();
-        button = new inventorysystem.ColoredButton();
         nameLabel = new javax.swing.JLabel();
         priceLabel = new javax.swing.JLabel();
         icon = new javax.swing.JLabel();
+        button = new inventorysystem.ColoredButton();
 
         setEnabled(false);
         setFocusable(false);
+        setMinimumSize(new java.awt.Dimension(0, 0));
         setOpaque(false);
+        setPreferredSize(new java.awt.Dimension(195, 255));
         setRequestFocusEnabled(false);
         setVerifyInputWhenFocusTarget(false);
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -62,6 +66,8 @@ public class PurchaseProduct extends javax.swing.JPanel {
         holder.setDoubleBuffered(false);
         holder.setEnabled(false);
         holder.setFocusable(false);
+        holder.setMinimumSize(new java.awt.Dimension(0, 0));
+        holder.setPreferredSize(new java.awt.Dimension(160, 220));
         holder.setRequestFocusEnabled(false);
         holder.setVerifyInputWhenFocusTarget(false);
         holder.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
@@ -75,6 +81,26 @@ public class PurchaseProduct extends javax.swing.JPanel {
             }
         });
         holder.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        nameLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        nameLabel.setForeground(new java.awt.Color(102, 102, 102));
+        nameLabel.setText("Selecta Ice cream");
+        holder.add(nameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, 170, 30));
+
+        priceLabel.setFont(new java.awt.Font("Segoe UI", 0, 17)); // NOI18N
+        priceLabel.setForeground(new java.awt.Color(250, 171, 121));
+        priceLabel.setText("₱150.00");
+        holder.add(priceLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, 130, 30));
+
+        icon.setBackground(new java.awt.Color(255, 220, 169));
+        icon.setFocusable(false);
+        icon.setOpaque(true);
+        icon.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentResized(java.awt.event.ComponentEvent evt) {
+                iconComponentResized(evt);
+            }
+        });
+        holder.add(icon, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 155, 155));
 
         button.setFocusPainted(false);
         button.setRequestFocusEnabled(false);
@@ -91,29 +117,9 @@ public class PurchaseProduct extends javax.swing.JPanel {
                 buttonActionPerformed(evt);
             }
         });
-        holder.add(button, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 200, 280));
+        holder.add(button, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 175, 235));
 
-        nameLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        nameLabel.setForeground(new java.awt.Color(102, 102, 102));
-        nameLabel.setText("Selecta Ice cream");
-        holder.add(nameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, 180, 30));
-
-        priceLabel.setFont(new java.awt.Font("Segoe UI", 0, 17)); // NOI18N
-        priceLabel.setForeground(new java.awt.Color(250, 171, 121));
-        priceLabel.setText("₱150.00");
-        holder.add(priceLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 240, 130, 30));
-
-        icon.setBackground(new java.awt.Color(255, 220, 169));
-        icon.setFocusable(false);
-        icon.setOpaque(true);
-        icon.addComponentListener(new java.awt.event.ComponentAdapter() {
-            public void componentResized(java.awt.event.ComponentEvent evt) {
-                iconComponentResized(evt);
-            }
-        });
-        holder.add(icon, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 180, 180));
-
-        add(holder, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 200, 280));
+        add(holder, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 175, 235));
     }// </editor-fold>//GEN-END:initComponents
 
     private void iconComponentResized(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_iconComponentResized

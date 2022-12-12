@@ -528,6 +528,7 @@ public class ProductList extends javax.swing.JPanel {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         if (purchasePage != null) {
             purchasePage.open();
+            setVisible(false);
         } else {
             System.out.println("Failed to open purchase page");
         }

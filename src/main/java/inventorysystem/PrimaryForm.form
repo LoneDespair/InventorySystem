@@ -23,10 +23,17 @@
 
   <Layout class="org.netbeans.modules.form.compat2.layouts.DesignCardLayout"/>
   <SubComponents>
-    <Component class="inventorysystem.ProductList" name="productPage">
+    <Component class="inventorysystem.ProductList" name="productList">
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
           <CardConstraints cardName="card2"/>
+        </Constraint>
+      </Constraints>
+    </Component>
+    <Component class="inventorysystem.PurchasePage" name="purchasePage">
+      <Constraints>
+        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
+          <CardConstraints cardName="card3"/>
         </Constraint>
       </Constraints>
     </Component>

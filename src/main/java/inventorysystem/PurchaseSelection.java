@@ -4,6 +4,8 @@
  */
 package inventorysystem;
 
+import java.awt.Component;
+
 /**
  *
  * @author LoneDespair
@@ -16,10 +18,22 @@ public class PurchaseSelection extends javax.swing.JPanel {
      */
     public PurchaseSelection() {
         initComponents();
+        shelfScroll.getVerticalScrollBar().setUnitIncrement(16);
     }
     
     public void setup(PurchaseOption newPurchaseOption) {
         purchaseOption = newPurchaseOption;
+    }
+    
+    public void open() {
+        setVisible(true);
+        
+        // Clears all existing components
+        //shelf.removeAll();
+        
+        for (Product product : ProductList.hashTable.values()) {
+            shelf.add(new PurchaseProduct(product, purchaseOption));
+        }
     }
     
     
@@ -52,7 +66,7 @@ public class PurchaseSelection extends javax.swing.JPanel {
 
         header = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        shelfScroll = new javax.swing.JScrollPane();
         shelf = new javax.swing.JPanel();
 
         setBackground(new java.awt.Color(255, 255, 255));
@@ -72,12 +86,12 @@ public class PurchaseSelection extends javax.swing.JPanel {
         header.setLayout(headerLayout);
         headerLayout.setHorizontalGroup(
             headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 759, Short.MAX_VALUE)
+            .addGap(0, 800, Short.MAX_VALUE)
             .addGroup(headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(headerLayout.createSequentialGroup()
-                    .addGap(0, 290, Short.MAX_VALUE)
+                    .addGap(0, 310, Short.MAX_VALUE)
                     .addComponent(jLabel1)
-                    .addGap(0, 290, Short.MAX_VALUE)))
+                    .addGap(0, 311, Short.MAX_VALUE)))
         );
         headerLayout.setVerticalGroup(
             headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -92,17 +106,17 @@ public class PurchaseSelection extends javax.swing.JPanel {
         add(header);
 
         shelf.setBackground(new java.awt.Color(232, 243, 214));
-        shelf.setLayout(new java.awt.GridLayout(1, 2));
-        jScrollPane1.setViewportView(shelf);
+        shelf.setLayout(new java.awt.GridLayout(0, 4));
+        shelfScroll.setViewportView(shelf);
 
-        add(jScrollPane1);
+        add(shelfScroll);
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel header;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel shelf;
+    private javax.swing.JScrollPane shelfScroll;
     // End of variables declaration//GEN-END:variables
 }

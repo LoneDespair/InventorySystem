@@ -16,6 +16,7 @@ public class PrimaryForm extends javax.swing.JFrame {
      */
     public PrimaryForm() {
         initComponents();
+        productList.purchasePage = purchasePage;
         //testPanel.setVisible(true);
         //purchasePage.setVisible(false);
     }
@@ -29,11 +30,13 @@ public class PrimaryForm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        productPage = new inventorysystem.ProductList();
+        productList = new inventorysystem.ProductList();
+        purchasePage = new inventorysystem.PurchasePage();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new java.awt.CardLayout());
-        getContentPane().add(productPage, "card2");
+        getContentPane().add(productList, "card2");
+        getContentPane().add(purchasePage, "card3");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -75,6 +78,7 @@ public class PrimaryForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private inventorysystem.ProductList productPage;
+    private inventorysystem.ProductList productList;
+    private inventorysystem.PurchasePage purchasePage;
     // End of variables declaration//GEN-END:variables
 }
