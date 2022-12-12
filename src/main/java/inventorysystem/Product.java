@@ -34,6 +34,8 @@ public class Product extends LinkedList.Data{
         price = newPrice;
     }
     
+    public String getStringPrice() { return String.format("₱%.2f", price); }
+    
     
     public void loadIcon(String path) {
         System.out.println(path);

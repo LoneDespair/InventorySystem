@@ -31,7 +31,7 @@ public class PurchaseProduct extends javax.swing.JPanel {
         initComponents();
         product = newProduct;
         nameLabel.setText(product.name);
-        priceLabel.setText(String.format("₱%.2f", product.price));
+        priceLabel.setText(product.getStringPrice());
         
         //imageIcon = new ImageIcon(newProduct.image);
         purchaseOption = newPurchaseOption;
