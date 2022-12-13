@@ -47,6 +47,7 @@ public class PurchasePage extends javax.swing.JPanel {
         purchaseOption = new inventorymanagementsystem.PurchaseOption();
         purchaseSelection = new inventorymanagementsystem.PurchaseSelection();
 
+        setPreferredSize(new java.awt.Dimension(800, 600));
         setLayout(new javax.swing.OverlayLayout(this));
         add(purchaseOption);
         add(purchaseSelection);

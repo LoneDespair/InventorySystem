@@ -144,7 +144,8 @@ public class Splash extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) throws FileNotFoundException {
-        boolean bypass = false;
+        // Bypass will load the Main Menu directly
+        boolean bypass = true;
         
         if (bypass) new MainMenu("@bypass").setVisible(true);
         else {
