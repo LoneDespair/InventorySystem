@@ -36,8 +36,8 @@ import javax.swing.JFileChooser;
 public class ProductList extends javax.swing.JPanel {
     //Product product = new Product();
     ProductListUpdate updater = new ProductListUpdate();
-    String listFilePath = Paths.get(System.getProperty("user.dir"),"src/main/java/inventorysystem/productList.txt").toString();
-    String tempFilePath = Paths.get(System.getProperty("user.dir"),"src/main/java/inventorysystem/temp.txt").toString();
+    String listFilePath = Paths.get(System.getProperty("user.dir"),"src/inventorymanagementsystem/productList.txt").toString();
+    String tempFilePath = Paths.get(System.getProperty("user.dir"),"src/inventorymanagementsystem/temp.txt").toString();
     static HashMap <Integer, Product> hashTable = new HashMap <Integer, Product>();    
     DefaultTableModel model;
     JTable table;

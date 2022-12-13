@@ -22,8 +22,8 @@ import javax.imageio.ImageIO;
  * @author BWISITA
  */
 public class ProductListUpdate {
-    String listFilePath = Paths.get(System.getProperty("user.dir"),"src/main/java/inventorysystem","productList.txt").toString();
-    String tempFilePath = Paths.get(System.getProperty("user.dir"),"src/main/java/inventorysystem","temp.txt").toString();
+    String listFilePath = Paths.get(System.getProperty("user.dir"),"src/inventorymanagementsystem/productList.txt").toString();
+    String tempFilePath = Paths.get(System.getProperty("user.dir"),"src/inventorymanagementsystem/temp.txt").toString();
     HashMap <Integer, Product> hashTable = new HashMap <Integer, Product>();
     
     public void update(DefaultTableModel listModel, JTable listTable) {

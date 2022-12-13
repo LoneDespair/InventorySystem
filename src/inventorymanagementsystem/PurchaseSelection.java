@@ -4,7 +4,6 @@
  */
 package inventorymanagementsystem;
 
-import java.awt.Component;
 
 /**
  *
@@ -18,7 +17,7 @@ public class PurchaseSelection extends javax.swing.JPanel {
      */
     public PurchaseSelection() {
         initComponents();
-        shelfScroll.getVerticalScrollBar().setUnitIncrement(16);
+        //shelfScroll.getVerticalScrollBar().setUnitIncrement(16);
     }
     
     public void setup(PurchaseOption newPurchaseOption) {
@@ -66,7 +65,6 @@ public class PurchaseSelection extends javax.swing.JPanel {
 
         header = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
         shelfScroll = new javax.swing.JScrollPane();
         shelf = new javax.swing.JPanel();
 
@@ -83,42 +81,21 @@ public class PurchaseSelection extends javax.swing.JPanel {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("PURCHASE");
 
-        jButton1.setBackground(new java.awt.Color(250, 171, 121));
-        jButton1.setForeground(new java.awt.Color(232, 243, 214));
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/inventorysystem/Default.png"))); // NOI18N
-        jButton1.setBorderPainted(false);
-        jButton1.setIconTextGap(0);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout headerLayout = new javax.swing.GroupLayout(header);
         header.setLayout(headerLayout);
         headerLayout.setHorizontalGroup(
             headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, headerLayout.createSequentialGroup()
-                .addContainerGap(722, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30))
-            .addGroup(headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(headerLayout.createSequentialGroup()
-                    .addGap(0, 310, Short.MAX_VALUE)
-                    .addComponent(jLabel1)
-                    .addGap(0, 311, Short.MAX_VALUE)))
+            .addGroup(headerLayout.createSequentialGroup()
+                .addGap(0, 310, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(0, 311, Short.MAX_VALUE))
         );
         headerLayout.setVerticalGroup(
             headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, headerLayout.createSequentialGroup()
-                .addContainerGap(28, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(24, 24, 24))
-            .addGroup(headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(headerLayout.createSequentialGroup()
-                    .addGap(0, 26, Short.MAX_VALUE)
-                    .addComponent(jLabel1)
-                    .addGap(0, 26, Short.MAX_VALUE)))
+            .addGroup(headerLayout.createSequentialGroup()
+                .addGap(0, 26, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(0, 26, Short.MAX_VALUE))
         );
 
         add(header);
@@ -130,14 +107,9 @@ public class PurchaseSelection extends javax.swing.JPanel {
         add(shelfScroll);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel header;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel shelf;
     private javax.swing.JScrollPane shelfScroll;

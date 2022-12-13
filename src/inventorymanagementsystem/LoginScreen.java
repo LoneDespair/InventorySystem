@@ -23,24 +23,30 @@ public class LoginScreen extends javax.swing.JFrame{
     /**
      * Creates new form LoginScreen
      */
-    public LoginScreen() throws FileNotFoundException{
-        int i=0;
-        String uFPath = Paths.get(System.getProperty("user.dir"),"src","inventorymanagementsystem","Users.txt").toString();
-        //just change the path for file if needed
-        Scanner sc = new Scanner(new File(uFPath));
-        Scanner ctr = new Scanner(new File(uFPath));
+    public LoginScreen() {
+        try {
+            int i=0;
+            String uFPath = Paths.get(System.getProperty("user.dir"),"src","inventorymanagementsystem","Users.txt").toString();
+            //just change the path for file if needed
+            Scanner sc = new Scanner(new File(uFPath));
+            Scanner ctr = new Scanner(new File(uFPath));
+
+            while(ctr.hasNextLine()){
+                usersamt++;
+                ctr.nextLine();
+            }
+            usernames = new String[usersamt];
+            passwords = new String[usersamt];
+            while(sc.hasNext()){
+                usernames[i] = sc.next();
+                passwords[i] = sc.next();
+                i++;
+            }
+        }
+        catch (Exception e) {
+            
+        }
         
-        while(ctr.hasNextLine()){
-            usersamt++;
-            ctr.nextLine();
-        }
-        usernames = new String[usersamt];
-        passwords = new String[usersamt];
-        while(sc.hasNext()){
-            usernames[i] = sc.next();
-            passwords[i] = sc.next();
-            i++;
-        }
         initComponents();
     }
 
@@ -298,8 +304,8 @@ public class LoginScreen extends javax.swing.JFrame{
             public void run() {
                 try {
                     new LoginScreen().setVisible(true);
-                } catch (FileNotFoundException ex) {
-                    Logger.getLogger(LoginScreen.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (Exception e) {
+                    Logger.getLogger(LoginScreen.class.getName()).log(Level.SEVERE, null, e);
                 }
             }
         });

@@ -144,22 +144,25 @@ public class Splash extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) throws FileNotFoundException {
-       Splash s = new Splash();
-       s.setVisible(true);
-       
-       try{
-           for(int i=0; i<100; i++){
-               Thread.sleep(50);
-               s.pbar.setValue(i);
-               s.percent.setText(i+"%");
-           }
-       }catch(Exception e){
-       
-       }
-       
-       new LoginScreen().setVisible(true);
-       s.dispose();
+        boolean bypass = false;
+        
+        if (bypass) new MainMenu("@bypass").setVisible(true);
+        else {
+            Splash s = new Splash();
+            s.setVisible(true);
 
+            try{
+                for(int i=0; i<100; i++){
+                    Thread.sleep(8);
+                    s.pbar.setValue(i);
+                    s.percent.setText(i+"%");
+                }
+            }catch(Exception e){
+
+            }
+            s.dispose();
+            new LoginScreen().setVisible(true);
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
