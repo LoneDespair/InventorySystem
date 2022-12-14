@@ -41,18 +41,22 @@ public class HomePage extends javax.swing.JPanel {
         HeaderPanel = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        productButton = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
         BottomPanel = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         userlabel = new javax.swing.JLabel();
-        productButton = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(232, 243, 214));
         setPreferredSize(new java.awt.Dimension(800, 600));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         HeaderPanel.setBackground(new java.awt.Color(250, 171, 120));
+        HeaderPanel.setMaximumSize(new java.awt.Dimension(32767, 112));
+        HeaderPanel.setPreferredSize(new java.awt.Dimension(856, 112));
 
         jLabel1.setFont(new java.awt.Font("Century Gothic", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(232, 243, 214));
@@ -68,63 +72,27 @@ public class HomePage extends javax.swing.JPanel {
             .addGroup(HeaderPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(47, 47, 47))
+                .addGap(62, 62, 62))
         );
         HeaderPanelLayout.setVerticalGroup(
             HeaderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, HeaderPanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel4)
-                .addContainerGap())
             .addGroup(HeaderPanelLayout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        BottomPanel.setBackground(new java.awt.Color(255, 220, 169));
-
-        jButton1.setBackground(new java.awt.Color(250, 171, 120));
-        jButton1.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        jButton1.setText("LOG OUT");
-        jButton1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton1.setFocusable(false);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
-        userlabel.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
-        userlabel.setForeground(new java.awt.Color(250, 171, 120));
-        userlabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/inventorymanagementsystem/UserIcon45px.png"))); // NOI18N
-        userlabel.setText("jLabel2");
-
-        javax.swing.GroupLayout BottomPanelLayout = new javax.swing.GroupLayout(BottomPanel);
-        BottomPanel.setLayout(BottomPanelLayout);
-        BottomPanelLayout.setHorizontalGroup(
-            BottomPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BottomPanelLayout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addComponent(userlabel, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(HeaderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(HeaderPanelLayout.createSequentialGroup()
+                        .addContainerGap(12, Short.MAX_VALUE)
+                        .addComponent(jLabel4))
+                    .addGroup(HeaderPanelLayout.createSequentialGroup()
+                        .addGap(31, 31, 31)
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
-        BottomPanelLayout.setVerticalGroup(
-            BottomPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(BottomPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(BottomPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(BottomPanelLayout.createSequentialGroup()
-                        .addGap(7, 7, 7)
-                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(userlabel, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
-        );
+
+        add(HeaderPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, -1));
+
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         productButton.setBackground(new java.awt.Color(252, 249, 190));
         productButton.setFont(new java.awt.Font("Century Gothic", 1, 24)); // NOI18N
@@ -139,6 +107,17 @@ public class HomePage extends javax.swing.JPanel {
                 productButtonActionPerformed(evt);
             }
         });
+        jPanel1.add(productButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 374, 200));
+
+        jButton5.setBackground(new java.awt.Color(252, 249, 190));
+        jButton5.setFont(new java.awt.Font("Century Gothic", 1, 24)); // NOI18N
+        jButton5.setForeground(new java.awt.Color(250, 171, 120));
+        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/inventorymanagementsystem/UsersIcon.png"))); // NOI18N
+        jButton5.setText("USERS");
+        jButton5.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(250, 171, 120), 2, true));
+        jButton5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton5.setFocusable(false);
+        jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 10, 374, 200));
 
         jButton3.setBackground(new java.awt.Color(252, 249, 190));
         jButton3.setFont(new java.awt.Font("Century Gothic", 1, 24)); // NOI18N
@@ -149,6 +128,7 @@ public class HomePage extends javax.swing.JPanel {
         jButton3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(250, 171, 120), 2, true));
         jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton3.setFocusable(false);
+        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 220, 374, 200));
 
         jButton4.setBackground(new java.awt.Color(252, 249, 190));
         jButton4.setFont(new java.awt.Font("Century Gothic", 1, 24)); // NOI18N
@@ -163,50 +143,38 @@ public class HomePage extends javax.swing.JPanel {
                 jButton4ActionPerformed(evt);
             }
         });
+        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, 374, 200));
 
-        jButton5.setBackground(new java.awt.Color(252, 249, 190));
-        jButton5.setFont(new java.awt.Font("Century Gothic", 1, 24)); // NOI18N
-        jButton5.setForeground(new java.awt.Color(250, 171, 120));
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/inventorymanagementsystem/UsersIcon.png"))); // NOI18N
-        jButton5.setText("USERS");
-        jButton5.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(250, 171, 120), 2, true));
-        jButton5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton5.setFocusable(false);
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 800, 430));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(HeaderPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 374, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 374, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(productButton, javax.swing.GroupLayout.PREFERRED_SIZE, 374, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 374, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addComponent(BottomPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(HeaderPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(productButton, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(8, 8, 8)
-                .addComponent(BottomPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        BottomPanel.setBackground(new java.awt.Color(255, 220, 169));
+        BottomPanel.setMaximumSize(new java.awt.Dimension(32767, 100));
+        BottomPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jButton1.setBackground(new java.awt.Color(250, 171, 120));
+        jButton1.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        jButton1.setText("LOG OUT");
+        jButton1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton1.setFocusable(false);
+        jButton1.setMaximumSize(new java.awt.Dimension(999, 999));
+        jButton1.setPreferredSize(new java.awt.Dimension(55, 42));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        BottomPanel.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(684, 11, 110, -1));
+
+        userlabel.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
+        userlabel.setForeground(new java.awt.Color(250, 171, 120));
+        userlabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/inventorymanagementsystem/UserIcon45px.png"))); // NOI18N
+        userlabel.setText("jLabel2");
+        userlabel.setMaximumSize(new java.awt.Dimension(9999, 99999));
+        userlabel.setPreferredSize(new java.awt.Dimension(112, 48));
+        BottomPanel.add(userlabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 6, 156, -1));
+
+        add(BottomPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 540, 800, 60));
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -225,14 +193,15 @@ public class HomePage extends javax.swing.JPanel {
 
     private void productButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_productButtonActionPerformed
         if (mainMenu == null) return;
-        setVisible(false);
-        mainMenu.getProductList().setVisible(true);
+        mainMenu.add(new ProductList());
+        //setVisible(false);
+        
     }//GEN-LAST:event_productButtonActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         if (mainMenu == null) return;
         setVisible(false);
-        mainMenu.getPurchasePage().open();
+        //mainMenu.getPurchasePage().open();
     }//GEN-LAST:event_jButton4ActionPerformed
 
 
@@ -245,6 +214,7 @@ public class HomePage extends javax.swing.JPanel {
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JButton productButton;
     private javax.swing.JLabel userlabel;
     // End of variables declaration//GEN-END:variables

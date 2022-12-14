@@ -58,6 +58,7 @@ public class ProductList extends javax.swing.JPanel {
      */
     public ProductList() {
         initComponents();
+        setVisible(true);
         populate();
         sort();
     }

@@ -17,14 +17,18 @@ public class MainMenu extends javax.swing.JFrame {
     
     public MainMenu(String username) {
         initComponents();
+        getContentPane().setSize(800, 600);
+        System.out.println("Size " + getContentPane().getSize() + " " + homePage.getSize());
         
-        homePage.setup(username, this);
+        
+        //homePage.setup(username, this);
     }
      public MainMenu() {
+         
         initComponents();
     }
      
-    public PurchasePage getPurchasePage() { return purchasePage; }
+    //public PurchasePage getPurchasePage() { return purchasePage; }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -36,16 +40,15 @@ public class MainMenu extends javax.swing.JFrame {
     private void initComponents() {
 
         homePage = new inventorymanagementsystem.HomePage();
-        purchasePage = new inventorymanagementsystem.PurchasePage();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(800, 600));
         setMinimumSize(new java.awt.Dimension(800, 600));
-        setUndecorated(true);
-        setResizable(false);
         getContentPane().setLayout(new java.awt.CardLayout());
+
+        homePage.setMaximumSize(new java.awt.Dimension(32767, 600));
+        homePage.setMinimumSize(new java.awt.Dimension(0, 0));
         getContentPane().add(homePage, "card2");
-        getContentPane().add(purchasePage, "card4");
 
         pack();
         setLocationRelativeTo(null);
@@ -88,6 +91,5 @@ public class MainMenu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private inventorymanagementsystem.HomePage homePage;
-    private inventorymanagementsystem.PurchasePage purchasePage;
     // End of variables declaration//GEN-END:variables
 }
