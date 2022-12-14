@@ -144,7 +144,6 @@ public class ProductList extends javax.swing.JPanel {
         btnClear = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
         selectImage = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(232, 243, 214));
 
@@ -282,13 +281,6 @@ public class ProductList extends javax.swing.JPanel {
             }
         });
 
-        jButton1.setText("purchase");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -340,10 +332,7 @@ public class ProductList extends javax.swing.JPanel {
                                         .addComponent(searchField))))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(129, 129, 129)
-                                .addComponent(btnAddItem))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(118, 118, 118)
-                                .addComponent(jButton1))))
+                                .addComponent(btnAddItem))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(47, 47, 47)
                         .addComponent(btnUpdate)
@@ -398,9 +387,7 @@ public class ProductList extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnEditItem)
-                            .addComponent(btnDeleteItem))
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton1))
+                            .addComponent(btnDeleteItem)))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 440, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -558,15 +545,6 @@ public class ProductList extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_selectImageActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        if (purchasePage != null) {
-            purchasePage.open();
-            setVisible(false);
-        } else {
-            System.out.println("Failed to open purchase page");
-        }
-    }//GEN-LAST:event_jButton1ActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel HeaderPanel;
@@ -578,7 +556,6 @@ public class ProductList extends javax.swing.JPanel {
     private javax.swing.JTextField itemSelectName;
     private javax.swing.JTextField itemSelectPrice;
     private javax.swing.JTextField itemSelectQty;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
