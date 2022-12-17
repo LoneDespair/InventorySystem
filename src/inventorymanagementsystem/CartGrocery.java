@@ -84,6 +84,7 @@ public class CartGrocery extends javax.swing.JPanel {
         holder.add(remove, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 80, -1, -1));
 
         countBox.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        countBox.setModel(new javax.swing.SpinnerNumberModel(1, 1, 99, 1));
         countBox.setMinimumSize(new java.awt.Dimension(50, 26));
         countBox.setPreferredSize(new java.awt.Dimension(50, 26));
         holder.add(countBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(331, 14, 80, -1));
