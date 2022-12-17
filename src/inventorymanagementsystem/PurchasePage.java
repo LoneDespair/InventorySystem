@@ -103,6 +103,7 @@ public class PurchasePage extends javax.swing.JPanel {
         jButton1.setBackground(new java.awt.Color(250, 171, 120));
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/inventorymanagementsystem/menu.png"))); // NOI18N
         jButton1.setBorderPainted(false);
+        jButton1.setFocusable(false);
         jButton1.setPreferredSize(new java.awt.Dimension(100, 100));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -114,6 +115,7 @@ public class PurchasePage extends javax.swing.JPanel {
         cartButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/inventorymanagementsystem/cart.png"))); // NOI18N
         cartButton.setText("jButton2");
         cartButton.setBorderPainted(false);
+        cartButton.setFocusable(false);
         cartButton.setPreferredSize(new java.awt.Dimension(112, 112));
         cartButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
