@@ -14,7 +14,8 @@ import javax.swing.*;
  * @author LoneDespair
  */
 public class HomePage extends javax.swing.JPanel {
-    MainMenu mainMenu;
+    
+    
     
     /**
      * Creates new form HomePage
@@ -22,6 +23,8 @@ public class HomePage extends javax.swing.JPanel {
     
     public HomePage() {
         initComponents();
+        
+        
     }
     
     public void setup(String username, MainMenu newMainMenu) {
@@ -52,6 +55,15 @@ public class HomePage extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(232, 243, 214));
         setPreferredSize(new java.awt.Dimension(800, 600));
+        addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                formAncestorAdded(evt);
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         HeaderPanel.setBackground(new java.awt.Color(250, 171, 120));
@@ -85,8 +97,7 @@ public class HomePage extends javax.swing.JPanel {
                         .addComponent(jLabel4))
                     .addGroup(HeaderPanelLayout.createSequentialGroup()
                         .addGap(31, 31, 31)
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(jLabel1)))
                 .addContainerGap())
         );
 
@@ -203,6 +214,10 @@ public class HomePage extends javax.swing.JPanel {
         setVisible(false);
         //mainMenu.getPurchasePage().open();
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void formAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_formAncestorAdded
+        jFrame = (JFrame) SwingUtilities.getWindowAncestor(this);
+    }//GEN-LAST:event_formAncestorAdded
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
