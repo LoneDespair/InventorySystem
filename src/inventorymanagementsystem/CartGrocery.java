@@ -10,6 +10,7 @@ package inventorymanagementsystem;
  */
 public class CartGrocery extends javax.swing.JPanel {
     Grocery grocery;
+    CartPage cartPage;
     
     /**
      * Creates new form CartGrocery
@@ -18,9 +19,10 @@ public class CartGrocery extends javax.swing.JPanel {
         initComponents();
     }
     
-    public CartGrocery(Grocery newGrocery) {
+    public CartGrocery(Grocery newGrocery, CartPage newCartPage) {
         this();
         grocery = newGrocery;
+        cartPage = newCartPage;
         update();
     }
     
@@ -66,6 +68,12 @@ public class CartGrocery extends javax.swing.JPanel {
 
         remove.setForeground(new java.awt.Color(102, 102, 102));
         remove.setText("Remove");
+        remove.setFocusable(false);
+        remove.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                removeActionPerformed(evt);
+            }
+        });
         holder.add(remove, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 80, -1, -1));
 
         jSpinner1.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
@@ -105,6 +113,16 @@ public class CartGrocery extends javax.swing.JPanel {
                 .addComponent(holder, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void removeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeActionPerformed
+        if (cartPage == null){ System.out.println("Cart page not found"); }
+        else {
+            int id = grocery.product.id;
+            cartPage.table.remove(id);
+            cartPage.removeCartGrocery(this);
+            //this.remove(this);
+        }
+    }//GEN-LAST:event_removeActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

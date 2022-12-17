@@ -32,12 +32,17 @@ public class CartPage extends javax.swing.JPanel {
         setVisible(true);
     }
     
+    public void removeCartGrocery(CartGrocery cartGrocery) {
+        shelf.remove(cartGrocery);
+        shelf.repaint();
+    }
+    
     public void addGrocery(Grocery newGrocery) {
         int id = newGrocery.product.id;
         CartGrocery existingCartGrocery = table.getOrDefault(id, null);
         
         if (existingCartGrocery == null) {
-            CartGrocery newCartGrocery = new CartGrocery(newGrocery);
+            CartGrocery newCartGrocery = new CartGrocery(newGrocery, this);
             shelf.add(newCartGrocery);
             table.put(id, newCartGrocery);
             System.out.println("NULL " + id);
