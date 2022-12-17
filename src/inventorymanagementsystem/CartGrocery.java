@@ -12,6 +12,8 @@ import javax.swing.ImageIcon;
  */
 public class CartGrocery extends javax.swing.JPanel {
     Grocery grocery;
+    Product product;
+    
     ImageIcon imageIcon = null;
     CartPage cartPage;
     
@@ -25,9 +27,9 @@ public class CartGrocery extends javax.swing.JPanel {
     public CartGrocery(Grocery newGrocery, CartPage newCartPage) {
         this();
         grocery = newGrocery;
+        product = newGrocery.product;
         cartPage = newCartPage;
         
-        Product product = grocery.product;
         nameLabel.setText(product.name);
         priceLabel.setText(product.getStringPrice());
         imageIcon = FallbackIcon.getIcon(product.image);
@@ -40,7 +42,9 @@ public class CartGrocery extends javax.swing.JPanel {
     }
     
     public void updateCount() {
+        
         countBox.setValue(grocery.count);
+        totalLabel.setText(Product.numToMoney(product.price * grocery.count));
     }
 
     /**
@@ -87,7 +91,12 @@ public class CartGrocery extends javax.swing.JPanel {
         countBox.setModel(new javax.swing.SpinnerNumberModel(1, 1, 99, 1));
         countBox.setMinimumSize(new java.awt.Dimension(50, 26));
         countBox.setPreferredSize(new java.awt.Dimension(50, 26));
-        holder.add(countBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(331, 14, 80, -1));
+        countBox.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                countBoxStateChanged(evt);
+            }
+        });
+        holder.add(countBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 20, 80, 20));
 
         displayIcon.setBackground(new java.awt.Color(255, 220, 169));
         displayIcon.setOpaque(true);
@@ -112,7 +121,7 @@ public class CartGrocery extends javax.swing.JPanel {
         totalLabel.setForeground(new java.awt.Color(250, 171, 121));
         totalLabel.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         totalLabel.setText("₱0.00");
-        holder.add(totalLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 15, 100, -1));
+        holder.add(totalLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 20, 100, 20));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -131,7 +140,7 @@ public class CartGrocery extends javax.swing.JPanel {
     private void removeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeActionPerformed
         if (cartPage == null){ System.out.println("Cart page not found"); }
         else {
-            int id = grocery.product.id;
+            int id = product.id;
             cartPage.table.remove(id);
             cartPage.removeCartGrocery(this);
         }
@@ -140,6 +149,11 @@ public class CartGrocery extends javax.swing.JPanel {
     private void displayIconComponentResized(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_displayIconComponentResized
         displayIcon.setIcon(ImageResizer.fitImageIcon(imageIcon, displayIcon.getSize()));
     }//GEN-LAST:event_displayIconComponentResized
+
+    private void countBoxStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_countBoxStateChanged
+        grocery.count = (Integer) countBox.getValue();
+        totalLabel.setText(Product.numToMoney(product.price * grocery.count));
+    }//GEN-LAST:event_countBoxStateChanged
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
