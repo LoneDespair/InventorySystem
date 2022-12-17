@@ -5,6 +5,7 @@
 package inventorymanagementsystem;
 
 import java.util.HashMap;
+import javax.swing.JComponent;
 
 /**
  *
@@ -12,16 +13,25 @@ import java.util.HashMap;
  */
 public class CartPage extends javax.swing.JPanel {
     HashMap <Integer, Grocery> table = new HashMap<>();
-    
+    JComponent purchaseSelection;
     
     /**
      * Creates new form CartPage
      */
+    
     public CartPage() {
         initComponents();
     }
     
+    public CartPage(JComponent newPurchaseSelection) {
+        this();
+        purchaseSelection = newPurchaseSelection;
+    }
+    
     public void open() {
+        setVisible(true);
+        System.out.println("OPENING CART");
+        
         for (Grocery grocery : table.values()) {
             shelf.add(new CartGrocery(grocery));
         }
@@ -186,7 +196,9 @@ public class CartPage extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void selectionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectionButtonActionPerformed
-        // TODO add your handling code here:
+        if (purchaseSelection == null) { System.out.println("Null purchase page"); }
+        else { purchaseSelection.setVisible(true); }
+        setVisible(false);
     }//GEN-LAST:event_selectionButtonActionPerformed
 
 

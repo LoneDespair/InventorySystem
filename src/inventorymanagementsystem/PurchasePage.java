@@ -12,8 +12,8 @@ import javax.swing.JComponent;
  * @author LoneDespair
  */
 public class PurchasePage extends javax.swing.JPanel {
-    PurchaseOption purchaseOption = new PurchaseOption();
-    CartPage cartPage = new CartPage();
+    PurchaseOption purchaseOption ;
+    CartPage cartPage;
     JComponent home;
     
     /**
@@ -21,6 +21,8 @@ public class PurchasePage extends javax.swing.JPanel {
      */
     public PurchasePage() {
         initComponents();
+        cartPage = new CartPage(selection);
+        purchaseOption = new PurchaseOption(cartPage);
         
         add(purchaseOption, 0);
         add(cartPage, 0);
@@ -132,13 +134,13 @@ public class PurchasePage extends javax.swing.JPanel {
         );
         headerLayout.setVerticalGroup(
             headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(headerLayout.createSequentialGroup()
-                .addGroup(headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(headerLayout.createSequentialGroup()
+                .addGroup(headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jButton1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, headerLayout.createSequentialGroup()
                         .addGap(32, 32, 32)
                         .addComponent(jLabel1))
-                    .addComponent(cartButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cartButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -160,7 +162,7 @@ public class PurchasePage extends javax.swing.JPanel {
 
     private void cartButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cartButtonActionPerformed
         selection.setVisible(false);
-        cartPage.setVisible(true);
+        cartPage.open();
     }//GEN-LAST:event_cartButtonActionPerformed
 
 

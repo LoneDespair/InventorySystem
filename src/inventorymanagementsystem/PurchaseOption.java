@@ -15,8 +15,8 @@ public class PurchaseOption extends javax.swing.JPanel {
     Color transparent = new Color(0, 0, 0, 0);
     ImageIcon imageIcon = null;
     Product product;
-    CartPage cartPage;
     
+    CartPage cartPage;
     
     
     /**
@@ -29,9 +29,11 @@ public class PurchaseOption extends javax.swing.JPanel {
         bg.setBackground(new Color(23, 32, 42, 100));
     }
     
-    public void setup(CartPage newCartPage) {
+    public PurchaseOption(CartPage newCartPage) {
+        this();
         cartPage = newCartPage;
     }
+    
     
     public void open(Product newProduct) {
         setVisible(true);
