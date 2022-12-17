@@ -28,6 +28,7 @@ public class MainMenu extends javax.swing.JFrame {
      public MainMenu() {
         initComponents();
         productList.home = homePage;
+        purchasePage.setup(homePage);
         
     }
      

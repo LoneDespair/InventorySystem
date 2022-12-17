@@ -163,7 +163,8 @@ public class ProductList extends javax.swing.JPanel {
         jButton1.setBackground(new java.awt.Color(250, 171, 120));
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/inventorymanagementsystem/menu.png"))); // NOI18N
         jButton1.setBorderPainted(false);
-        jButton1.setPreferredSize(new java.awt.Dimension(64, 64));
+        jButton1.setMaximumSize(new java.awt.Dimension(112, 112));
+        jButton1.setPreferredSize(new java.awt.Dimension(112, 112));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);

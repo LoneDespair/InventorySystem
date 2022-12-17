@@ -6,6 +6,7 @@ package inventorymanagementsystem;
 
 import java.nio.file.Paths;
 import java.util.HashMap;
+import javax.swing.JComponent;
 
 /**
  *
@@ -28,6 +29,8 @@ public class PurchasePage extends javax.swing.JPanel {
             purchaseSelection.addProduct(product);
         }*/
     }
+    
+    public void setup(JComponent home) { purchaseSelection.home = home; }
     
     public void open() {
         setVisible(true);
