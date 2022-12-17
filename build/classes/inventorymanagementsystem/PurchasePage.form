@@ -23,6 +23,8 @@
     </Component>
     <Component class="inventorymanagementsystem.PurchaseSelection" name="purchaseSelection">
     </Component>
+    <Component class="inventorymanagementsystem.CartPage" name="cartPage">
+    </Component>
   </SubComponents>
   <LayoutCode>
     <CodeStatement>

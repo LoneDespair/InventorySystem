@@ -21,6 +21,7 @@ public class PurchasePage extends javax.swing.JPanel {
         
         purchaseSelection.setup(purchaseOption);
         purchaseOption.setVisible(false);
+        cartPage.setVisible(false);
         
         /*
         for (int idx = 0; idx < 3; idx++) {
@@ -49,15 +50,18 @@ public class PurchasePage extends javax.swing.JPanel {
 
         purchaseOption = new inventorymanagementsystem.PurchaseOption();
         purchaseSelection = new inventorymanagementsystem.PurchaseSelection();
+        cartPage = new inventorymanagementsystem.CartPage();
 
         setPreferredSize(new java.awt.Dimension(800, 600));
         setLayout(new javax.swing.OverlayLayout(this));
         add(purchaseOption);
         add(purchaseSelection);
+        add(cartPage);
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private inventorymanagementsystem.CartPage cartPage;
     private inventorymanagementsystem.PurchaseOption purchaseOption;
     private inventorymanagementsystem.PurchaseSelection purchaseSelection;
     // End of variables declaration//GEN-END:variables
