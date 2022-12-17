@@ -13,7 +13,7 @@ import javax.swing.ImageIcon;
  * @author LoneDespair
  */
 public class FallbackIcon {
-    static final String defaultPath = Paths.get(System.getProperty("user.dir"), "src/main/java/inventorysystem/Default.png").toString();
+    static final String defaultPath = Paths.get(System.getProperty("user.dir"), "src/inventorymanagementsystem/Default.png").toString();
     
     static public ImageIcon getIcon(Image newImage) {
         if (newImage == null) {
