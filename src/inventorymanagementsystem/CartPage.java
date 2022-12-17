@@ -71,6 +71,7 @@ public class CartPage extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(232, 243, 214));
         setPreferredSize(new java.awt.Dimension(800, 600));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         header.setBackground(new java.awt.Color(250, 171, 121));
         header.setPreferredSize(new java.awt.Dimension(800, 112));
@@ -93,6 +94,8 @@ public class CartPage extends javax.swing.JPanel {
         jLabel1.setText("SHOPPING CART");
         jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         header.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 110));
+
+        add(header, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         jPanel1.setBackground(new java.awt.Color(255, 220, 169));
 
@@ -157,42 +160,21 @@ public class CartPage extends javax.swing.JPanel {
                 .addGap(14, 14, 14))
         );
 
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 130, -1, -1));
+
         jScrollPane1.setBackground(new java.awt.Color(232, 243, 214));
         jScrollPane1.setBorder(null);
         jScrollPane1.setForeground(new java.awt.Color(232, 243, 214));
+        jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         jScrollPane1.setOpaque(false);
         jScrollPane1.setPreferredSize(new java.awt.Dimension(100, 0));
 
         shelf.setBackground(new java.awt.Color(232, 243, 214));
-        shelf.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(232, 243, 214), 6));
-        shelf.setLayout(new java.awt.GridLayout(4, 1, 0, 6));
+        shelf.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(232, 243, 214), 12));
+        shelf.setLayout(new javax.swing.BoxLayout(shelf, javax.swing.BoxLayout.Y_AXIS));
         jScrollPane1.setViewportView(shelf);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(header, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 560, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(4, 4, 4)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(header, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(270, 270, 270))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())))
-        );
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 112, 560, 488));
     }// </editor-fold>//GEN-END:initComponents
 
     private void selectionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectionButtonActionPerformed
