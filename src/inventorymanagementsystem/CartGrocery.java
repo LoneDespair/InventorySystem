@@ -9,8 +9,7 @@ package inventorymanagementsystem;
  * @author LoneDespair
  */
 public class CartGrocery extends javax.swing.JPanel {
-    
-    
+    Grocery grocery;
     
     /**
      * Creates new form CartGrocery
@@ -19,14 +18,20 @@ public class CartGrocery extends javax.swing.JPanel {
         initComponents();
     }
     
-    public CartGrocery(Grocery grocery) {
+    public CartGrocery(Grocery newGrocery) {
         this();
-        
+        grocery = newGrocery;
+        update();
+    }
+    
+    public void append(Grocery newGrocery) {
+        grocery.count += newGrocery.count;
+    }
+    
+    public void update() {
         Product product = grocery.product;
         nameLabel.setText(product.name);
         priceLabel.setText(product.getStringPrice());
-        
-        
     }
 
     /**

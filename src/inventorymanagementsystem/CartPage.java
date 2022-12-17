@@ -12,7 +12,7 @@ import javax.swing.JComponent;
  * @author LoneDespair
  */
 public class CartPage extends javax.swing.JPanel {
-    HashMap <Integer, Grocery> table = new HashMap<>();
+    HashMap <Integer, CartGrocery> table = new HashMap<>();
     JComponent purchaseSelection;
     
     /**
@@ -30,19 +30,20 @@ public class CartPage extends javax.swing.JPanel {
     
     public void open() {
         setVisible(true);
-        System.out.println("OPENING CART");
-        
-        for (Grocery grocery : table.values()) {
-            shelf.add(new CartGrocery(grocery));
-        }
     }
     
     public void addGrocery(Grocery newGrocery) {
         int id = newGrocery.product.id;
-        Grocery existingGrocery = table.getOrDefault(id, null);
+        CartGrocery existingCartGrocery = table.getOrDefault(id, null);
         
-        if (existingGrocery != null) existingGrocery.count += newGrocery.count;
-        else table.put(id, newGrocery);
+        if (existingCartGrocery == null) {
+            CartGrocery newCartGrocery = new CartGrocery(newGrocery);
+            shelf.add(newCartGrocery);
+            table.put(id, newCartGrocery);
+            System.out.println("NULL " + id);
+        } else {
+            existingCartGrocery.append(newGrocery);
+        }
     }
     
 
