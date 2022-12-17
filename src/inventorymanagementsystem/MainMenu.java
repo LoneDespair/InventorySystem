@@ -28,7 +28,7 @@ public class MainMenu extends javax.swing.JFrame {
      public MainMenu() {
         initComponents();
         productList.home = homePage;
-        purchasePage.setup(homePage);
+        purchaseSelection.home = homePage;
         
     }
      
@@ -55,8 +55,8 @@ public class MainMenu extends javax.swing.JFrame {
         BottomPanel = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         userlabel = new javax.swing.JLabel();
+        purchaseSelection = new inventorymanagementsystem.PurchasePage();
         productList = new inventorymanagementsystem.ProductList();
-        purchasePage = new inventorymanagementsystem.PurchasePage();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(800, 600));
@@ -65,10 +65,11 @@ public class MainMenu extends javax.swing.JFrame {
         getContentPane().setLayout(new java.awt.CardLayout());
 
         homePage.setBackground(new java.awt.Color(232, 243, 214));
+        homePage.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         HeaderPanel.setBackground(new java.awt.Color(250, 171, 120));
         HeaderPanel.setMaximumSize(new java.awt.Dimension(32767, 112));
-        HeaderPanel.setPreferredSize(new java.awt.Dimension(856, 112));
+        HeaderPanel.setPreferredSize(new java.awt.Dimension(800, 112));
 
         jLabel1.setFont(new java.awt.Font("Century Gothic", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(232, 243, 214));
@@ -100,6 +101,8 @@ public class MainMenu extends javax.swing.JFrame {
                         .addComponent(jLabel1)))
                 .addContainerGap())
         );
+
+        homePage.add(HeaderPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, -1));
 
         jPanel2.setBackground(new java.awt.Color(232, 243, 214));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -155,8 +158,9 @@ public class MainMenu extends javax.swing.JFrame {
         });
         jPanel2.add(purchaseButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, 374, 200));
 
+        homePage.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 800, 430));
+
         BottomPanel.setBackground(new java.awt.Color(255, 220, 169));
-        BottomPanel.setMaximumSize(new java.awt.Dimension(32767, 100));
         BottomPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jButton1.setBackground(new java.awt.Color(250, 171, 120));
@@ -182,38 +186,11 @@ public class MainMenu extends javax.swing.JFrame {
         userlabel.setPreferredSize(new java.awt.Dimension(112, 48));
         BottomPanel.add(userlabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 6, 156, -1));
 
-        javax.swing.GroupLayout homePageLayout = new javax.swing.GroupLayout(homePage);
-        homePage.setLayout(homePageLayout);
-        homePageLayout.setHorizontalGroup(
-            homePageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 800, Short.MAX_VALUE)
-            .addGroup(homePageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(homePageLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addGroup(homePageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(HeaderPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 800, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 800, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(BottomPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 800, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-        homePageLayout.setVerticalGroup(
-            homePageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 600, Short.MAX_VALUE)
-            .addGroup(homePageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(homePageLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addGroup(homePageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(HeaderPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(homePageLayout.createSequentialGroup()
-                            .addGap(110, 110, 110)
-                            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(BottomPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
+        homePage.add(BottomPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 540, 800, 60));
 
         getContentPane().add(homePage, "card2");
-        getContentPane().add(productList, "card3");
-        getContentPane().add(purchasePage, "card4");
+        getContentPane().add(purchaseSelection, "card3");
+        getContentPane().add(productList, "card4");
 
         pack();
         setLocationRelativeTo(null);
@@ -226,7 +203,7 @@ public class MainMenu extends javax.swing.JFrame {
 
     private void purchaseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_purchaseButtonActionPerformed
         homePage.setVisible(false);
-        purchasePage.open();
+        purchaseSelection.open();
     }//GEN-LAST:event_purchaseButtonActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -290,7 +267,7 @@ public class MainMenu extends javax.swing.JFrame {
     private javax.swing.JButton productButton;
     private inventorymanagementsystem.ProductList productList;
     private javax.swing.JButton purchaseButton;
-    private inventorymanagementsystem.PurchasePage purchasePage;
+    private inventorymanagementsystem.PurchasePage purchaseSelection;
     private javax.swing.JLabel userlabel;
     // End of variables declaration//GEN-END:variables
 }

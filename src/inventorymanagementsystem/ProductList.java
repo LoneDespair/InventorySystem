@@ -53,8 +53,6 @@ public class ProductList extends javax.swing.JPanel {
             String textIcon = Base64.getEncoder().encodeToString(stream.toByteArray())*/
     
     
-    PurchasePage purchasePage;
-    
     /**
      * Creates new form ProductPage
      */
