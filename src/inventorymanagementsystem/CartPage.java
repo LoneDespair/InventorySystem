@@ -12,8 +12,12 @@ import javax.swing.JComponent;
  * @author LoneDespair
  */
 public class CartPage extends javax.swing.JPanel {
+    static final double VAT = 0.12;
+    static final double SHIPPING_FEE = 69;
+    
     HashMap <Integer, CartGrocery> table = new HashMap<>();
     JComponent purchaseSelection;
+
     
     /**
      * Creates new form CartPage
@@ -33,6 +37,7 @@ public class CartPage extends javax.swing.JPanel {
     }
     
     public void removeCartGrocery(CartGrocery cartGrocery) {
+        table.remove(cartGrocery.product.id);
         shelf.remove(cartGrocery);
         shelf.repaint();
     }
@@ -43,11 +48,32 @@ public class CartPage extends javax.swing.JPanel {
         
         if (existingCartGrocery == null) {
             CartGrocery newCartGrocery = new CartGrocery(newGrocery, this);
-            shelf.add(newCartGrocery);
             table.put(id, newCartGrocery);
+            shelf.add(newCartGrocery);
         } else {
             existingCartGrocery.append(newGrocery);
         }
+        
+        updateSummary();
+    }
+    
+    
+    public void updateSummary() {
+        System.out.println("Update summary");
+        double productTotal = 0;
+        
+        for (CartGrocery cartGrocery : table.values()) {
+            productTotal += cartGrocery.product.price * cartGrocery.grocery.count;
+            System.out.println("Update summary " + cartGrocery.grocery.count);
+        }
+        
+        double vat = productTotal * VAT;
+        
+        vatableLabel.setText(Product.numToMoney(productTotal -vat));
+        vatLabel.setText(Product.numToMoney(vat));
+        
+        totalLabel.setText(Product.numToMoney(productTotal + SHIPPING_FEE));
+        shippingLabel.setText(Product.numToMoney(SHIPPING_FEE));
     }
     
 
@@ -66,11 +92,16 @@ public class CartPage extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        vatableLabel = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        cashLabel = new javax.swing.JTextField();
+        vatLabel = new javax.swing.JLabel();
+        shippingLabel = new javax.swing.JLabel();
+        totalLabel = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         shelf = new javax.swing.JPanel();
 
@@ -105,22 +136,65 @@ public class CartPage extends javax.swing.JPanel {
         add(header, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         jPanel1.setBackground(new java.awt.Color(255, 220, 169));
+        jPanel1.setMinimumSize(new java.awt.Dimension(276, 220));
+        jPanel1.setPreferredSize(new java.awt.Dimension(276, 220));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(102, 102, 102));
         jLabel2.setText("SUMMARY");
 
-        jLabel3.setText("Subtotal inc. Tax");
+        jLabel3.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel3.setText("VATable");
 
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jLabel4.setText("0.0");
+        vatableLabel.setForeground(new java.awt.Color(102, 102, 102));
+        vatableLabel.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        vatableLabel.setText("₱0.00");
 
-        jLabel5.setText("Shipping");
+        jLabel5.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel5.setText("VAT - 12%");
 
-        jLabel6.setText("Tax");
+        jLabel6.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel6.setText("Shipping fee");
 
-        jLabel7.setText("jLabel7");
+        jLabel7.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel7.setText("Amount due");
 
+        jButton1.setBackground(new java.awt.Color(250, 219, 216));
+        jButton1.setForeground(new java.awt.Color(102, 102, 102));
         jButton1.setText("PAY");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        cashLabel.setForeground(new java.awt.Color(102, 102, 102));
+        cashLabel.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        cashLabel.setText("0.00");
+        cashLabel.setToolTipText("");
+        cashLabel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cashLabelActionPerformed(evt);
+            }
+        });
+
+        vatLabel.setForeground(new java.awt.Color(102, 102, 102));
+        vatLabel.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        vatLabel.setText("₱0.00");
+
+        shippingLabel.setForeground(new java.awt.Color(102, 102, 102));
+        shippingLabel.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        shippingLabel.setText("₱0.00");
+
+        totalLabel.setForeground(new java.awt.Color(102, 102, 102));
+        totalLabel.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        totalLabel.setText("₱0.00");
+        totalLabel.setAlignmentX(0.5F);
+
+        jLabel4.setBackground(new java.awt.Color(250, 219, 216));
+        jLabel4.setForeground(new java.awt.Color(205, 97, 85));
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setText("Not enough cash");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -132,19 +206,25 @@ public class CartPage extends javax.swing.JPanel {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(30, 30, 30))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel5))
-                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cashLabel)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 81, Short.MAX_VALUE)))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel5)
+                                    .addComponent(jLabel6)
+                                    .addComponent(jLabel7))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(totalLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(shippingLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 84, Short.MAX_VALUE)
+                                    .addComponent(vatableLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(vatLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(15, 15, 15))))
         );
         jPanel1Layout.setVerticalGroup(
@@ -155,19 +235,29 @@ public class CartPage extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jLabel4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel6)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel7)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                    .addComponent(vatableLabel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(vatLabel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(shippingLabel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(totalLabel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(3, 3, 3)
+                .addComponent(cashLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(14, 14, 14))
+                .addContainerGap(13, Short.MAX_VALUE))
         );
 
-        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 130, -1, -1));
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(572, 130, 210, 240));
 
         jScrollPane1.setBackground(new java.awt.Color(232, 243, 214));
         jScrollPane1.setBorder(null);
@@ -190,8 +280,17 @@ public class CartPage extends javax.swing.JPanel {
         setVisible(false);
     }//GEN-LAST:event_selectionButtonActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void cashLabelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cashLabelActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cashLabelActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField cashLabel;
     private javax.swing.JPanel header;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
@@ -205,5 +304,9 @@ public class CartPage extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton selectionButton;
     private javax.swing.JPanel shelf;
+    private javax.swing.JLabel shippingLabel;
+    private javax.swing.JLabel totalLabel;
+    private javax.swing.JLabel vatLabel;
+    private javax.swing.JLabel vatableLabel;
     // End of variables declaration//GEN-END:variables
 }

@@ -83,7 +83,7 @@ public class PurchaseOption extends javax.swing.JPanel {
         });
 
         countSpinner.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        countSpinner.setModel(new javax.swing.SpinnerNumberModel(1, 1, 9, 1));
+        countSpinner.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
         countSpinner.setMaximumSize(new java.awt.Dimension(75, 32767));
         countSpinner.setMinimumSize(new java.awt.Dimension(75, 22));
 

@@ -42,9 +42,9 @@ public class CartGrocery extends javax.swing.JPanel {
     }
     
     public void updateCount() {
-        
         countBox.setValue(grocery.count);
         totalLabel.setText(Product.numToMoney(product.price * grocery.count));
+        cartPage.updateSummary();
     }
 
     /**
@@ -88,7 +88,7 @@ public class CartGrocery extends javax.swing.JPanel {
         holder.add(remove, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 80, -1, -1));
 
         countBox.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        countBox.setModel(new javax.swing.SpinnerNumberModel(1, 1, 99, 1));
+        countBox.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
         countBox.setMinimumSize(new java.awt.Dimension(50, 26));
         countBox.setPreferredSize(new java.awt.Dimension(50, 26));
         countBox.addChangeListener(new javax.swing.event.ChangeListener() {
@@ -127,7 +127,7 @@ public class CartGrocery extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(holder, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 516, Short.MAX_VALUE)
+            .addComponent(holder, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -139,11 +139,7 @@ public class CartGrocery extends javax.swing.JPanel {
 
     private void removeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeActionPerformed
         if (cartPage == null){ System.out.println("Cart page not found"); }
-        else {
-            int id = product.id;
-            cartPage.table.remove(id);
-            cartPage.removeCartGrocery(this);
-        }
+        else { cartPage.removeCartGrocery(this); }
     }//GEN-LAST:event_removeActionPerformed
 
     private void displayIconComponentResized(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_displayIconComponentResized
@@ -153,6 +149,7 @@ public class CartGrocery extends javax.swing.JPanel {
     private void countBoxStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_countBoxStateChanged
         grocery.count = (Integer) countBox.getValue();
         totalLabel.setText(Product.numToMoney(product.price * grocery.count));
+        cartPage.updateSummary();
     }//GEN-LAST:event_countBoxStateChanged
 
 
