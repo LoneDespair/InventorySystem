@@ -4,12 +4,15 @@
  */
 package inventorymanagementsystem;
 
+import javax.swing.ImageIcon;
+
 /**
  *
  * @author LoneDespair
  */
 public class CartGrocery extends javax.swing.JPanel {
     Grocery grocery;
+    ImageIcon imageIcon = null;
     CartPage cartPage;
     
     /**
@@ -27,6 +30,7 @@ public class CartGrocery extends javax.swing.JPanel {
         Product product = grocery.product;
         nameLabel.setText(product.name);
         priceLabel.setText(product.getStringPrice());
+        imageIcon = FallbackIcon.getIcon(product.image);
         updateCount();
     }
     
@@ -51,7 +55,7 @@ public class CartGrocery extends javax.swing.JPanel {
         holder = new javax.swing.JPanel();
         remove = new javax.swing.JButton();
         countBox = new javax.swing.JSpinner();
-        icon = new javax.swing.JLabel();
+        displayIcon = new javax.swing.JLabel();
         nameLabel = new javax.swing.JLabel();
         priceLabel = new javax.swing.JLabel();
         totalLabel = new javax.swing.JLabel();
@@ -84,9 +88,14 @@ public class CartGrocery extends javax.swing.JPanel {
         countBox.setPreferredSize(new java.awt.Dimension(50, 26));
         holder.add(countBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(331, 14, 80, -1));
 
-        icon.setBackground(new java.awt.Color(255, 220, 169));
-        icon.setOpaque(true);
-        holder.add(icon, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, 105, 105));
+        displayIcon.setBackground(new java.awt.Color(255, 220, 169));
+        displayIcon.setOpaque(true);
+        displayIcon.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentResized(java.awt.event.ComponentEvent evt) {
+                displayIconComponentResized(evt);
+            }
+        });
+        holder.add(displayIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, 105, 105));
 
         nameLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         nameLabel.setForeground(new java.awt.Color(102, 102, 102));
@@ -127,11 +136,15 @@ public class CartGrocery extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_removeActionPerformed
 
+    private void displayIconComponentResized(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_displayIconComponentResized
+        displayIcon.setIcon(ImageResizer.fitImageIcon(imageIcon, displayIcon.getSize()));
+    }//GEN-LAST:event_displayIconComponentResized
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JSpinner countBox;
+    private javax.swing.JLabel displayIcon;
     private javax.swing.JPanel holder;
-    private javax.swing.JLabel icon;
     private javax.swing.JLabel nameLabel;
     private javax.swing.JLabel priceLabel;
     private javax.swing.JButton remove;
