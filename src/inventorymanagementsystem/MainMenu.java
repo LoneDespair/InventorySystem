@@ -21,17 +21,14 @@ public class MainMenu extends javax.swing.JFrame {
      */
     
     public MainMenu(String username) {
-        
-        initComponents();
+        this();
         userlabel.setText(username);
-        
-        System.out.println(getContentPane().getSize());
-        
-        
     }
     
      public MainMenu() {
         initComponents();
+        productList.home = homePage;
+        
     }
      
     //public PurchasePage getPurchasePage() { return purchasePage; }
@@ -222,13 +219,12 @@ public class MainMenu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void productButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_productButtonActionPerformed
+        homePage.setVisible(false);
         productList.open();
-        setVisible(false);
-
     }//GEN-LAST:event_productButtonActionPerformed
 
     private void purchaseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_purchaseButtonActionPerformed
-        setVisible(false);
+        homePage.setVisible(false);
         purchasePage.open();
     }//GEN-LAST:event_purchaseButtonActionPerformed
 
