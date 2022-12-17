@@ -23,17 +23,20 @@ public class CartGrocery extends javax.swing.JPanel {
         this();
         grocery = newGrocery;
         cartPage = newCartPage;
-        update();
+        
+        Product product = grocery.product;
+        nameLabel.setText(product.name);
+        priceLabel.setText(product.getStringPrice());
+        updateCount();
     }
     
     public void append(Grocery newGrocery) {
         grocery.count += newGrocery.count;
+        updateCount();
     }
     
-    public void update() {
-        Product product = grocery.product;
-        nameLabel.setText(product.name);
-        priceLabel.setText(product.getStringPrice());
+    public void updateCount() {
+        countBox.setValue(grocery.count);
     }
 
     /**
@@ -47,7 +50,7 @@ public class CartGrocery extends javax.swing.JPanel {
 
         holder = new javax.swing.JPanel();
         remove = new javax.swing.JButton();
-        jSpinner1 = new javax.swing.JSpinner();
+        countBox = new javax.swing.JSpinner();
         icon = new javax.swing.JLabel();
         nameLabel = new javax.swing.JLabel();
         priceLabel = new javax.swing.JLabel();
@@ -76,9 +79,10 @@ public class CartGrocery extends javax.swing.JPanel {
         });
         holder.add(remove, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 80, -1, -1));
 
-        jSpinner1.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        jSpinner1.setPreferredSize(new java.awt.Dimension(90, 26));
-        holder.add(jSpinner1, new org.netbeans.lib.awtextra.AbsoluteConstraints(321, 14, 90, -1));
+        countBox.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        countBox.setMinimumSize(new java.awt.Dimension(50, 26));
+        countBox.setPreferredSize(new java.awt.Dimension(50, 26));
+        holder.add(countBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(331, 14, 80, -1));
 
         icon.setBackground(new java.awt.Color(255, 220, 169));
         icon.setOpaque(true);
@@ -120,15 +124,14 @@ public class CartGrocery extends javax.swing.JPanel {
             int id = grocery.product.id;
             cartPage.table.remove(id);
             cartPage.removeCartGrocery(this);
-            //this.remove(this);
         }
     }//GEN-LAST:event_removeActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JSpinner countBox;
     private javax.swing.JPanel holder;
     private javax.swing.JLabel icon;
-    private javax.swing.JSpinner jSpinner1;
     private javax.swing.JLabel nameLabel;
     private javax.swing.JLabel priceLabel;
     private javax.swing.JButton remove;

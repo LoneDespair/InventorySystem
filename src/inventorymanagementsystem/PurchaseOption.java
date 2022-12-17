@@ -37,6 +37,7 @@ public class PurchaseOption extends javax.swing.JPanel {
     
     public void open(Product newProduct) {
         setVisible(true);
+        countSpinner.setValue(1);
         product = newProduct;
         
         nameLabel.setText(newProduct.name);
@@ -57,7 +58,7 @@ public class PurchaseOption extends javax.swing.JPanel {
 
         content = new inventorymanagementsystem.InputConsumer();
         displayIcon = new javax.swing.JLabel();
-        quantitySpinner = new javax.swing.JSpinner();
+        countSpinner = new javax.swing.JSpinner();
         jLabel1 = new javax.swing.JLabel();
         nameLabel = new javax.swing.JLabel();
         priceLabel = new javax.swing.JLabel();
@@ -81,9 +82,10 @@ public class PurchaseOption extends javax.swing.JPanel {
             }
         });
 
-        quantitySpinner.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        quantitySpinner.setMaximumSize(new java.awt.Dimension(75, 32767));
-        quantitySpinner.setMinimumSize(new java.awt.Dimension(75, 22));
+        countSpinner.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        countSpinner.setModel(new javax.swing.SpinnerNumberModel(1, 1, 9, 1));
+        countSpinner.setMaximumSize(new java.awt.Dimension(75, 32767));
+        countSpinner.setMinimumSize(new java.awt.Dimension(75, 22));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(102, 102, 102));
@@ -135,7 +137,7 @@ public class PurchaseOption extends javax.swing.JPanel {
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, contentLayout.createSequentialGroup()
                                 .addComponent(jLabel1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(quantitySpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(countSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addContainerGap(213, Short.MAX_VALUE))))
             .addGroup(contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, contentLayout.createSequentialGroup()
@@ -152,7 +154,7 @@ public class PurchaseOption extends javax.swing.JPanel {
                 .addComponent(priceLabel)
                 .addGap(32, 32, 32)
                 .addGroup(contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(quantitySpinner, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(countSpinner, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(cartButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -196,8 +198,9 @@ public class PurchaseOption extends javax.swing.JPanel {
 
     private void cartButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cartButtonActionPerformed
         if (cartPage != null) {
-            cartPage.addGrocery(new Grocery(product, (Integer)quantitySpinner.getValue()));
+            cartPage.addGrocery(new Grocery(product, (Integer)countSpinner.getValue()));
         }
+        setVisible(false);
     }//GEN-LAST:event_cartButtonActionPerformed
 
     private void bgMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bgMousePressed
@@ -222,10 +225,10 @@ public class PurchaseOption extends javax.swing.JPanel {
     private javax.swing.JButton cartButton;
     private inventorymanagementsystem.ColoredButton coloredButton1;
     private inventorymanagementsystem.InputConsumer content;
+    private javax.swing.JSpinner countSpinner;
     private javax.swing.JLabel displayIcon;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel nameLabel;
     private javax.swing.JLabel priceLabel;
-    private javax.swing.JSpinner quantitySpinner;
     // End of variables declaration//GEN-END:variables
 }
