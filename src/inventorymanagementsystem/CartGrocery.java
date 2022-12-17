@@ -60,79 +60,48 @@ public class CartGrocery extends javax.swing.JPanel {
         setRequestFocusEnabled(false);
 
         holder.setBackground(new java.awt.Color(252, 249, 190));
+        holder.setMinimumSize(new java.awt.Dimension(0, 117));
         holder.setPreferredSize(new java.awt.Dimension(500, 117));
+        holder.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         remove.setForeground(new java.awt.Color(102, 102, 102));
         remove.setText("Remove");
+        holder.add(remove, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 80, -1, -1));
 
-        jSpinner1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jSpinner1.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        jSpinner1.setPreferredSize(new java.awt.Dimension(90, 26));
+        holder.add(jSpinner1, new org.netbeans.lib.awtextra.AbsoluteConstraints(321, 14, 90, -1));
 
         icon.setBackground(new java.awt.Color(255, 220, 169));
         icon.setOpaque(true);
+        holder.add(icon, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, 105, 105));
 
         nameLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         nameLabel.setForeground(new java.awt.Color(102, 102, 102));
         nameLabel.setText("Product name");
+        holder.add(nameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 15, 123, -1));
 
-        priceLabel.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        priceLabel.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         priceLabel.setForeground(new java.awt.Color(250, 171, 121));
         priceLabel.setText("₱0.00");
+        holder.add(priceLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 50, 215, -1));
 
         totalLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         totalLabel.setForeground(new java.awt.Color(250, 171, 121));
         totalLabel.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         totalLabel.setText("₱0.00");
-
-        javax.swing.GroupLayout holderLayout = new javax.swing.GroupLayout(holder);
-        holder.setLayout(holderLayout);
-        holderLayout.setHorizontalGroup(
-            holderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(holderLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(icon, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(holderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(holderLayout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addGroup(holderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(remove)
-                            .addComponent(priceLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(holderLayout.createSequentialGroup()
-                        .addComponent(nameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 123, Short.MAX_VALUE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(28, 28, 28)
-                .addComponent(totalLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(7, 7, 7))
-        );
-        holderLayout.setVerticalGroup(
-            holderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(holderLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(holderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(holderLayout.createSequentialGroup()
-                        .addGroup(holderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(nameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(totalLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(priceLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(remove)
-                        .addGap(0, 20, Short.MAX_VALUE))
-                    .addComponent(icon, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-        );
+        holder.add(totalLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 15, 100, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(holder, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(holder, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 516, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(0, 6, Short.MAX_VALUE)
                 .addComponent(holder, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
     }// </editor-fold>//GEN-END:initComponents

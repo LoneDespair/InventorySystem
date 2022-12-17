@@ -83,15 +83,6 @@ public class PurchasePage extends javax.swing.JPanel {
         cartButton = new javax.swing.JButton();
         shelfScroll = new javax.swing.JScrollPane();
         shelf = new javax.swing.JPanel();
-        purchaseProduct1 = new inventorymanagementsystem.PurchaseProduct();
-        purchaseProduct9 = new inventorymanagementsystem.PurchaseProduct();
-        purchaseProduct2 = new inventorymanagementsystem.PurchaseProduct();
-        purchaseProduct6 = new inventorymanagementsystem.PurchaseProduct();
-        purchaseProduct5 = new inventorymanagementsystem.PurchaseProduct();
-        purchaseProduct3 = new inventorymanagementsystem.PurchaseProduct();
-        purchaseProduct4 = new inventorymanagementsystem.PurchaseProduct();
-        purchaseProduct7 = new inventorymanagementsystem.PurchaseProduct();
-        purchaseProduct8 = new inventorymanagementsystem.PurchaseProduct();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMinimumSize(new java.awt.Dimension(800, 600));
@@ -159,16 +150,6 @@ public class PurchasePage extends javax.swing.JPanel {
 
         shelf.setBackground(new java.awt.Color(232, 243, 214));
         shelf.setLayout(new java.awt.GridLayout(0, 4));
-        shelf.add(purchaseProduct1);
-        shelf.add(purchaseProduct9);
-        shelf.add(purchaseProduct2);
-        shelf.add(purchaseProduct6);
-        shelf.add(purchaseProduct5);
-        shelf.add(purchaseProduct3);
-        shelf.add(purchaseProduct4);
-        shelf.add(purchaseProduct7);
-        shelf.add(purchaseProduct8);
-
         shelfScroll.setViewportView(shelf);
 
         selection.add(shelfScroll);
@@ -192,15 +173,6 @@ public class PurchasePage extends javax.swing.JPanel {
     private javax.swing.JPanel header;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
-    private inventorymanagementsystem.PurchaseProduct purchaseProduct1;
-    private inventorymanagementsystem.PurchaseProduct purchaseProduct2;
-    private inventorymanagementsystem.PurchaseProduct purchaseProduct3;
-    private inventorymanagementsystem.PurchaseProduct purchaseProduct4;
-    private inventorymanagementsystem.PurchaseProduct purchaseProduct5;
-    private inventorymanagementsystem.PurchaseProduct purchaseProduct6;
-    private inventorymanagementsystem.PurchaseProduct purchaseProduct7;
-    private inventorymanagementsystem.PurchaseProduct purchaseProduct8;
-    private inventorymanagementsystem.PurchaseProduct purchaseProduct9;
     private javax.swing.JPanel selection;
     private javax.swing.JPanel shelf;
     private javax.swing.JScrollPane shelfScroll;

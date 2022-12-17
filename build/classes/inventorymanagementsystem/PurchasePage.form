@@ -139,26 +139,6 @@
                 <Property name="columns" type="int" value="4"/>
                 <Property name="rows" type="int" value="0"/>
               </Layout>
-              <SubComponents>
-                <Component class="inventorymanagementsystem.PurchaseProduct" name="purchaseProduct1">
-                </Component>
-                <Component class="inventorymanagementsystem.PurchaseProduct" name="purchaseProduct9">
-                </Component>
-                <Component class="inventorymanagementsystem.PurchaseProduct" name="purchaseProduct2">
-                </Component>
-                <Component class="inventorymanagementsystem.PurchaseProduct" name="purchaseProduct6">
-                </Component>
-                <Component class="inventorymanagementsystem.PurchaseProduct" name="purchaseProduct5">
-                </Component>
-                <Component class="inventorymanagementsystem.PurchaseProduct" name="purchaseProduct3">
-                </Component>
-                <Component class="inventorymanagementsystem.PurchaseProduct" name="purchaseProduct4">
-                </Component>
-                <Component class="inventorymanagementsystem.PurchaseProduct" name="purchaseProduct7">
-                </Component>
-                <Component class="inventorymanagementsystem.PurchaseProduct" name="purchaseProduct8">
-                </Component>
-              </SubComponents>
             </Container>
           </SubComponents>
         </Container>
