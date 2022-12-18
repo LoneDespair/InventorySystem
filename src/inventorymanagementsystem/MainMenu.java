@@ -57,6 +57,7 @@ public class MainMenu extends javax.swing.JFrame {
         userlabel = new javax.swing.JLabel();
         purchaseSelection = new inventorymanagementsystem.PurchasePage();
         productList = new inventorymanagementsystem.ProductList();
+        receiptPage = new inventorymanagementsystem.ReceiptPage();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(800, 600));
@@ -76,7 +77,7 @@ public class MainMenu extends javax.swing.JFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("INVENTORY MANAGEMENT SYSTEM");
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/inventorymanagementsystem/IMSLogo (1).png"))); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/inventorymanagementsystem/logo.png"))); // NOI18N
 
         javax.swing.GroupLayout HeaderPanelLayout = new javax.swing.GroupLayout(HeaderPanel);
         HeaderPanel.setLayout(HeaderPanelLayout);
@@ -191,6 +192,7 @@ public class MainMenu extends javax.swing.JFrame {
         getContentPane().add(homePage, "card2");
         getContentPane().add(purchaseSelection, "card3");
         getContentPane().add(productList, "card4");
+        getContentPane().add(receiptPage, "card5");
 
         pack();
         setLocationRelativeTo(null);
@@ -268,6 +270,7 @@ public class MainMenu extends javax.swing.JFrame {
     private inventorymanagementsystem.ProductList productList;
     private javax.swing.JButton purchaseButton;
     private inventorymanagementsystem.PurchasePage purchaseSelection;
+    private inventorymanagementsystem.ReceiptPage receiptPage;
     private javax.swing.JLabel userlabel;
     // End of variables declaration//GEN-END:variables
 }

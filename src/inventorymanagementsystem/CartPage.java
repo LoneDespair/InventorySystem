@@ -17,6 +17,7 @@ public class CartPage extends javax.swing.JPanel {
     
     HashMap <Integer, CartGrocery> table = new HashMap<>();
     JComponent purchaseSelection;
+    ReceiptPage receiptPage;
 
     
     /**
@@ -96,7 +97,7 @@ public class CartPage extends javax.swing.JPanel {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        payButton = new javax.swing.JButton();
         cashLabel = new javax.swing.JTextField();
         vatLabel = new javax.swing.JLabel();
         shippingLabel = new javax.swing.JLabel();
@@ -106,8 +107,6 @@ public class CartPage extends javax.swing.JPanel {
         shelf = new javax.swing.JPanel();
 
         setBackground(new java.awt.Color(232, 243, 214));
-        setAlignmentX(0.5F);
-        setAlignmentY(0.5F);
         setPreferredSize(new java.awt.Dimension(800, 600));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -159,12 +158,12 @@ public class CartPage extends javax.swing.JPanel {
         jLabel7.setForeground(new java.awt.Color(102, 102, 102));
         jLabel7.setText("Amount due");
 
-        jButton1.setBackground(new java.awt.Color(250, 219, 216));
-        jButton1.setForeground(new java.awt.Color(102, 102, 102));
-        jButton1.setText("PAY");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        payButton.setBackground(new java.awt.Color(250, 219, 216));
+        payButton.setForeground(new java.awt.Color(102, 102, 102));
+        payButton.setText("PAY");
+        payButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                payButtonActionPerformed(evt);
             }
         });
 
@@ -208,7 +207,7 @@ public class CartPage extends javax.swing.JPanel {
                         .addGap(30, 30, 30))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(payButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(cashLabel)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -253,7 +252,7 @@ public class CartPage extends javax.swing.JPanel {
                 .addGap(3, 3, 3)
                 .addComponent(cashLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(payButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(13, Short.MAX_VALUE))
         );
 
@@ -280,9 +279,14 @@ public class CartPage extends javax.swing.JPanel {
         setVisible(false);
     }//GEN-LAST:event_selectionButtonActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void payButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_payButtonActionPerformed
+        if (receiptPage == null) {
+            System.out.println("Null receipt page");
+            return;
+        }
+        
+        
+    }//GEN-LAST:event_payButtonActionPerformed
 
     private void cashLabelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cashLabelActionPerformed
         // TODO add your handling code here:
@@ -292,7 +296,6 @@ public class CartPage extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField cashLabel;
     private javax.swing.JPanel header;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -302,6 +305,7 @@ public class CartPage extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton payButton;
     private javax.swing.JButton selectionButton;
     private javax.swing.JPanel shelf;
     private javax.swing.JLabel shippingLabel;
