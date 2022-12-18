@@ -279,6 +279,11 @@ public class CartPage extends javax.swing.JPanel {
         else if (!payButton.getText().equals("Pay")) System.out.println(payButton.getText());
         else {
             receiptPage.open(bill);
+            
+            bill = new Bill();
+            shelf.removeAll();
+            cashSpinner.setValue(0.0);
+            updateSummary();
             setVisible(false);
         }
     }//GEN-LAST:event_payButtonActionPerformed
