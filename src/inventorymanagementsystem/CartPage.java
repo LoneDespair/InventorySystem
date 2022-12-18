@@ -39,6 +39,7 @@ public class CartPage extends javax.swing.JPanel {
         bill.table.remove(cartGrocery.product.id);
         shelf.remove(cartGrocery);
         shelf.repaint();
+        updateSummary();
     }
     
     public void addGrocery(Grocery newGrocery) {
