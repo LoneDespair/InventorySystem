@@ -107,6 +107,8 @@ public class CartPage extends javax.swing.JPanel {
         shelf = new javax.swing.JPanel();
 
         setBackground(new java.awt.Color(232, 243, 214));
+        setAlignmentX(0.5F);
+        setAlignmentY(0.5F);
         setPreferredSize(new java.awt.Dimension(800, 600));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
