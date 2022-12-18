@@ -65,13 +65,16 @@ public class CartPage extends javax.swing.JPanel {
         
         totalLabel.setText(Money.format(bill.getTotal()));
         shippingLabel.setText(Money.format(bill.getShippingFee()));
+        updateError();
+    }
+    
+    public void updateError() {
+        String text = "Pay";
         
-        String error = "";
+        if (bill.table.size() == 0) text = "No product selected";
+        else if (bill.cash < bill.getTotal()) text = "Not enough cash";
         
-        if (bill.table.size() == 0) error = "No product selected";
-        else if (bill.cash < bill.getTotal()) error = "Not enough cash";
-        
-        errorLabel.setText(error);
+        payButton.setText(text);
     }
     
 
@@ -95,11 +98,10 @@ public class CartPage extends javax.swing.JPanel {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         payButton = new javax.swing.JButton();
-        cashLabel = new javax.swing.JTextField();
         vatLabel = new javax.swing.JLabel();
         shippingLabel = new javax.swing.JLabel();
         totalLabel = new javax.swing.JLabel();
-        errorLabel = new javax.swing.JLabel();
+        cashSpinner = new javax.swing.JSpinner();
         jScrollPane1 = new javax.swing.JScrollPane();
         shelf = new javax.swing.JPanel();
 
@@ -164,16 +166,6 @@ public class CartPage extends javax.swing.JPanel {
             }
         });
 
-        cashLabel.setForeground(new java.awt.Color(102, 102, 102));
-        cashLabel.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        cashLabel.setText("0.00");
-        cashLabel.setToolTipText("");
-        cashLabel.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cashLabelActionPerformed(evt);
-            }
-        });
-
         vatLabel.setForeground(new java.awt.Color(102, 102, 102));
         vatLabel.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         vatLabel.setText("₱0.00");
@@ -187,10 +179,17 @@ public class CartPage extends javax.swing.JPanel {
         totalLabel.setText("₱0.00");
         totalLabel.setAlignmentX(0.5F);
 
-        errorLabel.setBackground(new java.awt.Color(250, 219, 216));
-        errorLabel.setForeground(new java.awt.Color(205, 97, 85));
-        errorLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        errorLabel.setText("Error text");
+        cashSpinner.setModel(new javax.swing.SpinnerNumberModel(0.0d, 0.0d, null, 10.0d));
+        cashSpinner.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                cashSpinnerStateChanged(evt);
+            }
+        });
+        cashSpinner.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                cashSpinnerKeyTyped(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -204,23 +203,20 @@ public class CartPage extends javax.swing.JPanel {
                         .addGap(30, 30, 30))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(cashSpinner, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(payButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(cashLabel)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel3)
                                     .addComponent(jLabel5)
                                     .addComponent(jLabel6)
                                     .addComponent(jLabel7))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(totalLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(shippingLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 84, Short.MAX_VALUE)
                                     .addComponent(vatableLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(vatLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(errorLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(vatLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                         .addGap(15, 15, 15))))
         );
         jPanel1Layout.setVerticalGroup(
@@ -244,16 +240,14 @@ public class CartPage extends javax.swing.JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(totalLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(errorLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(3, 3, 3)
-                .addComponent(cashLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(cashSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(payButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(13, Short.MAX_VALUE))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
-        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(572, 130, 210, 240));
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(572, 130, 210, 230));
 
         jScrollPane1.setBackground(new java.awt.Color(232, 243, 214));
         jScrollPane1.setBorder(null);
@@ -279,22 +273,27 @@ public class CartPage extends javax.swing.JPanel {
     }//GEN-LAST:event_selectionButtonActionPerformed
 
     private void payButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_payButtonActionPerformed
+
         if (receiptPage == null) System.out.println("Null receipt page");
+        else if (!payButton.getText().equals("Pay")) System.out.println(payButton.getText());
         else {
             receiptPage.open(bill);
-            
             setVisible(false);
         }
     }//GEN-LAST:event_payButtonActionPerformed
 
-    private void cashLabelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cashLabelActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cashLabelActionPerformed
+    private void cashSpinnerStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_cashSpinnerStateChanged
+        bill.cash = (Double) cashSpinner.getValue();
+        updateError();
+    }//GEN-LAST:event_cashSpinnerStateChanged
+
+    private void cashSpinnerKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cashSpinnerKeyTyped
+
+    }//GEN-LAST:event_cashSpinnerKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField cashLabel;
-    private javax.swing.JLabel errorLabel;
+    private javax.swing.JSpinner cashSpinner;
     private javax.swing.JPanel header;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
