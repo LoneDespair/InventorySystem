@@ -352,13 +352,6 @@
         </Container>
       </SubComponents>
     </Container>
-    <Component class="inventorymanagementsystem.PurchasePage" name="purchaseSelection">
-      <Constraints>
-        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
-          <CardConstraints cardName="card3"/>
-        </Constraint>
-      </Constraints>
-    </Component>
     <Component class="inventorymanagementsystem.ProductList" name="productList">
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">

@@ -197,10 +197,11 @@ public class PurchaseOption extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void cartButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cartButtonActionPerformed
-        if (cartPage != null) {
+        if (cartPage == null) System.out.println("Null cartPage on purchaseOption");
+        else{
             cartPage.addGrocery(new Grocery(product, (Integer)countSpinner.getValue()));
+            setVisible(false);
         }
-        setVisible(false);
     }//GEN-LAST:event_cartButtonActionPerformed
 
     private void bgMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bgMousePressed

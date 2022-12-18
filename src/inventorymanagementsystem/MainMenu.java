@@ -14,6 +14,7 @@ import javax.swing.*;
  * @author user
  */
 public class MainMenu extends javax.swing.JFrame {
+    PurchasePage purchasePage;
     
     /**
      * Creates new form MainMenu
@@ -27,9 +28,17 @@ public class MainMenu extends javax.swing.JFrame {
     
      public MainMenu() {
         initComponents();
-        productList.home = homePage;
-        purchaseSelection.home = homePage;
         
+        
+        ReceiptPage receiptPage = new ReceiptPage(homePage);
+        CartPage cartPage = new CartPage(receiptPage);
+        purchasePage = new PurchasePage(cartPage);
+        
+        add(receiptPage, 0);
+        add(cartPage, 0);
+        add(purchasePage, 0);
+        
+        productList.home = homePage;
     }
      
     //public PurchasePage getPurchasePage() { return purchasePage; }
@@ -55,7 +64,6 @@ public class MainMenu extends javax.swing.JFrame {
         BottomPanel = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         userlabel = new javax.swing.JLabel();
-        purchaseSelection = new inventorymanagementsystem.PurchasePage();
         productList = new inventorymanagementsystem.ProductList();
         receiptPage = new inventorymanagementsystem.ReceiptPage();
 
@@ -190,7 +198,6 @@ public class MainMenu extends javax.swing.JFrame {
         homePage.add(BottomPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 540, 800, 60));
 
         getContentPane().add(homePage, "card2");
-        getContentPane().add(purchaseSelection, "card3");
         getContentPane().add(productList, "card4");
         getContentPane().add(receiptPage, "card5");
 
@@ -205,7 +212,7 @@ public class MainMenu extends javax.swing.JFrame {
 
     private void purchaseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_purchaseButtonActionPerformed
         homePage.setVisible(false);
-        purchaseSelection.open();
+        purchasePage.open();
     }//GEN-LAST:event_purchaseButtonActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -269,7 +276,6 @@ public class MainMenu extends javax.swing.JFrame {
     private javax.swing.JButton productButton;
     private inventorymanagementsystem.ProductList productList;
     private javax.swing.JButton purchaseButton;
-    private inventorymanagementsystem.PurchasePage purchaseSelection;
     private inventorymanagementsystem.ReceiptPage receiptPage;
     private javax.swing.JLabel userlabel;
     // End of variables declaration//GEN-END:variables

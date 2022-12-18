@@ -6,13 +6,15 @@ package inventorymanagementsystem;
 
 import java.nio.file.Paths;
 import javax.swing.ImageIcon;
+import javax.swing.JComponent;
 
 /**
  *
  * @author LoneDespair
  */
 public class ReceiptPage extends javax.swing.JPanel {
-
+    JComponent home;
+    
     /**
      * Creates new form ReceiptPage
      */
@@ -22,6 +24,12 @@ public class ReceiptPage extends javax.swing.JPanel {
         String path = Paths.get(System.getProperty("user.dir"), "src/inventorymanagementsystem/logo.png").toString();
         //ImageIcon imageIcon = new ImageIcon(path);
         //displayIcon.setIcon(ImageResizer.fitImageIcon(imageIcon, displayIcon.getSize()));
+    }
+    
+    public ReceiptPage(JComponent newHome) {
+        this();
+        home = newHome;
+        setVisible(false);
     }
     
     public void open() {
@@ -47,8 +55,6 @@ public class ReceiptPage extends javax.swing.JPanel {
         jLabel4 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
-        setAlignmentX(0.5F);
-        setAlignmentY(0.5F);
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(250, 171, 121));
@@ -57,6 +63,11 @@ public class ReceiptPage extends javax.swing.JPanel {
         homeButton.setBackground(new java.awt.Color(250, 171, 121));
         homeButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/inventorymanagementsystem/menu.png"))); // NOI18N
         homeButton.setBorderPainted(false);
+        homeButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                homeButtonActionPerformed(evt);
+            }
+        });
         jPanel1.add(homeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 112, 112));
 
         jLabel1.setBackground(new java.awt.Color(250, 171, 121));
@@ -91,6 +102,14 @@ public class ReceiptPage extends javax.swing.JPanel {
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 800, 490));
     }// </editor-fold>//GEN-END:initComponents
+
+    private void homeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeButtonActionPerformed
+        if (home == null) System.out.println("Null home on receipt");
+        else {
+            home.setVisible(true);
+            setVisible(false);
+        }
+    }//GEN-LAST:event_homeButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

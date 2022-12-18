@@ -21,16 +21,22 @@ public class PurchasePage extends javax.swing.JPanel {
      */
     public PurchasePage() {
         initComponents();
-        cartPage = new CartPage(selection);
-        purchaseOption = new PurchaseOption(cartPage);
+         shelfScroll.getVerticalScrollBar().setUnitIncrement(16);
+        
+        purchaseOption = new PurchaseOption();
         
         add(purchaseOption, 0);
-        add(cartPage, 0);
-        
         purchaseOption.setVisible(false);
-        cartPage.setVisible(false);
+    }
+    
+    public PurchasePage(CartPage newCartPage) {
+        this();
+        cartPage = newCartPage;
+        cartPage.purchasePage = this;
         
-        shelfScroll.getVerticalScrollBar().setUnitIncrement(16);
+        purchaseOption.cartPage = newCartPage;
+        home = newCartPage.receiptPage.home;
+        setVisible(false);
     }
     
     public void setup(PurchaseOption newPurchaseOption) {
@@ -163,7 +169,7 @@ public class PurchasePage extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void cartButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cartButtonActionPerformed
-        selection.setVisible(false);
+        setVisible(false);
         cartPage.open();
     }//GEN-LAST:event_cartButtonActionPerformed
 

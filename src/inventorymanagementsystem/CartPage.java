@@ -16,7 +16,8 @@ public class CartPage extends javax.swing.JPanel {
     static final double SHIPPING_FEE = 69;
     
     HashMap <Integer, CartGrocery> table = new HashMap<>();
-    JComponent purchaseSelection;
+    
+    PurchasePage purchasePage;
     ReceiptPage receiptPage;
 
     
@@ -28,9 +29,10 @@ public class CartPage extends javax.swing.JPanel {
         initComponents();
     }
     
-    public CartPage(JComponent newPurchaseSelection) {
+    public CartPage(ReceiptPage newReceiptPage) {
         this();
-        purchaseSelection = newPurchaseSelection;
+        receiptPage = newReceiptPage;
+        setVisible(false);
     }
     
     public void open() {
@@ -276,9 +278,11 @@ public class CartPage extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void selectionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectionButtonActionPerformed
-        if (purchaseSelection == null) { System.out.println("Null purchase page"); }
-        else { purchaseSelection.setVisible(true); }
-        setVisible(false);
+        if (purchasePage == null) System.out.println("Null purchase page");
+        else {
+            purchasePage.setVisible(true);
+            setVisible(false);
+        }
     }//GEN-LAST:event_selectionButtonActionPerformed
 
     private void payButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_payButtonActionPerformed
@@ -288,6 +292,8 @@ public class CartPage extends javax.swing.JPanel {
         }
         
         
+        
+        receiptPage.open();
     }//GEN-LAST:event_payButtonActionPerformed
 
     private void cashLabelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cashLabelActionPerformed
