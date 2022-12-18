@@ -286,14 +286,11 @@ public class CartPage extends javax.swing.JPanel {
     }//GEN-LAST:event_selectionButtonActionPerformed
 
     private void payButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_payButtonActionPerformed
-        if (receiptPage == null) {
-            System.out.println("Null receipt page");
-            return;
+        if (receiptPage == null) System.out.println("Null receipt page");
+        else {
+            receiptPage.open();
+            setVisible(false);
         }
-        
-        
-        
-        receiptPage.open();
     }//GEN-LAST:event_payButtonActionPerformed
 
     private void cashLabelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cashLabelActionPerformed

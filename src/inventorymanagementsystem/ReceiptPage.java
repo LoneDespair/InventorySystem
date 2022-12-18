@@ -33,7 +33,7 @@ public class ReceiptPage extends javax.swing.JPanel {
     }
     
     public void open() {
-        
+        setVisible(true);
     }
 
     /**
