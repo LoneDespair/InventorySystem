@@ -41,7 +41,7 @@ public class PurchaseOption extends javax.swing.JPanel {
         product = newProduct;
         
         nameLabel.setText(newProduct.name);
-        priceLabel.setText(newProduct.getStringPrice());
+        priceLabel.setText(Money.format(newProduct.price));
         imageIcon = FallbackIcon.getIcon(newProduct.image);
         displayIcon.setIcon(ImageResizer.fitImageIcon(imageIcon, displayIcon.getSize()));
     }

@@ -31,7 +31,8 @@ public class PurchaseProduct extends javax.swing.JPanel {
         initComponents();
         product = newProduct;
         nameLabel.setText(product.name);
-        priceLabel.setText(product.getStringPrice());
+        
+        priceLabel.setText(Money.format(product.price));
         
         imageIcon = FallbackIcon.getIcon(product.image);
         

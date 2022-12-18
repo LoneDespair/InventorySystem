@@ -34,10 +34,6 @@ public class Product extends LinkedList.Data{
         price = newPrice;
     }
     
-    static public String numToMoney(double num) { return String.format("₱%.2f", num); }
-    public String getStringPrice() { return numToMoney(price); }
-    
-    
     public void loadIcon(String path) {
         System.out.println(path);
         

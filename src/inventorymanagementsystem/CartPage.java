@@ -4,18 +4,12 @@
  */
 package inventorymanagementsystem;
 
-import java.util.HashMap;
-import javax.swing.JComponent;
-
 /**
  *
  * @author LoneDespair
  */
 public class CartPage extends javax.swing.JPanel {
-    static final double VAT = 0.12;
-    static final double SHIPPING_FEE = 69;
-    
-    HashMap <Integer, CartGrocery> table = new HashMap<>();
+    Bill bill = new Bill();
     
     PurchasePage purchasePage;
     ReceiptPage receiptPage;
@@ -33,6 +27,8 @@ public class CartPage extends javax.swing.JPanel {
         this();
         receiptPage = newReceiptPage;
         setVisible(false);
+        
+        updateSummary();
     }
     
     public void open() {
@@ -40,18 +36,18 @@ public class CartPage extends javax.swing.JPanel {
     }
     
     public void removeCartGrocery(CartGrocery cartGrocery) {
-        table.remove(cartGrocery.product.id);
+        bill.table.remove(cartGrocery.product.id);
         shelf.remove(cartGrocery);
         shelf.repaint();
     }
     
     public void addGrocery(Grocery newGrocery) {
         int id = newGrocery.product.id;
-        CartGrocery existingCartGrocery = table.getOrDefault(id, null);
+        CartGrocery existingCartGrocery = bill.table.getOrDefault(id, null);
         
         if (existingCartGrocery == null) {
             CartGrocery newCartGrocery = new CartGrocery(newGrocery, this);
-            table.put(id, newCartGrocery);
+            bill.table.put(id, newCartGrocery);
             shelf.add(newCartGrocery);
         } else {
             existingCartGrocery.append(newGrocery);
@@ -62,21 +58,20 @@ public class CartPage extends javax.swing.JPanel {
     
     
     public void updateSummary() {
-        System.out.println("Update summary");
-        double productTotal = 0;
+        bill.update();
         
-        for (CartGrocery cartGrocery : table.values()) {
-            productTotal += cartGrocery.product.price * cartGrocery.grocery.count;
-            System.out.println("Update summary " + cartGrocery.grocery.count);
-        }
+        vatableLabel.setText(Money.format(bill.getVatable()));
+        vatLabel.setText(Money.format(bill.getVat()));
         
-        double vat = productTotal * VAT;
+        totalLabel.setText(Money.format(bill.getTotal()));
+        shippingLabel.setText(Money.format(bill.getShippingFee()));
         
-        vatableLabel.setText(Product.numToMoney(productTotal -vat));
-        vatLabel.setText(Product.numToMoney(vat));
+        String error = "";
         
-        totalLabel.setText(Product.numToMoney(productTotal + SHIPPING_FEE));
-        shippingLabel.setText(Product.numToMoney(SHIPPING_FEE));
+        if (bill.table.size() == 0) error = "No product selected";
+        else if (bill.cash < bill.getTotal()) error = "Not enough cash";
+        
+        errorLabel.setText(error);
     }
     
 
@@ -104,13 +99,11 @@ public class CartPage extends javax.swing.JPanel {
         vatLabel = new javax.swing.JLabel();
         shippingLabel = new javax.swing.JLabel();
         totalLabel = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        errorLabel = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         shelf = new javax.swing.JPanel();
 
         setBackground(new java.awt.Color(232, 243, 214));
-        setAlignmentX(0.5F);
-        setAlignmentY(0.5F);
         setPreferredSize(new java.awt.Dimension(800, 600));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -194,10 +187,10 @@ public class CartPage extends javax.swing.JPanel {
         totalLabel.setText("₱0.00");
         totalLabel.setAlignmentX(0.5F);
 
-        jLabel4.setBackground(new java.awt.Color(250, 219, 216));
-        jLabel4.setForeground(new java.awt.Color(205, 97, 85));
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("Not enough cash");
+        errorLabel.setBackground(new java.awt.Color(250, 219, 216));
+        errorLabel.setForeground(new java.awt.Color(205, 97, 85));
+        errorLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        errorLabel.setText("Error text");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -227,7 +220,7 @@ public class CartPage extends javax.swing.JPanel {
                                     .addComponent(vatLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(errorLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(15, 15, 15))))
         );
         jPanel1Layout.setVerticalGroup(
@@ -252,7 +245,7 @@ public class CartPage extends javax.swing.JPanel {
                     .addComponent(jLabel7)
                     .addComponent(totalLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(errorLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(3, 3, 3)
                 .addComponent(cashLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -288,7 +281,8 @@ public class CartPage extends javax.swing.JPanel {
     private void payButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_payButtonActionPerformed
         if (receiptPage == null) System.out.println("Null receipt page");
         else {
-            receiptPage.open();
+            receiptPage.open(bill);
+            
             setVisible(false);
         }
     }//GEN-LAST:event_payButtonActionPerformed
@@ -300,11 +294,11 @@ public class CartPage extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField cashLabel;
+    private javax.swing.JLabel errorLabel;
     private javax.swing.JPanel header;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;

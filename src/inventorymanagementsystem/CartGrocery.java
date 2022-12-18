@@ -31,7 +31,7 @@ public class CartGrocery extends javax.swing.JPanel {
         cartPage = newCartPage;
         
         nameLabel.setText(product.name);
-        priceLabel.setText(product.getStringPrice());
+        priceLabel.setText(Money.format(product.price));
         imageIcon = FallbackIcon.getIcon(product.image);
         updateCount();
     }
@@ -43,7 +43,7 @@ public class CartGrocery extends javax.swing.JPanel {
     
     public void updateCount() {
         countBox.setValue(grocery.count);
-        totalLabel.setText(Product.numToMoney(product.price * grocery.count));
+        totalLabel.setText(Money.format(product.price * grocery.count));
         cartPage.updateSummary();
     }
 
@@ -148,7 +148,8 @@ public class CartGrocery extends javax.swing.JPanel {
 
     private void countBoxStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_countBoxStateChanged
         grocery.count = (Integer) countBox.getValue();
-        totalLabel.setText(Product.numToMoney(product.price * grocery.count));
+        
+        totalLabel.setText(Money.format(product.price * grocery.count));
         cartPage.updateSummary();
     }//GEN-LAST:event_countBoxStateChanged
 
