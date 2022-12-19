@@ -5,6 +5,7 @@
 package inventorymanagementsystem;
 
 import java.io.FileNotFoundException;
+import java.nio.file.Paths;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.*;
@@ -14,7 +15,13 @@ import javax.swing.*;
  * @author user
  */
 public class MainMenu extends javax.swing.JFrame {
+    String logoPath = Paths.get(System.getProperty("user.dir"), "src/inventorymanagementsystem/logo.png").toString();
+    
     PurchasePage purchasePage;
+    CartPage cartPage;
+    
+    
+    ImageIcon homeIcon = new ImageIcon(logoPath);
     
     /**
      * Creates new form MainMenu
@@ -31,7 +38,7 @@ public class MainMenu extends javax.swing.JFrame {
         
         
         ReceiptPage receiptPage = new ReceiptPage(homePage);
-        CartPage cartPage = new CartPage(receiptPage);
+        cartPage = new CartPage(receiptPage);
         purchasePage = new PurchasePage(cartPage);
         
         add(receiptPage, 0);
@@ -59,7 +66,7 @@ public class MainMenu extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         productButton = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        cartButton = new javax.swing.JButton();
         purchaseButton = new javax.swing.JButton();
         BottomPanel = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
@@ -79,37 +86,16 @@ public class MainMenu extends javax.swing.JFrame {
         HeaderPanel.setBackground(new java.awt.Color(250, 171, 120));
         HeaderPanel.setMaximumSize(new java.awt.Dimension(32767, 112));
         HeaderPanel.setPreferredSize(new java.awt.Dimension(800, 112));
+        HeaderPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Century Gothic", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(232, 243, 214));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("INVENTORY MANAGEMENT SYSTEM");
+        HeaderPanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(112, 31, -1, -1));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/inventorymanagementsystem/logo.png"))); // NOI18N
-
-        javax.swing.GroupLayout HeaderPanelLayout = new javax.swing.GroupLayout(HeaderPanel);
-        HeaderPanel.setLayout(HeaderPanelLayout);
-        HeaderPanelLayout.setHorizontalGroup(
-            HeaderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(HeaderPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(62, 62, 62))
-        );
-        HeaderPanelLayout.setVerticalGroup(
-            HeaderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(HeaderPanelLayout.createSequentialGroup()
-                .addGroup(HeaderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(HeaderPanelLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(HeaderPanelLayout.createSequentialGroup()
-                        .addGap(31, 31, 31)
-                        .addComponent(jLabel1)))
-                .addContainerGap())
-        );
+        HeaderPanel.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, -1, -1));
 
         homePage.add(HeaderPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, -1));
 
@@ -141,16 +127,21 @@ public class MainMenu extends javax.swing.JFrame {
         jButton5.setFocusable(false);
         jPanel2.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 10, 374, 200));
 
-        jButton3.setBackground(new java.awt.Color(252, 249, 190));
-        jButton3.setFont(new java.awt.Font("Century Gothic", 1, 24)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(250, 171, 120));
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/inventorymanagementsystem/LogsIcon.png"))); // NOI18N
-        jButton3.setText("LOGS");
-        jButton3.setToolTipText("");
-        jButton3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(250, 171, 120), 2, true));
-        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton3.setFocusable(false);
-        jPanel2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 220, 374, 200));
+        cartButton.setBackground(new java.awt.Color(252, 249, 190));
+        cartButton.setFont(new java.awt.Font("Century Gothic", 1, 24)); // NOI18N
+        cartButton.setForeground(new java.awt.Color(250, 171, 120));
+        cartButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/inventorymanagementsystem/CartHome.png"))); // NOI18N
+        cartButton.setText("CART");
+        cartButton.setToolTipText("");
+        cartButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(250, 171, 120), 2, true));
+        cartButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        cartButton.setFocusable(false);
+        cartButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cartButtonActionPerformed(evt);
+            }
+        });
+        jPanel2.add(cartButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 220, 374, 200));
 
         purchaseButton.setBackground(new java.awt.Color(252, 249, 190));
         purchaseButton.setFont(new java.awt.Font("Century Gothic", 1, 24)); // NOI18N
@@ -228,6 +219,11 @@ public class MainMenu extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void cartButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cartButtonActionPerformed
+        homePage.setVisible(false);
+        cartPage.open(homePage, homeIcon);
+    }//GEN-LAST:event_cartButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -266,9 +262,9 @@ public class MainMenu extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel BottomPanel;
     private javax.swing.JPanel HeaderPanel;
+    private javax.swing.JButton cartButton;
     private javax.swing.JPanel homePage;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel4;

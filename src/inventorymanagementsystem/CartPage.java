@@ -4,6 +4,9 @@
  */
 package inventorymanagementsystem;
 
+import javax.swing.ImageIcon;
+import javax.swing.JComponent;
+
 /**
  *
  * @author LoneDespair
@@ -11,10 +14,9 @@ package inventorymanagementsystem;
 public class CartPage extends javax.swing.JPanel {
     Bill bill = new Bill();
     
-    PurchasePage purchasePage;
+    JComponent previous;
     ReceiptPage receiptPage;
 
-    
     /**
      * Creates new form CartPage
      */
@@ -31,7 +33,9 @@ public class CartPage extends javax.swing.JPanel {
         updateSummary();
     }
     
-    public void open() {
+    public void open(JComponent newPrevious, ImageIcon backIcon) {
+        previous = newPrevious;
+        backButton.setIcon(backIcon);
         setVisible(true);
     }
     
@@ -89,7 +93,7 @@ public class CartPage extends javax.swing.JPanel {
     private void initComponents() {
 
         header = new javax.swing.JPanel();
-        selectionButton = new javax.swing.JButton();
+        backButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
@@ -114,16 +118,16 @@ public class CartPage extends javax.swing.JPanel {
         header.setPreferredSize(new java.awt.Dimension(800, 112));
         header.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        selectionButton.setBackground(new java.awt.Color(250, 171, 121));
-        selectionButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/inventorymanagementsystem/list.png"))); // NOI18N
-        selectionButton.setBorderPainted(false);
-        selectionButton.setPreferredSize(new java.awt.Dimension(112, 112));
-        selectionButton.addActionListener(new java.awt.event.ActionListener() {
+        backButton.setBackground(new java.awt.Color(250, 171, 121));
+        backButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/inventorymanagementsystem/cart.png"))); // NOI18N
+        backButton.setBorderPainted(false);
+        backButton.setPreferredSize(new java.awt.Dimension(112, 112));
+        backButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                selectionButtonActionPerformed(evt);
+                backButtonActionPerformed(evt);
             }
         });
-        header.add(selectionButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        header.add(backButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         jLabel1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(232, 243, 214));
@@ -265,13 +269,13 @@ public class CartPage extends javax.swing.JPanel {
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 112, 560, 488));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void selectionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectionButtonActionPerformed
-        if (purchasePage == null) System.out.println("Null purchase page");
+    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
+        if (previous == null) System.out.println("Null purchase page");
         else {
-            purchasePage.setVisible(true);
+            previous.setVisible(true);
             setVisible(false);
         }
-    }//GEN-LAST:event_selectionButtonActionPerformed
+    }//GEN-LAST:event_backButtonActionPerformed
 
     private void payButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_payButtonActionPerformed
 
@@ -299,6 +303,7 @@ public class CartPage extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton backButton;
     private javax.swing.JSpinner cashSpinner;
     private javax.swing.JPanel header;
     private javax.swing.JLabel jLabel1;
@@ -310,7 +315,6 @@ public class CartPage extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton payButton;
-    private javax.swing.JButton selectionButton;
     private javax.swing.JPanel shelf;
     private javax.swing.JLabel shippingLabel;
     private javax.swing.JLabel totalLabel;

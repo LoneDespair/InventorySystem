@@ -4,6 +4,8 @@
  */
 package inventorymanagementsystem;
 
+import java.nio.file.Paths;
+import javax.swing.ImageIcon;
 import javax.swing.JComponent;
 
 
@@ -12,6 +14,9 @@ import javax.swing.JComponent;
  * @author LoneDespair
  */
 public class PurchasePage extends javax.swing.JPanel {
+    String listPath = Paths.get(System.getProperty("user.dir"), "src/inventorymanagementsystem/list.png").toString();
+    ImageIcon listIcon = new ImageIcon(listPath);
+    
     PurchaseOption purchaseOption ;
     CartPage cartPage;
     JComponent home;
@@ -32,7 +37,7 @@ public class PurchasePage extends javax.swing.JPanel {
     public PurchasePage(CartPage newCartPage) {
         this();
         cartPage = newCartPage;
-        cartPage.purchasePage = this;
+        cartPage.previous = this;
         
         purchaseOption.cartPage = newCartPage;
         home = newCartPage.receiptPage.home;
@@ -170,7 +175,7 @@ public class PurchasePage extends javax.swing.JPanel {
 
     private void cartButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cartButtonActionPerformed
         setVisible(false);
-        cartPage.open();
+        cartPage.open(this, listIcon);
     }//GEN-LAST:event_cartButtonActionPerformed
 
 
