@@ -21,6 +21,7 @@ import java.util.HashMap;
 import java.util.Scanner;
 import java.util.TreeMap;
 import javax.imageio.ImageIO;
+import javax.swing.Action;
 import javax.swing.ImageIcon;
 import javax.swing.JComponent;
 import javax.swing.JOptionPane;
@@ -538,8 +539,13 @@ public class ProductList extends javax.swing.JPanel {
             System.out.println("Errrorr");
         }
         
-        
         JFileChooser fileChooser = new JFileChooser(System.getProperty("user.home") + "/Downloads");
+        Action details = fileChooser.getActionMap().get("viewTypeDetails");
+        details.actionPerformed(null);
+        
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("Images", "jpg", "png");
+        fileChooser.setFileFilter(filter);
+        fileChooser.setAcceptAllFileFilterUsed(false);
         
         try {
             UIManager.setLookAndFeel(original);
@@ -547,14 +553,6 @@ public class ProductList extends javax.swing.JPanel {
         catch (Exception e) {
             System.out.println("Errrorr");
         }
-        
-        
-        
-        
-        //new FileNameExtensionFilter("");
-        FileNameExtensionFilter filter = new FileNameExtensionFilter("Images", "jpg", "png");
-        fileChooser.setFileFilter(filter);
-        fileChooser.setAcceptAllFileFilterUsed(false);
         
         if (fileChooser.showSaveDialog(null) == 0) {
             

@@ -38,7 +38,6 @@ public class PurchaseProduct extends javax.swing.JPanel implements ProductEvent 
     }
     
     public void update() {
-        System.out.println("UPDATE PRODUCT " + product.name);
         nameLabel.setText(product.name);
         
         priceLabel.setText(Money.format(product.price));
