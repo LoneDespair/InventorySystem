@@ -6,6 +6,7 @@ package inventorymanagementsystem;
 
 import javax.swing.ImageIcon;
 import javax.swing.JComponent;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -278,9 +279,11 @@ public class CartPage extends javax.swing.JPanel {
     }//GEN-LAST:event_backButtonActionPerformed
 
     private void payButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_payButtonActionPerformed
-
+        
         if (receiptPage == null) System.out.println("Null receipt page");
-        else if (!payButton.getText().equals("Pay")) System.out.println(payButton.getText());
+        else if (!payButton.getText().equals("Pay")) {
+            JOptionPane.showMessageDialog(null, payButton.getText());
+        }
         else {
             receiptPage.open(bill);
             
