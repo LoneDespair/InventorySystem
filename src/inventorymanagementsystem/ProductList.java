@@ -30,6 +30,7 @@ import javax.swing.table.TableRowSorter;
 
 import javax.swing.JFileChooser;
 import javax.swing.UIManager;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
  *
@@ -59,13 +60,13 @@ public class ProductList extends javax.swing.JPanel {
      */
     public ProductList() {
         initComponents();
+        populate();
+        sort();
         open();
     }
     
     public void open() {
         setVisible(true);
-        populate();
-        sort();
     }
 
     private void sort() {
@@ -109,8 +110,15 @@ public class ProductList extends javax.swing.JPanel {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
+    }
+    
+    public void update() {
+        model.setRowCount(0);
         
+        for (Product product : hashTable.values()) {
+            model.addRow(new Object[] {product.id, product.name, product.quantity, product.price});
+        }
+        updater.update();
     }
     
     
@@ -262,6 +270,11 @@ public class ProductList extends javax.swing.JPanel {
         jLabel10.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         jLabel10.setText("Search:");
 
+        searchField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchFieldActionPerformed(evt);
+            }
+        });
         searchField.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 searchFieldKeyReleased(evt);
@@ -403,9 +416,7 @@ public class ProductList extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
-        model = (DefaultTableModel)jTable1.getModel();
-        table = jTable1;
-        updater.update(model, table);
+        updater.update();
     }//GEN-LAST:event_btnUpdateActionPerformed
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
@@ -456,7 +467,7 @@ public class ProductList extends javax.swing.JPanel {
             newPriceField.setText(null);
             hashTable.put(product.id, product);
 
-            updater.update(model, table);
+            updater.update();
         }
         else {
             JOptionPane.showMessageDialog(null, "Please fill in all parameters before adding.");
@@ -490,7 +501,7 @@ public class ProductList extends javax.swing.JPanel {
             product.quantity = Integer.parseInt(editQty);
             product.price = Double.parseDouble(editPrice);
             
-            updater.update(model, table);
+            updater.update();
         }
         else
         JOptionPane.showMessageDialog(null, "Please do not leave a parameter empty.");
@@ -507,7 +518,7 @@ public class ProductList extends javax.swing.JPanel {
             model.removeRow(rowSelected);
             int i;
             
-            updater.update(model, table);
+            updater.update();
         }
         else
         JOptionPane.showMessageDialog(null, "Please select an item.");
@@ -520,6 +531,7 @@ public class ProductList extends javax.swing.JPanel {
         TableRowSorter <DefaultTableModel> sorter = new TableRowSorter <DefaultTableModel> (model);
         table.setRowSorter(sorter);
         sorter.setRowFilter(RowFilter.regexFilter(search));
+       
 
     }//GEN-LAST:event_searchFieldKeyReleased
 
@@ -528,7 +540,7 @@ public class ProductList extends javax.swing.JPanel {
         table = (JTable)jTable1;
         for(int i=model.getRowCount()-1; i>=0; i--)
         model.removeRow(i);
-        updater.update(model, table);
+        updater.update();
     }//GEN-LAST:event_btnClearActionPerformed
 
     private void imageButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imageButtonActionPerformed
@@ -540,6 +552,10 @@ public class ProductList extends javax.swing.JPanel {
         }
         
         JFileChooser fileChooser = new JFileChooser();
+        //new FileNameExtensionFilter("");
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("Images", "jpg", "png");
+        fileChooser.setFileFilter(filter);
+        fileChooser.setAcceptAllFileFilterUsed(false);
         
         if (fileChooser.showSaveDialog(null) == 0) {
             
@@ -569,6 +585,10 @@ public class ProductList extends javax.swing.JPanel {
         setVisible(false);
         if (home != null) home.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void searchFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_searchFieldActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

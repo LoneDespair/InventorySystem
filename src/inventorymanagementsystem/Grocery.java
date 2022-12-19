@@ -19,6 +19,6 @@ public class Grocery {
     }
     
     
-    public double getCost() { return count * product.price; }
+    public double getTotal() { return count * product.price; }
     
 }

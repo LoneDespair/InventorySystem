@@ -15,7 +15,7 @@ import javax.swing.*;
  * @author user
  */
 public class MainMenu extends javax.swing.JFrame {
-    String logoPath = Paths.get(System.getProperty("user.dir"), "src/inventorymanagementsystem/logo.png").toString();
+    String logoPath = Paths.get(System.getProperty("user.dir"), "src/inventorymanagementsystem/menu.png").toString();
     
     PurchasePage purchasePage;
     CartPage cartPage;
@@ -37,7 +37,7 @@ public class MainMenu extends javax.swing.JFrame {
         initComponents();
         
         
-        ReceiptPage receiptPage = new ReceiptPage(homePage);
+        ReceiptPage receiptPage = new ReceiptPage(homePage, productList);
         cartPage = new CartPage(receiptPage);
         purchasePage = new PurchasePage(cartPage);
         
@@ -46,6 +46,7 @@ public class MainMenu extends javax.swing.JFrame {
         add(purchasePage, 0);
         
         productList.home = homePage;
+        user.home = homePage;
     }
      
     //public PurchasePage getPurchasePage() { return purchasePage; }
@@ -65,7 +66,7 @@ public class MainMenu extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         productButton = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        usersButton = new javax.swing.JButton();
         cartButton = new javax.swing.JButton();
         purchaseButton = new javax.swing.JButton();
         BottomPanel = new javax.swing.JPanel();
@@ -73,6 +74,7 @@ public class MainMenu extends javax.swing.JFrame {
         userlabel = new javax.swing.JLabel();
         productList = new inventorymanagementsystem.ProductList();
         receiptPage = new inventorymanagementsystem.ReceiptPage();
+        user = new inventorymanagementsystem.User();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(800, 600));
@@ -117,15 +119,20 @@ public class MainMenu extends javax.swing.JFrame {
         });
         jPanel2.add(productButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 374, 200));
 
-        jButton5.setBackground(new java.awt.Color(252, 249, 190));
-        jButton5.setFont(new java.awt.Font("Century Gothic", 1, 24)); // NOI18N
-        jButton5.setForeground(new java.awt.Color(250, 171, 120));
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/inventorymanagementsystem/UsersIcon.png"))); // NOI18N
-        jButton5.setText("USERS");
-        jButton5.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(250, 171, 120), 2, true));
-        jButton5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton5.setFocusable(false);
-        jPanel2.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 10, 374, 200));
+        usersButton.setBackground(new java.awt.Color(252, 249, 190));
+        usersButton.setFont(new java.awt.Font("Century Gothic", 1, 24)); // NOI18N
+        usersButton.setForeground(new java.awt.Color(250, 171, 120));
+        usersButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/inventorymanagementsystem/UsersIcon.png"))); // NOI18N
+        usersButton.setText("USERS");
+        usersButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(250, 171, 120), 2, true));
+        usersButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        usersButton.setFocusable(false);
+        usersButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                usersButtonActionPerformed(evt);
+            }
+        });
+        jPanel2.add(usersButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 10, 374, 200));
 
         cartButton.setBackground(new java.awt.Color(252, 249, 190));
         cartButton.setFont(new java.awt.Font("Century Gothic", 1, 24)); // NOI18N
@@ -191,6 +198,7 @@ public class MainMenu extends javax.swing.JFrame {
         getContentPane().add(homePage, "card2");
         getContentPane().add(productList, "card4");
         getContentPane().add(receiptPage, "card5");
+        getContentPane().add(user, "card5");
 
         pack();
         setLocationRelativeTo(null);
@@ -223,6 +231,11 @@ public class MainMenu extends javax.swing.JFrame {
         homePage.setVisible(false);
         cartPage.open(homePage, homeIcon);
     }//GEN-LAST:event_cartButtonActionPerformed
+
+    private void usersButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usersButtonActionPerformed
+        homePage.setVisible(false);
+        user.setVisible(true);
+    }//GEN-LAST:event_usersButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -265,7 +278,6 @@ public class MainMenu extends javax.swing.JFrame {
     private javax.swing.JButton cartButton;
     private javax.swing.JPanel homePage;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel2;
@@ -273,6 +285,8 @@ public class MainMenu extends javax.swing.JFrame {
     private inventorymanagementsystem.ProductList productList;
     private javax.swing.JButton purchaseButton;
     private inventorymanagementsystem.ReceiptPage receiptPage;
+    private inventorymanagementsystem.User user;
     private javax.swing.JLabel userlabel;
+    private javax.swing.JButton usersButton;
     // End of variables declaration//GEN-END:variables
 }

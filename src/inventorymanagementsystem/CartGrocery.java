@@ -77,6 +77,7 @@ public class CartGrocery extends javax.swing.JPanel {
         holder.setPreferredSize(new java.awt.Dimension(500, 117));
         holder.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        remove.setBackground(new java.awt.Color(250, 219, 216));
         remove.setForeground(new java.awt.Color(102, 102, 102));
         remove.setText("Remove");
         remove.setFocusable(false);

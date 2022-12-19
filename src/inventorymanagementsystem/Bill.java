@@ -24,7 +24,7 @@ public class Bill {
         groceryTotal = 0;
         
         for (CartGrocery cartGrocery : table.values()) {
-            groceryTotal += cartGrocery.product.price * cartGrocery.grocery.count;
+            groceryTotal += cartGrocery.grocery.getTotal();
         }
     }
     
