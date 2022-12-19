@@ -6,6 +6,7 @@ package inventorymanagementsystem;
 
 import java.awt.Color;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import javax.swing.SpinnerNumberModel;
 
 /**
@@ -44,16 +45,23 @@ public class PurchaseOption extends javax.swing.JPanel {
         priceLabel.setText(Money.format(newProduct.price));
         imageIcon = FallbackIcon.getIcon(newProduct.image);
         displayIcon.setIcon(ImageResizer.fitImageIcon(imageIcon, displayIcon.getSize()));
-        
+        stockLabel.setText(Integer.toString(product.quantity));
         
         SpinnerNumberModel model = (SpinnerNumberModel) countSpinner.getModel();
         
-        model.setValue(Math.min(product.quantity, 0));
+        model.setValue(Math.min(product.quantity, 1));
         model.setMaximum(product.quantity);
         
-        if (newProduct.quantity == 0) confirmButton.setText("Out of stock");
-           
-            
+        if (cartPage == null) return;
+        CartGrocery cartGrocery = cartPage.bill.table.get(product.id);
+        
+        if (cartGrocery != null) {
+            Grocery grocery = cartGrocery.grocery;
+            model.setValue(grocery.count);
+            confirmButton.setText("Update quantity");
+        }
+        else if (newProduct.quantity == 0) confirmButton.setText("Out of stock");
+        else confirmButton.setText("Add to cart");
     }
     
 
@@ -74,6 +82,8 @@ public class PurchaseOption extends javax.swing.JPanel {
         priceLabel = new javax.swing.JLabel();
         confirmButton = new javax.swing.JButton();
         coloredButton1 = new inventorymanagementsystem.ColoredButton();
+        jLabel2 = new javax.swing.JLabel();
+        stockLabel = new javax.swing.JLabel();
         bg = new inventorymanagementsystem.InputConsumer();
 
         setBackground(new java.awt.Color(51, 51, 255));
@@ -111,7 +121,7 @@ public class PurchaseOption extends javax.swing.JPanel {
         priceLabel.setText("₱0.00");
 
         confirmButton.setForeground(new java.awt.Color(102, 102, 102));
-        confirmButton.setText("Add to cart");
+        confirmButton.setText("Confirm button");
         confirmButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 confirmButtonActionPerformed(evt);
@@ -129,31 +139,41 @@ public class PurchaseOption extends javax.swing.JPanel {
             }
         });
 
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel2.setText("Stock");
+
+        stockLabel.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        stockLabel.setForeground(new java.awt.Color(102, 102, 102));
+        stockLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        stockLabel.setText("0");
+
         javax.swing.GroupLayout contentLayout = new javax.swing.GroupLayout(content);
         content.setLayout(contentLayout);
         contentLayout.setHorizontalGroup(
             contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(contentLayout.createSequentialGroup()
-                .addGap(243, 243, 243)
+                .addGap(25, 25, 25)
+                .addComponent(displayIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(contentLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(coloredButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(nameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(nameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 381, Short.MAX_VALUE)
                     .addGroup(contentLayout.createSequentialGroup()
-                        .addGroup(contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(priceLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(confirmButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, contentLayout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(countSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(213, Short.MAX_VALUE))))
-            .addGroup(contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, contentLayout.createSequentialGroup()
-                    .addContainerGap(24, Short.MAX_VALUE)
-                    .addComponent(displayIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(400, Short.MAX_VALUE)))
+                        .addGroup(contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(priceLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 187, Short.MAX_VALUE)
+                            .addGroup(contentLayout.createSequentialGroup()
+                                .addGroup(contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 71, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(countSpinner, javax.swing.GroupLayout.DEFAULT_SIZE, 96, Short.MAX_VALUE)
+                                    .addComponent(stockLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(confirmButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap())))
         );
         contentLayout.setVerticalGroup(
             contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -162,21 +182,24 @@ public class PurchaseOption extends javax.swing.JPanel {
                 .addComponent(nameLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(priceLabel)
-                .addGap(32, 32, 32)
-                .addGroup(contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(countSpinner, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(stockLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(5, 5, 5)
+                .addGroup(contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(countSpinner, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(confirmButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(42, Short.MAX_VALUE))
+                .addGap(41, 41, 41))
             .addGroup(contentLayout.createSequentialGroup()
                 .addComponent(coloredButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, contentLayout.createSequentialGroup()
-                    .addContainerGap(25, Short.MAX_VALUE)
-                    .addComponent(displayIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(25, Short.MAX_VALUE)))
+            .addGroup(contentLayout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addComponent(displayIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         add(content);
@@ -207,7 +230,9 @@ public class PurchaseOption extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void confirmButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmButtonActionPerformed
+
         if (cartPage == null) System.out.println("Null cartPage on purchaseOption");
+        else if (product.quantity == 0) JOptionPane.showMessageDialog(null, "Watchu doing? product is out of stock");
         else{
             cartPage.addGrocery(new Grocery(product, (Integer)countSpinner.getValue()));
             setVisible(false);
@@ -239,7 +264,9 @@ public class PurchaseOption extends javax.swing.JPanel {
     private javax.swing.JSpinner countSpinner;
     private javax.swing.JLabel displayIcon;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel nameLabel;
     private javax.swing.JLabel priceLabel;
+    private javax.swing.JLabel stockLabel;
     // End of variables declaration//GEN-END:variables
 }

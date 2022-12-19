@@ -58,8 +58,9 @@ public class CartPage extends javax.swing.JPanel{
             CartGrocery newCartGrocery = new CartGrocery(newGrocery, this);
             bill.table.put(id, newCartGrocery);
             shelf.add(newCartGrocery);
+
         } else {
-            existingCartGrocery.append(newGrocery);
+            existingCartGrocery.grocery.count = newGrocery.count;
         }
         
         updateSummary();
