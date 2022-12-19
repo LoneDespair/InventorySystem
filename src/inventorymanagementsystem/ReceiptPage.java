@@ -40,6 +40,7 @@ public class ReceiptPage extends javax.swing.JPanel {
     
     public void open(Bill bill) {
         setVisible(true);
+        tableModel.setRowCount(0);
         
         for (CartGrocery cartGrocery : bill.table.values()) {
             Product product = cartGrocery.product;
