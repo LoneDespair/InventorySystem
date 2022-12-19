@@ -30,6 +30,7 @@ import javax.swing.table.TableRowSorter;
 
 import javax.swing.JFileChooser;
 import javax.swing.UIManager;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
  *
@@ -540,6 +541,10 @@ public class ProductList extends javax.swing.JPanel {
         }
         
         JFileChooser fileChooser = new JFileChooser();
+        //new FileNameExtensionFilter("");
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("Images", "jpg", "png");
+        fileChooser.setFileFilter(filter);
+        fileChooser.setAcceptAllFileFilterUsed(false);
         
         if (fileChooser.showSaveDialog(null) == 0) {
             
