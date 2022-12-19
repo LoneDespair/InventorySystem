@@ -19,6 +19,7 @@ import java.nio.file.Paths;
 import java.util.Base64;
 import java.util.HashMap;
 import java.util.Scanner;
+import java.util.TreeMap;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JComponent;
@@ -42,18 +43,14 @@ public class ProductList extends javax.swing.JPanel {
     ProductListUpdate updater = new ProductListUpdate();
     String listFilePath = Paths.get(System.getProperty("user.dir"),"src/inventorymanagementsystem/productList.txt").toString();
     String tempFilePath = Paths.get(System.getProperty("user.dir"),"src/inventorymanagementsystem/temp.txt").toString();
-    static HashMap <Integer, Product> hashTable = new HashMap <Integer, Product>();    
+    static TreeMap<Integer, Product> productTree = new TreeMap<>();    
+    
+    
     DefaultTableModel model;
     JTable table;
     JComponent home;
     
     BufferedImage selectedImage;
-                
-            /*
-            BufferedImage image = ImageIO.read(fileChooser.getSelectedFile());
-            ByteArrayOutputStream stream = new ByteArrayOutputStream();
-            ImageIO.write(image, "png", stream);
-            String textIcon = Base64.getEncoder().encodeToString(stream.toByteArray())*/
     
     
     /**
@@ -105,7 +102,7 @@ public class ProductList extends javax.swing.JPanel {
                     
                 }
                 
-                hashTable.put(product.id, product);
+                productTree.put(product.id, product);
             }             
             file.close();
         } catch (IOException e) {
@@ -114,12 +111,16 @@ public class ProductList extends javax.swing.JPanel {
     }
     
     public void update() {
+        populate();
+        sort();
+        
+        /*
         model.setRowCount(0);
         
         for (Product product : hashTable.values()) {
             model.addRow(new Object[] {product.id, product.name, product.quantity, product.price});
         }
-        updater.update();
+        updater.update();*/
     }
     
     
@@ -433,7 +434,7 @@ public class ProductList extends javax.swing.JPanel {
             newNameField.setText(null);
             newQtyField.setText(null);
             newPriceField.setText(null);
-            hashTable.put(product.id, product);
+            productTree.put(product.id, product);
 
             updater.update();
         }
@@ -463,7 +464,7 @@ public class ProductList extends javax.swing.JPanel {
             model.setValueAt(editPrice, rowSelected, 3);
             
             int id = Integer.parseInt(String.valueOf(model.getValueAt(rowSelected, 0)));
-            Product product = hashTable.get(id);
+            Product product = productTree.get(id);
             
             product.name = editName;
             product.quantity = Integer.parseInt(editQty);
@@ -481,7 +482,7 @@ public class ProductList extends javax.swing.JPanel {
         int rowSelected = table.getSelectedRow();
         if(rowSelected!=-1) {
             int id = Integer.parseInt(String.valueOf(model.getValueAt(rowSelected, 0)));
-            hashTable.remove(id);
+            productTree.remove(id);
             
             model.removeRow(rowSelected);
             int i;

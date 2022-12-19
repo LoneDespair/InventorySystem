@@ -28,7 +28,7 @@ public class ProductListUpdate {
     public void update() {
         try {
             FileWriter writer = new FileWriter(tempFilePath);
-            for (Product product : ProductList.hashTable.values()) {
+            for (Product product : ProductList.productTree.values()) {
                 String textIcon = "";
                 
                 if (product.image != null) {
