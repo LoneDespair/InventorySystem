@@ -219,11 +219,12 @@ public class MainMenu extends javax.swing.JFrame {
         
         if(choice == 0){
             try {
-                new LoginScreen().setVisible(true);
+                new LoginScreen(this);
             } catch (Exception e) {
                 Logger.getLogger(MainMenu.class.getName()).log(Level.SEVERE, null, e);
             }
-            dispose();
+            
+            setVisible(false);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 

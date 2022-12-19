@@ -159,7 +159,7 @@ public class Splash extends javax.swing.JFrame {
      */
     public static void main(String args[]) throws FileNotFoundException {
         // Bypass will load the Main Menu directly
-        boolean bypass = false;
+        boolean bypass = true;
         MainMenu menu = new MainMenu();
         
         if (bypass) menu.open("@bypass");

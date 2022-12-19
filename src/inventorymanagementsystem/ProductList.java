@@ -29,6 +29,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 
 import javax.swing.JFileChooser;
+import javax.swing.LookAndFeel;
 import javax.swing.UIManager;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
@@ -544,6 +545,8 @@ public class ProductList extends javax.swing.JPanel {
     }//GEN-LAST:event_btnClearActionPerformed
 
     private void imageButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imageButtonActionPerformed
+        LookAndFeel original = UIManager.getLookAndFeel();
+        
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         }
@@ -552,6 +555,17 @@ public class ProductList extends javax.swing.JPanel {
         }
         
         JFileChooser fileChooser = new JFileChooser();
+        
+        try {
+            //UIManager.setLookAndFeel(original);
+        }
+        catch (Exception e) {
+            System.out.println("Errrorr");
+        }
+        
+        
+        
+        
         //new FileNameExtensionFilter("");
         FileNameExtensionFilter filter = new FileNameExtensionFilter("Images", "jpg", "png");
         fileChooser.setFileFilter(filter);
@@ -579,6 +593,9 @@ public class ProductList extends javax.swing.JPanel {
         else {
             System.out.println("cancel");
         }
+        
+        
+        
     }//GEN-LAST:event_imageButtonActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
