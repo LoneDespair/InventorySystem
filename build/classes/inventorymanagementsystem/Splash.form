@@ -136,7 +136,7 @@
                   <Color blue="d6" green="f3" red="e8" type="rgb"/>
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
-                <Property name="text" type="java.lang.String" value="INVENTORY MANAGEMENT"/>
+                <Property name="text" type="java.lang.String" value="LE"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel4">
@@ -169,7 +169,7 @@
               <Color blue="78" green="ab" red="fa" type="rgb"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
-            <Property name="text" type="java.lang.String" value="SYSTEM"/>
+            <Property name="text" type="java.lang.String" value="BODEGA"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel5">

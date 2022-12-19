@@ -81,7 +81,6 @@ public class MainMenu extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(800, 600));
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(800, 600));
         getContentPane().setLayout(new java.awt.CardLayout());
 
         homePage.setBackground(new java.awt.Color(232, 243, 214));
@@ -95,8 +94,8 @@ public class MainMenu extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Century Gothic", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(232, 243, 214));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("INVENTORY MANAGEMENT SYSTEM");
-        HeaderPanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(112, 31, -1, -1));
+        jLabel1.setText("LE BODEGA");
+        HeaderPanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 31, 780, -1));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/inventorymanagementsystem/logo.png"))); // NOI18N
         HeaderPanel.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, -1, -1));

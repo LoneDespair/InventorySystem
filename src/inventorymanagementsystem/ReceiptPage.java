@@ -131,7 +131,7 @@ public class ReceiptPage extends javax.swing.JPanel {
         jLabel3.setBackground(new java.awt.Color(250, 171, 121));
         jLabel3.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 16)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel3.setText("Inventory Management System");
+        jLabel3.setText("Le Bodega");
 
         jLabel5.setForeground(new java.awt.Color(102, 102, 102));
         jLabel5.setText("TEL NO: #87000");
