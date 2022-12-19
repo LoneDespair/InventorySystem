@@ -112,7 +112,7 @@ public class ProductList extends javax.swing.JPanel {
         }
     }
     
-    private void update() {
+    public void update() {
         model.setRowCount(0);
         
         for (Product product : hashTable.values()) {

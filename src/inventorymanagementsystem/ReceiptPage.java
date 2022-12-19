@@ -17,6 +17,8 @@ import javax.swing.table.DefaultTableModel;
  */
 public class ReceiptPage extends javax.swing.JPanel {
     JComponent home;
+    ProductList productList;
+    
     DefaultTableModel tableModel;
     
     /**
@@ -29,9 +31,10 @@ public class ReceiptPage extends javax.swing.JPanel {
         tableModel = (DefaultTableModel) table.getModel();
     }
     
-    public ReceiptPage(JComponent newHome) {
+    public ReceiptPage(JComponent newHome, ProductList newProductList) {
         this();
         home = newHome;
+        productList = newProductList;
         setVisible(false);
     }
     
@@ -41,13 +44,10 @@ public class ReceiptPage extends javax.swing.JPanel {
         for (CartGrocery cartGrocery : bill.table.values()) {
             Product product = cartGrocery.product;
             Grocery grocery = cartGrocery.grocery;
+            product.quantity -= grocery.count;
             
-            tableModel.addRow(new Object[] {product.name, grocery.count, 
-                    Money.format(product.price), Money.format(grocery.getTotal())});
-            
-            
+            tableModel.addRow(new Object[] {product.name, grocery.count, Money.format(product.price), Money.format(grocery.getTotal())});
         }
-        
         
         double cash = bill.cash;
         
@@ -59,7 +59,7 @@ public class ReceiptPage extends javax.swing.JPanel {
         cashLabel.setText(Money.format(cash));
         changeLabel.setText(Money.format(cash - bill.getTotal()));
         
-        
+        if (productList != null) productList.update();
     }
 
     /**

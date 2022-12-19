@@ -37,7 +37,7 @@ public class MainMenu extends javax.swing.JFrame {
         initComponents();
         
         
-        ReceiptPage receiptPage = new ReceiptPage(homePage);
+        ReceiptPage receiptPage = new ReceiptPage(homePage, productList);
         cartPage = new CartPage(receiptPage);
         purchasePage = new PurchasePage(cartPage);
         
