@@ -24,12 +24,14 @@ public class CartPage extends javax.swing.JPanel {
     
     public CartPage() {
         initComponents();
+        scroll.getVerticalScrollBar().setUnitIncrement(16);
     }
     
     public CartPage(ReceiptPage newReceiptPage) {
         this();
         receiptPage = newReceiptPage;
         setVisible(false);
+        
         
         updateSummary();
     }
@@ -77,6 +79,7 @@ public class CartPage extends javax.swing.JPanel {
     public void updateError() {
         String text = "Pay";
         
+        
         if (bill.table.size() == 0) text = "No product selected";
         else if (bill.cash < bill.getTotal()) text = "Not enough cash";
         
@@ -108,7 +111,7 @@ public class CartPage extends javax.swing.JPanel {
         shippingLabel = new javax.swing.JLabel();
         totalLabel = new javax.swing.JLabel();
         cashSpinner = new javax.swing.JSpinner();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        scroll = new javax.swing.JScrollPane();
         shelf = new javax.swing.JPanel();
 
         setBackground(new java.awt.Color(232, 243, 214));
@@ -255,19 +258,19 @@ public class CartPage extends javax.swing.JPanel {
 
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(572, 130, 210, 230));
 
-        jScrollPane1.setBackground(new java.awt.Color(232, 243, 214));
-        jScrollPane1.setBorder(null);
-        jScrollPane1.setForeground(new java.awt.Color(232, 243, 214));
-        jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-        jScrollPane1.setOpaque(false);
-        jScrollPane1.setPreferredSize(new java.awt.Dimension(100, 0));
+        scroll.setBackground(new java.awt.Color(232, 243, 214));
+        scroll.setBorder(null);
+        scroll.setForeground(new java.awt.Color(232, 243, 214));
+        scroll.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        scroll.setOpaque(false);
+        scroll.setPreferredSize(new java.awt.Dimension(100, 0));
 
         shelf.setBackground(new java.awt.Color(232, 243, 214));
         shelf.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(232, 243, 214), 12));
         shelf.setLayout(new javax.swing.BoxLayout(shelf, javax.swing.BoxLayout.Y_AXIS));
-        jScrollPane1.setViewportView(shelf);
+        scroll.setViewportView(shelf);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 112, 560, 488));
+        add(scroll, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 112, 560, 488));
     }// </editor-fold>//GEN-END:initComponents
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
@@ -279,6 +282,8 @@ public class CartPage extends javax.swing.JPanel {
     }//GEN-LAST:event_backButtonActionPerformed
 
     private void payButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_payButtonActionPerformed
+        
+        
         
         if (receiptPage == null) System.out.println("Null receipt page");
         else if (!payButton.getText().equals("Pay")) {
@@ -316,8 +321,8 @@ public class CartPage extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton payButton;
+    private javax.swing.JScrollPane scroll;
     private javax.swing.JPanel shelf;
     private javax.swing.JLabel shippingLabel;
     private javax.swing.JLabel totalLabel;
