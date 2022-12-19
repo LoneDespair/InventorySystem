@@ -13,6 +13,7 @@ import javax.swing.JComponent;
  * @author LoneDespair
  */
 public class ReceiptPage extends javax.swing.JPanel {
+    
     JComponent home;
     
     /**
@@ -21,9 +22,8 @@ public class ReceiptPage extends javax.swing.JPanel {
     public ReceiptPage() {
         initComponents();
         
-        String path = Paths.get(System.getProperty("user.dir"), "src/inventorymanagementsystem/logo.png").toString();
-        //ImageIcon imageIcon = new ImageIcon(path);
-        //displayIcon.setIcon(ImageResizer.fitImageIcon(imageIcon, displayIcon.getSize()));
+
+        
     }
     
     public ReceiptPage(JComponent newHome) {
@@ -50,10 +50,12 @@ public class ReceiptPage extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jPanel2 = new javax.swing.JPanel();
-        displayIcon = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        paper = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -82,21 +84,63 @@ public class ReceiptPage extends javax.swing.JPanel {
         jPanel2.setBackground(new java.awt.Color(232, 243, 214));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        displayIcon.setText("2");
-        jPanel2.add(displayIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(703, 20, 80, 80));
-
-        jLabel3.setBackground(new java.awt.Color(250, 171, 121));
-        jLabel3.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 20)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel3.setText("Inventory Management System");
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 350, 40));
+        paper.setBackground(new java.awt.Color(252, 249, 190));
 
         jLabel4.setForeground(new java.awt.Color(102, 102, 102));
         jLabel4.setText("Rizal St, Daraga, Albay");
-        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 260, 20));
 
-        jLabel2.setText("jLabel2");
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 120, -1, -1));
+        jLabel3.setBackground(new java.awt.Color(250, 171, 121));
+        jLabel3.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 16)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel3.setText("Inventory Management System");
+
+        jLabel5.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel5.setText("TEL NO: #87000");
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "NAME", "QUANTITY", "UNIT PRICE", "TOTAL"
+            }
+        ));
+        jScrollPane2.setViewportView(jTable1);
+
+        javax.swing.GroupLayout paperLayout = new javax.swing.GroupLayout(paper);
+        paper.setLayout(paperLayout);
+        paperLayout.setHorizontalGroup(
+            paperLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(paperLayout.createSequentialGroup()
+                .addGap(12, 12, 12)
+                .addGroup(paperLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 563, Short.MAX_VALUE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(15, Short.MAX_VALUE))
+        );
+        paperLayout.setVerticalGroup(
+            paperLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(paperLayout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(113, Short.MAX_VALUE))
+        );
+
+        jPanel2.add(paper, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 20, 590, 460));
 
         jScrollPane1.setViewportView(jPanel2);
 
@@ -113,14 +157,16 @@ public class ReceiptPage extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel displayIcon;
     private javax.swing.JButton homeButton;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JPanel paper;
     // End of variables declaration//GEN-END:variables
 }

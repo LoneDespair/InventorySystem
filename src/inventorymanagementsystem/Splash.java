@@ -17,12 +17,6 @@ public class Splash extends javax.swing.JFrame {
      * Creates new form Splash
      */
     public Splash() {
-        /*try {
-            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-        }
-        catch (Exception e) {
-            System.out.println("Errrorr");
-        }*/
         
         initComponents();
     }

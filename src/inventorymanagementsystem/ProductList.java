@@ -29,6 +29,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 
 import javax.swing.JFileChooser;
+import javax.swing.UIManager;
 
 /**
  *
@@ -498,8 +499,12 @@ public class ProductList extends javax.swing.JPanel {
         table = (JTable)jTable1;
         int rowSelected = table.getSelectedRow();
         if(rowSelected!=-1) {
+            int id = Integer.parseInt(String.valueOf(model.getValueAt(rowSelected, 0)));
+            hashTable.remove(id);
+            
             model.removeRow(rowSelected);
             int i;
+            
             updater.update(model, table);
         }
         else
@@ -525,6 +530,13 @@ public class ProductList extends javax.swing.JPanel {
     }//GEN-LAST:event_btnClearActionPerformed
 
     private void selectImageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectImageActionPerformed
+        try {
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+        }
+        catch (Exception e) {
+            System.out.println("Errrorr");
+        }
+        
         JFileChooser fileChooser = new JFileChooser();
         
         if (fileChooser.showSaveDialog(null) == 0) {
