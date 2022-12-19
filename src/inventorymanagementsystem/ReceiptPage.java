@@ -31,10 +31,9 @@ public class ReceiptPage extends javax.swing.JPanel {
         tableModel = (DefaultTableModel) table.getModel();
     }
     
-    public ReceiptPage(JComponent newHome, ProductList newProductList) {
+    public ReceiptPage(JComponent newHome) {
         this();
         home = newHome;
-        productList = newProductList;
         setVisible(false);
     }
     

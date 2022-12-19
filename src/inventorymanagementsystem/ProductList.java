@@ -122,6 +122,7 @@ public class ProductList extends javax.swing.JPanel {
     }
     
     public void update() {
+        System.out.println("Updateee");
         model.setRowCount(0);
         
         for (Product product : productTree.values()) {

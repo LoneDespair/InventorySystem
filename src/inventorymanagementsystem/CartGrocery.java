@@ -5,6 +5,7 @@
 package inventorymanagementsystem;
 
 import javax.swing.ImageIcon;
+import javax.swing.SpinnerNumberModel;
 
 /**
  *
@@ -32,7 +33,6 @@ public class CartGrocery extends javax.swing.JPanel implements ProductEvent{
         
         product.listeners.add(this);
         update();
-
     }
     
     public void update() {
@@ -43,6 +43,12 @@ public class CartGrocery extends javax.swing.JPanel implements ProductEvent{
             nameLabel.setText(product.name);
             priceLabel.setText(Money.format(product.price));
             imageIcon = FallbackIcon.getIcon(product.image);
+            
+            SpinnerNumberModel model = (SpinnerNumberModel) countSpinner.getModel();
+            
+            model.setValue(Math.min(product.quantity, grocery.count));
+            model.setMaximum(product.quantity);
+            
             updateCount();
         }
     }
@@ -53,7 +59,7 @@ public class CartGrocery extends javax.swing.JPanel implements ProductEvent{
     }
     
     public void updateCount() {
-        countBox.setValue(grocery.count);
+        countSpinner.setValue(grocery.count);
         totalLabel.setText(Money.format(product.price * grocery.count));
         cartPage.updateSummary();
     }
@@ -75,7 +81,7 @@ public class CartGrocery extends javax.swing.JPanel implements ProductEvent{
 
         holder = new javax.swing.JPanel();
         remove = new javax.swing.JButton();
-        countBox = new javax.swing.JSpinner();
+        countSpinner = new javax.swing.JSpinner();
         displayIcon = new javax.swing.JLabel();
         nameLabel = new javax.swing.JLabel();
         priceLabel = new javax.swing.JLabel();
@@ -110,16 +116,16 @@ public class CartGrocery extends javax.swing.JPanel implements ProductEvent{
         });
         holder.add(remove, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 80, -1, -1));
 
-        countBox.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        countBox.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
-        countBox.setMinimumSize(new java.awt.Dimension(50, 26));
-        countBox.setPreferredSize(new java.awt.Dimension(50, 26));
-        countBox.addChangeListener(new javax.swing.event.ChangeListener() {
+        countSpinner.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        countSpinner.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
+        countSpinner.setMinimumSize(new java.awt.Dimension(50, 26));
+        countSpinner.setPreferredSize(new java.awt.Dimension(50, 26));
+        countSpinner.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                countBoxStateChanged(evt);
+                countSpinnerStateChanged(evt);
             }
         });
-        holder.add(countBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 20, 80, 20));
+        holder.add(countSpinner, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 20, 80, 20));
 
         displayIcon.setBackground(new java.awt.Color(255, 220, 169));
         displayIcon.setOpaque(true);
@@ -173,12 +179,12 @@ public class CartGrocery extends javax.swing.JPanel implements ProductEvent{
         displayIcon.setIcon(ImageResizer.fitImageIcon(imageIcon, displayIcon.getSize()));
     }//GEN-LAST:event_displayIconComponentResized
 
-    private void countBoxStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_countBoxStateChanged
-        grocery.count = (Integer) countBox.getValue();
+    private void countSpinnerStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_countSpinnerStateChanged
+        grocery.count = (Integer) countSpinner.getValue();
         
         totalLabel.setText(Money.format(product.price * grocery.count));
         cartPage.updateSummary();
-    }//GEN-LAST:event_countBoxStateChanged
+    }//GEN-LAST:event_countSpinnerStateChanged
 
     private void formComponentRemoved(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_formComponentRemoved
         product.listeners.remove(this);
@@ -186,7 +192,7 @@ public class CartGrocery extends javax.swing.JPanel implements ProductEvent{
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JSpinner countBox;
+    private javax.swing.JSpinner countSpinner;
     private javax.swing.JLabel displayIcon;
     private javax.swing.JPanel holder;
     private javax.swing.JLabel nameLabel;
