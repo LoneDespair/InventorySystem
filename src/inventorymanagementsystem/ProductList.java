@@ -60,13 +60,13 @@ public class ProductList extends javax.swing.JPanel {
      */
     public ProductList() {
         initComponents();
+        populate();
+        sort();
         open();
     }
     
     public void open() {
         setVisible(true);
-        populate();
-        sort();
     }
 
     private void sort() {
@@ -110,8 +110,15 @@ public class ProductList extends javax.swing.JPanel {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
+    }
+    
+    private void update() {
+        model.setRowCount(0);
         
+        for (Product product : hashTable.values()) {
+            model.addRow(new Object[] {product.id, product.name, product.quantity, product.price});
+        }
+        updater.update();
     }
     
     
@@ -263,6 +270,11 @@ public class ProductList extends javax.swing.JPanel {
         jLabel10.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         jLabel10.setText("Search:");
 
+        searchField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchFieldActionPerformed(evt);
+            }
+        });
         searchField.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 searchFieldKeyReleased(evt);
@@ -404,9 +416,7 @@ public class ProductList extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
-        model = (DefaultTableModel)jTable1.getModel();
-        table = jTable1;
-        updater.update(model, table);
+        updater.update();
     }//GEN-LAST:event_btnUpdateActionPerformed
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
@@ -521,6 +531,7 @@ public class ProductList extends javax.swing.JPanel {
         TableRowSorter <DefaultTableModel> sorter = new TableRowSorter <DefaultTableModel> (model);
         table.setRowSorter(sorter);
         sorter.setRowFilter(RowFilter.regexFilter(search));
+       
 
     }//GEN-LAST:event_searchFieldKeyReleased
 
@@ -574,6 +585,10 @@ public class ProductList extends javax.swing.JPanel {
         setVisible(false);
         if (home != null) home.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void searchFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_searchFieldActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

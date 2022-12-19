@@ -44,6 +44,8 @@ public class ReceiptPage extends javax.swing.JPanel {
             
             tableModel.addRow(new Object[] {product.name, grocery.count, 
                     Money.format(product.price), Money.format(grocery.getTotal())});
+            
+            
         }
         
         
