@@ -499,6 +499,8 @@ public class ProductList extends javax.swing.JPanel {
             model.removeRow(rowSelected);
             int i;
             
+            if (purchasePage != null) purchasePage.delId(id);
+            
             updater.update();
         }
         else

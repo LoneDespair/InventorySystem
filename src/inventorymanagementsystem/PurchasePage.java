@@ -5,6 +5,7 @@
 package inventorymanagementsystem;
 
 import java.nio.file.Paths;
+import java.util.HashMap;
 import javax.swing.ImageIcon;
 import javax.swing.JComponent;
 
@@ -16,6 +17,8 @@ import javax.swing.JComponent;
 public class PurchasePage extends javax.swing.JPanel {
     String listPath = Paths.get(System.getProperty("user.dir"), "src/inventorymanagementsystem/list.png").toString();
     ImageIcon listIcon = new ImageIcon(listPath);
+    
+    HashMap<Integer, PurchaseProduct> table = new HashMap<>();
     
     PurchaseOption purchaseOption ;
     CartPage cartPage;
@@ -54,10 +57,19 @@ public class PurchasePage extends javax.swing.JPanel {
     
     
     public void addProduct(Product product) {
-        shelf.add(new PurchaseProduct(product, purchaseOption));
+        PurchaseProduct purchaseProduct = new PurchaseProduct(product, purchaseOption);
+        table.put(product.id, purchaseProduct);
+        
+        shelf.add(purchaseProduct);
     }
     
     public void delId(int id) {
+        PurchaseProduct purchaseProduct = table.get(id);
+        table.remove(id);
+        
+        if (purchaseProduct != null) {
+            shelf.remove(purchaseProduct);
+        }
         
     }
     
