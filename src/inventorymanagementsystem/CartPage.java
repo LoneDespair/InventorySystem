@@ -12,7 +12,7 @@ import javax.swing.JOptionPane;
  *
  * @author LoneDespair
  */
-public class CartPage extends javax.swing.JPanel {
+public class CartPage extends javax.swing.JPanel{
     Bill bill = new Bill();
     
     JComponent previous;
@@ -35,6 +35,7 @@ public class CartPage extends javax.swing.JPanel {
         
         updateSummary();
     }
+   
     
     public void open(JComponent newPrevious, ImageIcon backIcon) {
         previous = newPrevious;

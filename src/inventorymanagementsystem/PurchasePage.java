@@ -18,7 +18,7 @@ public class PurchasePage extends javax.swing.JPanel {
     String listPath = Paths.get(System.getProperty("user.dir"), "src/inventorymanagementsystem/list.png").toString();
     ImageIcon listIcon = new ImageIcon(listPath);
     
-    HashMap<Integer, PurchaseProduct> table = new HashMap<>();
+    //HashMap<Integer, PurchaseProduct> table = new HashMap<>();
     
     PurchaseOption purchaseOption ;
     CartPage cartPage;
@@ -55,36 +55,14 @@ public class PurchasePage extends javax.swing.JPanel {
         setVisible(true);
     }
     
+    public void removePurchaseProduct(PurchaseProduct purchaseProduct) {
+        shelf.remove(purchaseProduct);
+        shelf.repaint();
+    }
     
     public void addProduct(Product product) {
-        PurchaseProduct purchaseProduct = new PurchaseProduct(product, purchaseOption);
-        table.put(product.id, purchaseProduct);
-        
-        shelf.add(purchaseProduct);
+        shelf.add(new PurchaseProduct(product, this));
     }
-    
-    public void delId(int id) {
-        PurchaseProduct purchaseProduct = table.get(id);
-        table.remove(id);
-        
-        if (purchaseProduct != null) {
-            shelf.remove(purchaseProduct);
-        }
-        
-    }
-    
-    
-    
-    public void addPurchaseProduct() {
-        
-    }
-    
-    public void select(PurchaseProduct newSelected) {
-    }
-    
-    
-    
-    
     
 
     /**

@@ -4,10 +4,12 @@
  */
 package inventorymanagementsystem;
 
+import java.util.List;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.Base64;
 import java.util.Scanner;
 import javax.imageio.ImageIO;
@@ -23,7 +25,8 @@ public class Product extends LinkedList.Data{
     int quantity = 0;
     double price = 0;
     BufferedImage image;
-
+    
+    public List<ProductEvent> listeners = new ArrayList<>();
     
     public Product() { }
     
@@ -32,6 +35,10 @@ public class Product extends LinkedList.Data{
         name = newName;
         quantity = newQuantity;
         price = newPrice;
+    }
+    
+    public void sendEvent(ProductEvent.Type type) {
+        for (ProductEvent listener : listeners) listener.onEvent(type);
     }
     
     public void loadIcon(String path) {

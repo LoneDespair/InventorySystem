@@ -482,6 +482,7 @@ public class ProductList extends javax.swing.JPanel {
             product.quantity = Integer.parseInt(editQty);
             product.price = Double.parseDouble(editPrice);
             
+            product.sendEvent(ProductEvent.Type.MODIFY);
             updater.update();
         }
         else
@@ -494,12 +495,12 @@ public class ProductList extends javax.swing.JPanel {
         int rowSelected = table.getSelectedRow();
         if(rowSelected!=-1) {
             int id = Integer.parseInt(String.valueOf(model.getValueAt(rowSelected, 0)));
+            productTree.get(id).sendEvent(ProductEvent.Type.DELETE);
+            
             productTree.remove(id);
             
             model.removeRow(rowSelected);
             int i;
-            
-            if (purchasePage != null) purchasePage.delId(id);
             
             updater.update();
         }

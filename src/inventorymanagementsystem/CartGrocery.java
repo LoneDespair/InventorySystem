@@ -10,7 +10,7 @@ import javax.swing.ImageIcon;
  *
  * @author LoneDespair
  */
-public class CartGrocery extends javax.swing.JPanel {
+public class CartGrocery extends javax.swing.JPanel implements ProductEvent{
     Grocery grocery;
     Product product;
     
@@ -30,6 +30,12 @@ public class CartGrocery extends javax.swing.JPanel {
         product = newGrocery.product;
         cartPage = newCartPage;
         
+        product.listeners.add(this);
+        update();
+
+    }
+    
+    public void update() {
         nameLabel.setText(product.name);
         priceLabel.setText(Money.format(product.price));
         imageIcon = FallbackIcon.getIcon(product.image);
@@ -47,6 +53,12 @@ public class CartGrocery extends javax.swing.JPanel {
         cartPage.updateSummary();
     }
 
+    @Override
+    public void onEvent(Type type) {
+        if (type == Type.DELETE) remove();
+        else if (type == Type.MODIFY) update();
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -138,9 +150,14 @@ public class CartGrocery extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void removeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeActionPerformed
+    private void remove() {
         if (cartPage == null){ System.out.println("Cart page not found"); }
         else { cartPage.removeCartGrocery(this); }
+    }
+    
+    private void removeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeActionPerformed
+        product.listeners.remove(this);
+        remove();
     }//GEN-LAST:event_removeActionPerformed
 
     private void displayIconComponentResized(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_displayIconComponentResized

@@ -13,8 +13,8 @@ import java.awt.Image;
  *
  * @author LoneDespair
  */
-public class PurchaseProduct extends javax.swing.JPanel {
-    PurchaseOption purchaseOption = null;
+public class PurchaseProduct extends javax.swing.JPanel implements ProductEvent {
+    PurchasePage purchasePage;
     
     Product product;
     ImageIcon imageIcon = null;
@@ -27,17 +27,31 @@ public class PurchaseProduct extends javax.swing.JPanel {
         initComponents();
     }
     
-    public PurchaseProduct(Product newProduct, PurchaseOption newPurchaseOption) {
+    public PurchaseProduct(Product newProduct, PurchasePage newPurchasePage) {
         initComponents();
         product = newProduct;
+        product.listeners.add(this);
+        update();
+
+        //imageIcon = new ImageIcon(newProduct.image);
+        purchasePage = newPurchasePage;
+    }
+    
+    public void update() {
+        System.out.println("UPDATE PRODUCT " + product.name);
         nameLabel.setText(product.name);
         
         priceLabel.setText(Money.format(product.price));
         
         imageIcon = FallbackIcon.getIcon(product.image);
-        
-        //imageIcon = new ImageIcon(newProduct.image);
-        purchaseOption = newPurchaseOption;
+    }
+    
+    
+    @Override
+    public void onEvent(Type type) {
+        if (purchasePage == null) System.out.println("Null purchase page on purchaseProduct");
+        else if (type == Type.DELETE) purchasePage.removePurchaseProduct(this);
+        else if (type == Type.MODIFY) update();
     }
 
     /**
@@ -130,13 +144,13 @@ public class PurchaseProduct extends javax.swing.JPanel {
     }//GEN-LAST:event_displayIconComponentResized
 
     private void buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonActionPerformed
-        if (purchaseOption == null) System.out.println("Purchase option is null");
+        if (purchasePage == null) System.out.println("Purchase page is null");
         else {
             button.getModel().setArmed(false);
             button.getModel().setRollover(false);
             button.getModel().setSelected(false);
             button.getModel().setPressed(false);
-            purchaseOption.open(product);
+            purchasePage.purchaseOption.open(product);
         }
     }//GEN-LAST:event_buttonActionPerformed
 
