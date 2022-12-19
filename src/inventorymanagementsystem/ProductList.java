@@ -150,7 +150,7 @@ public class ProductList extends javax.swing.JPanel {
         searchField = new javax.swing.JTextField();
         btnClear = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
-        selectImage = new javax.swing.JButton();
+        imageButton = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(232, 243, 214));
 
@@ -278,10 +278,10 @@ public class ProductList extends javax.swing.JPanel {
 
         jLabel11.setText("Image");
 
-        selectImage.setText("No image selected");
-        selectImage.addActionListener(new java.awt.event.ActionListener() {
+        imageButton.setText("No image selected");
+        imageButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                selectImageActionPerformed(evt);
+                imageButtonActionPerformed(evt);
             }
         });
 
@@ -316,7 +316,7 @@ public class ProductList extends javax.swing.JPanel {
                                     .addComponent(newQtyField, javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(newNameField, javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(newPriceField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)
-                                    .addComponent(selectImage, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                    .addComponent(imageButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                             .addComponent(jLabel2)
                             .addComponent(jLabel6)
                             .addGroup(layout.createSequentialGroup()
@@ -377,7 +377,7 @@ public class ProductList extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel11)
-                            .addComponent(selectImage))
+                            .addComponent(imageButton))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnAddItem)
                         .addGap(23, 23, 23)
@@ -418,6 +418,7 @@ public class ProductList extends javax.swing.JPanel {
     }//GEN-LAST:event_jTable1MouseClicked
 
     private void btnAddItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddItemActionPerformed
+
         model = (DefaultTableModel)jTable1.getModel();
         table = jTable1;
         String[] itemDetails = new String[4];
@@ -434,6 +435,7 @@ public class ProductList extends javax.swing.JPanel {
 
         if(!newNameField.getText().isEmpty() && !newQtyField.getText().isEmpty() && !newPriceField.getText().isEmpty()) {
             Product product = new Product();
+            imageButton.setText("No image selected");
             
             if(model.getRowCount()!=0)
             product.id = Integer.parseInt(String.valueOf(model.getValueAt(model.getRowCount()-1, 0)))+1;
@@ -529,7 +531,7 @@ public class ProductList extends javax.swing.JPanel {
         updater.update(model, table);
     }//GEN-LAST:event_btnClearActionPerformed
 
-    private void selectImageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectImageActionPerformed
+    private void imageButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imageButtonActionPerformed
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         }
@@ -540,10 +542,12 @@ public class ProductList extends javax.swing.JPanel {
         JFileChooser fileChooser = new JFileChooser();
         
         if (fileChooser.showSaveDialog(null) == 0) {
-            System.out.printf("Successs %s\n", fileChooser.getSelectedFile().getAbsolutePath());
             
             try {
-                selectedImage = ImageIO.read(fileChooser.getSelectedFile());
+                File file = fileChooser.getSelectedFile();
+                imageButton.setText(file.getName());
+                
+                selectedImage = ImageIO.read(file);
                 
             }
             catch (Exception e) {
@@ -559,7 +563,7 @@ public class ProductList extends javax.swing.JPanel {
         else {
             System.out.println("cancel");
         }
-    }//GEN-LAST:event_selectImageActionPerformed
+    }//GEN-LAST:event_imageButtonActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         setVisible(false);
@@ -574,6 +578,7 @@ public class ProductList extends javax.swing.JPanel {
     private javax.swing.JButton btnDeleteItem;
     private javax.swing.JButton btnEditItem;
     private javax.swing.JButton btnUpdate;
+    private javax.swing.JButton imageButton;
     private javax.swing.JTextField itemSelectName;
     private javax.swing.JTextField itemSelectPrice;
     private javax.swing.JTextField itemSelectQty;
@@ -595,6 +600,5 @@ public class ProductList extends javax.swing.JPanel {
     private javax.swing.JTextField newPriceField;
     private javax.swing.JTextField newQtyField;
     private javax.swing.JTextField searchField;
-    private javax.swing.JButton selectImage;
     // End of variables declaration//GEN-END:variables
 }

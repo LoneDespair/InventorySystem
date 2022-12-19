@@ -52,7 +52,7 @@
                                   <Component id="newQtyField" alignment="0" max="32767" attributes="0"/>
                                   <Component id="newNameField" alignment="0" max="32767" attributes="0"/>
                                   <Component id="newPriceField" alignment="0" pref="195" max="32767" attributes="0"/>
-                                  <Component id="selectImage" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="imageButton" alignment="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -132,7 +132,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel11" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="selectImage" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="imageButton" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="btnAddItem" min="-2" max="-2" attributes="0"/>
@@ -435,12 +435,12 @@
         <Property name="text" type="java.lang.String" value="Image"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="selectImage">
+    <Component class="javax.swing.JButton" name="imageButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="No image selected"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="selectImageActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="imageButtonActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>
