@@ -467,7 +467,7 @@ public class ProductList extends javax.swing.JPanel {
             newPriceField.setText(null);
             hashTable.put(product.id, product);
 
-            updater.update(model, table);
+            updater.update();
         }
         else {
             JOptionPane.showMessageDialog(null, "Please fill in all parameters before adding.");
@@ -501,7 +501,7 @@ public class ProductList extends javax.swing.JPanel {
             product.quantity = Integer.parseInt(editQty);
             product.price = Double.parseDouble(editPrice);
             
-            updater.update(model, table);
+            updater.update();
         }
         else
         JOptionPane.showMessageDialog(null, "Please do not leave a parameter empty.");
@@ -518,7 +518,7 @@ public class ProductList extends javax.swing.JPanel {
             model.removeRow(rowSelected);
             int i;
             
-            updater.update(model, table);
+            updater.update();
         }
         else
         JOptionPane.showMessageDialog(null, "Please select an item.");
@@ -540,7 +540,7 @@ public class ProductList extends javax.swing.JPanel {
         table = (JTable)jTable1;
         for(int i=model.getRowCount()-1; i>=0; i--)
         model.removeRow(i);
-        updater.update(model, table);
+        updater.update();
     }//GEN-LAST:event_btnClearActionPerformed
 
     private void imageButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imageButtonActionPerformed
