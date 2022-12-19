@@ -28,11 +28,6 @@ public class MainMenu extends javax.swing.JFrame {
      * @param username
      */
     
-    public MainMenu(String username) {
-        this();
-        userlabel.setText(username);
-    }
-    
      public MainMenu() {
         initComponents();
         
@@ -47,6 +42,11 @@ public class MainMenu extends javax.swing.JFrame {
         
         productList.home = homePage;
         user.home = homePage;
+    }
+     
+    public void open(String username) {
+        setVisible(true);
+        userlabel.setText(username);
     }
      
     //public PurchasePage getPurchasePage() { return purchasePage; }

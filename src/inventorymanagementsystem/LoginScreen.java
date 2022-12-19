@@ -16,6 +16,7 @@ import java.util.logging.Logger;
  * @author user
  */
 public class LoginScreen extends javax.swing.JFrame{
+    MainMenu menu;
     
     int usersamt;
     String[] usernames;
@@ -23,6 +24,13 @@ public class LoginScreen extends javax.swing.JFrame{
     /**
      * Creates new form LoginScreen
      */
+    
+    public LoginScreen(MainMenu newMenu) {
+        this();
+        menu = newMenu;
+        setVisible(true);
+    }
+    
     public LoginScreen() {
         try {
             int i=0;
@@ -49,6 +57,8 @@ public class LoginScreen extends javax.swing.JFrame{
         
         initComponents();
     }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -261,7 +271,7 @@ public class LoginScreen extends javax.swing.JFrame{
         String pword = String.valueOf(pwordPF.getPassword());
         for(int i=0; i<usersamt; i++){
             if(usernames[i].equals(uname) && passwords[i].equals(pword)){
-                new MainMenu(uname).setVisible(true);
+                if (menu != null) menu.open(uname);
                 dispose();
             }
         }
@@ -269,6 +279,7 @@ public class LoginScreen extends javax.swing.JFrame{
     }//GEN-LAST:event_loginBtnActionPerformed
 
     private void closeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_closeBtnActionPerformed
+        if (menu != null) menu.dispose();
         dispose();
     }//GEN-LAST:event_closeBtnActionPerformed
 

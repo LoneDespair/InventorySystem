@@ -17,8 +17,20 @@ public class Splash extends javax.swing.JFrame {
      * Creates new form Splash
      */
     public Splash() {
-        
         initComponents();
+        setVisible(true);
+        
+        try{
+            for(int i=0; i<100; i++){
+                Thread.sleep(8);
+                pbar.setValue(i);
+                percent.setText(i+"%");
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        dispose();
+        
     }
 
     /**
@@ -147,24 +159,13 @@ public class Splash extends javax.swing.JFrame {
      */
     public static void main(String args[]) throws FileNotFoundException {
         // Bypass will load the Main Menu directly
-        boolean bypass = true;
+        boolean bypass = false;
+        MainMenu menu = new MainMenu();
         
-        if (bypass) new MainMenu("@bypass").setVisible(true);
+        if (bypass) menu.open("@bypass");
         else {
-            Splash s = new Splash();
-            s.setVisible(true);
-
-            try{
-                for(int i=0; i<100; i++){
-                    Thread.sleep(8);
-                    s.pbar.setValue(i);
-                    s.percent.setText(i+"%");
-                }
-            }catch(Exception e){
-
-            }
-            s.dispose();
-            new LoginScreen().setVisible(true);
+            new Splash();
+            new LoginScreen(menu);
         }
     }
 
