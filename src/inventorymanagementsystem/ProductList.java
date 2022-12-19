@@ -44,7 +44,7 @@ public class ProductList extends javax.swing.JPanel {
     String listFilePath = Paths.get(System.getProperty("user.dir"),"src/inventorymanagementsystem/productList.txt").toString();
     String tempFilePath = Paths.get(System.getProperty("user.dir"),"src/inventorymanagementsystem/temp.txt").toString();
     static TreeMap<Integer, Product> productTree = new TreeMap<>();    
-    
+    PurchasePage purchasePage;
     
     DefaultTableModel model;
     JTable table;
@@ -56,12 +56,21 @@ public class ProductList extends javax.swing.JPanel {
     /**
      * Creates new form ProductPage
      */
-    public ProductList() {
-        initComponents();
+    
+    
+    public ProductList(PurchasePage newPurchasePage) {
+        this();
+        purchasePage = newPurchasePage;
         populate();
         sort();
-        open();
     }
+    
+    
+    public ProductList() {
+        initComponents();
+    }
+    
+    
     
     public void open() {
         setVisible(true);
@@ -102,7 +111,8 @@ public class ProductList extends javax.swing.JPanel {
                     
                 }
                 
-                productTree.put(product.id, product);
+                loadProduct(product);
+                //productTree.put(product.id, product);
             }             
             file.close();
         } catch (IOException e) {
@@ -111,16 +121,17 @@ public class ProductList extends javax.swing.JPanel {
     }
     
     public void update() {
-        populate();
-        sort();
-        
-        /*
         model.setRowCount(0);
         
-        for (Product product : hashTable.values()) {
+        for (Product product : productTree.values()) {
             model.addRow(new Object[] {product.id, product.name, product.quantity, product.price});
         }
-        updater.update();*/
+        updater.update();
+    }
+    
+    public void loadProduct(Product product) {
+        productTree.put(product.id, product);
+        if (purchasePage != null) purchasePage.addProduct(product);
     }
     
     
@@ -434,7 +445,8 @@ public class ProductList extends javax.swing.JPanel {
             newNameField.setText(null);
             newQtyField.setText(null);
             newPriceField.setText(null);
-            productTree.put(product.id, product);
+            loadProduct(product);
+            //productTree.put(product.id, product);
 
             updater.update();
         }

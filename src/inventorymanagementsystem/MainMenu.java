@@ -19,6 +19,7 @@ public class MainMenu extends javax.swing.JFrame {
     
     PurchasePage purchasePage;
     CartPage cartPage;
+    ProductList productList;
     
     
     ImageIcon homeIcon = new ImageIcon(logoPath);
@@ -35,10 +36,12 @@ public class MainMenu extends javax.swing.JFrame {
         ReceiptPage receiptPage = new ReceiptPage(homePage, productList);
         cartPage = new CartPage(receiptPage);
         purchasePage = new PurchasePage(cartPage);
+        productList = new ProductList(purchasePage);
         
         add(receiptPage, 0);
         add(cartPage, 0);
         add(purchasePage, 0);
+        add(productList, 0);
         
         productList.home = homePage;
         user.home = homePage;
@@ -72,7 +75,6 @@ public class MainMenu extends javax.swing.JFrame {
         BottomPanel = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         userlabel = new javax.swing.JLabel();
-        productList = new inventorymanagementsystem.ProductList();
         receiptPage = new inventorymanagementsystem.ReceiptPage();
         user = new inventorymanagementsystem.User();
 
@@ -196,7 +198,6 @@ public class MainMenu extends javax.swing.JFrame {
         homePage.add(BottomPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 540, 800, 60));
 
         getContentPane().add(homePage, "card2");
-        getContentPane().add(productList, "card4");
         getContentPane().add(receiptPage, "card5");
         getContentPane().add(user, "card5");
 
@@ -283,7 +284,6 @@ public class MainMenu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JButton productButton;
-    private inventorymanagementsystem.ProductList productList;
     private javax.swing.JButton purchaseButton;
     private inventorymanagementsystem.ReceiptPage receiptPage;
     private inventorymanagementsystem.User user;

@@ -26,7 +26,7 @@ public class PurchasePage extends javax.swing.JPanel {
      */
     public PurchasePage() {
         initComponents();
-         shelfScroll.getVerticalScrollBar().setUnitIncrement(16);
+        shelfScroll.getVerticalScrollBar().setUnitIncrement(16);
         
         purchaseOption = new PurchaseOption();
         
@@ -50,18 +50,15 @@ public class PurchasePage extends javax.swing.JPanel {
     
     public void open() {
         setVisible(true);
-        
-        // Clears all existing components
-        shelf.removeAll();
-        
-        for (Product product : ProductList.productTree.values()) {
-            shelf.add(new PurchaseProduct(product, purchaseOption));
-        }
     }
     
     
     public void addProduct(Product product) {
         shelf.add(new PurchaseProduct(product, purchaseOption));
+    }
+    
+    public void delId(int id) {
+        
     }
     
     
