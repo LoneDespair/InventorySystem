@@ -538,7 +538,8 @@ public class ProductList extends javax.swing.JPanel {
             System.out.println("Errrorr");
         }
         
-        JFileChooser fileChooser = new JFileChooser();
+        
+        JFileChooser fileChooser = new JFileChooser(System.getProperty("user.home") + "/Downloads");
         
         try {
             UIManager.setLookAndFeel(original);
