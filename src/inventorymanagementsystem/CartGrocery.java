@@ -36,10 +36,15 @@ public class CartGrocery extends javax.swing.JPanel implements ProductEvent{
     }
     
     public void update() {
-        nameLabel.setText(product.name);
-        priceLabel.setText(Money.format(product.price));
-        imageIcon = FallbackIcon.getIcon(product.image);
-        updateCount();
+        if (product.quantity == 0) {
+            remove();
+            
+        } else {
+            nameLabel.setText(product.name);
+            priceLabel.setText(Money.format(product.price));
+            imageIcon = FallbackIcon.getIcon(product.image);
+            updateCount();
+        }
     }
     
     public void append(Grocery newGrocery) {
@@ -83,6 +88,11 @@ public class CartGrocery extends javax.swing.JPanel implements ProductEvent{
         setOpaque(false);
         setPreferredSize(new java.awt.Dimension(500, 123));
         setRequestFocusEnabled(false);
+        addContainerListener(new java.awt.event.ContainerAdapter() {
+            public void componentRemoved(java.awt.event.ContainerEvent evt) {
+                formComponentRemoved(evt);
+            }
+        });
 
         holder.setBackground(new java.awt.Color(252, 249, 190));
         holder.setMinimumSize(new java.awt.Dimension(0, 117));
@@ -156,7 +166,6 @@ public class CartGrocery extends javax.swing.JPanel implements ProductEvent{
     }
     
     private void removeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeActionPerformed
-        product.listeners.remove(this);
         remove();
     }//GEN-LAST:event_removeActionPerformed
 
@@ -170,6 +179,10 @@ public class CartGrocery extends javax.swing.JPanel implements ProductEvent{
         totalLabel.setText(Money.format(product.price * grocery.count));
         cartPage.updateSummary();
     }//GEN-LAST:event_countBoxStateChanged
+
+    private void formComponentRemoved(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_formComponentRemoved
+        product.listeners.remove(this);
+    }//GEN-LAST:event_formComponentRemoved
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
