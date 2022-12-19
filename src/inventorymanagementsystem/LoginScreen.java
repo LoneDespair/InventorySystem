@@ -50,6 +50,10 @@ public class LoginScreen extends javax.swing.JFrame{
                 passwords[i] = sc.next();
                 i++;
             }
+            
+            sc.close();
+            ctr.close();
+            
         }
         catch (Exception e) {
             
