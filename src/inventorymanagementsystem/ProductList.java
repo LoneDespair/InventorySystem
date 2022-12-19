@@ -526,7 +526,7 @@ public class ProductList extends javax.swing.JPanel {
         JFileChooser fileChooser = new JFileChooser();
         
         try {
-            //UIManager.setLookAndFeel(original);
+            UIManager.setLookAndFeel(original);
         }
         catch (Exception e) {
             System.out.println("Errrorr");
