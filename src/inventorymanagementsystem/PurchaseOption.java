@@ -6,6 +6,7 @@ package inventorymanagementsystem;
 
 import java.awt.Color;
 import javax.swing.ImageIcon;
+import javax.swing.SpinnerNumberModel;
 
 /**
  *
@@ -37,13 +38,22 @@ public class PurchaseOption extends javax.swing.JPanel {
     
     public void open(Product newProduct) {
         setVisible(true);
-        countSpinner.setValue(1);
         product = newProduct;
         
         nameLabel.setText(newProduct.name);
         priceLabel.setText(Money.format(newProduct.price));
         imageIcon = FallbackIcon.getIcon(newProduct.image);
         displayIcon.setIcon(ImageResizer.fitImageIcon(imageIcon, displayIcon.getSize()));
+        
+        
+        SpinnerNumberModel model = (SpinnerNumberModel) countSpinner.getModel();
+        
+        model.setValue(Math.min(product.quantity, 0));
+        model.setMaximum(product.quantity);
+        
+        if (newProduct.quantity == 0) confirmButton.setText("Out of stock");
+           
+            
     }
     
 
@@ -62,7 +72,7 @@ public class PurchaseOption extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         nameLabel = new javax.swing.JLabel();
         priceLabel = new javax.swing.JLabel();
-        cartButton = new javax.swing.JButton();
+        confirmButton = new javax.swing.JButton();
         coloredButton1 = new inventorymanagementsystem.ColoredButton();
         bg = new inventorymanagementsystem.InputConsumer();
 
@@ -100,11 +110,11 @@ public class PurchaseOption extends javax.swing.JPanel {
         priceLabel.setForeground(new java.awt.Color(250, 171, 121));
         priceLabel.setText("₱0.00");
 
-        cartButton.setForeground(new java.awt.Color(102, 102, 102));
-        cartButton.setText("Add to cart");
-        cartButton.addActionListener(new java.awt.event.ActionListener() {
+        confirmButton.setForeground(new java.awt.Color(102, 102, 102));
+        confirmButton.setText("Add to cart");
+        confirmButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cartButtonActionPerformed(evt);
+                confirmButtonActionPerformed(evt);
             }
         });
 
@@ -133,7 +143,7 @@ public class PurchaseOption extends javax.swing.JPanel {
                     .addGroup(contentLayout.createSequentialGroup()
                         .addGroup(contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(priceLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(cartButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(confirmButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, contentLayout.createSequentialGroup()
                                 .addComponent(jLabel1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -157,7 +167,7 @@ public class PurchaseOption extends javax.swing.JPanel {
                     .addComponent(countSpinner, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cartButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(confirmButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(42, Short.MAX_VALUE))
             .addGroup(contentLayout.createSequentialGroup()
                 .addComponent(coloredButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -196,13 +206,13 @@ public class PurchaseOption extends javax.swing.JPanel {
         add(bg);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void cartButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cartButtonActionPerformed
+    private void confirmButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmButtonActionPerformed
         if (cartPage == null) System.out.println("Null cartPage on purchaseOption");
         else{
             cartPage.addGrocery(new Grocery(product, (Integer)countSpinner.getValue()));
             setVisible(false);
         }
-    }//GEN-LAST:event_cartButtonActionPerformed
+    }//GEN-LAST:event_confirmButtonActionPerformed
 
     private void bgMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bgMousePressed
         setVisible(false);
@@ -223,8 +233,8 @@ public class PurchaseOption extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private inventorymanagementsystem.InputConsumer bg;
-    private javax.swing.JButton cartButton;
     private inventorymanagementsystem.ColoredButton coloredButton1;
+    private javax.swing.JButton confirmButton;
     private inventorymanagementsystem.InputConsumer content;
     private javax.swing.JSpinner countSpinner;
     private javax.swing.JLabel displayIcon;
