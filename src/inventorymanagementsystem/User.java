@@ -110,7 +110,6 @@ public class User extends javax.swing.JPanel {
         selectPass = new javax.swing.JPasswordField();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        claerbtn = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(232, 243, 214));
         setPreferredSize(new java.awt.Dimension(800, 600));
@@ -243,7 +242,7 @@ public class User extends javax.swing.JPanel {
         });
         jScrollPane2.setViewportView(userTbl);
 
-        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 152, 403, 346));
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 152, 403, 390));
 
         usearch.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -292,23 +291,6 @@ public class User extends javax.swing.JPanel {
         jLabel11.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         jLabel11.setText("Add User Information");
         add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(421, 190, -1, -1));
-
-        claerbtn.setBackground(new java.awt.Color(255, 220, 169));
-        claerbtn.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        claerbtn.setText("CLEAR LIST");
-        claerbtn.setToolTipText("");
-        claerbtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        claerbtn.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                claerbtnMouseClicked(evt);
-            }
-        });
-        claerbtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                claerbtnActionPerformed(evt);
-            }
-        });
-        add(claerbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(311, 504, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void upassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_upassActionPerformed
@@ -431,18 +413,16 @@ public class User extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_selectPassActionPerformed
 
-    private void claerbtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_claerbtnMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_claerbtnMouseClicked
-
-    private void claerbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_claerbtnActionPerformed
+    /*
         model = (DefaultTableModel)userTbl.getModel();
         table = (JTable)userTbl;
         for(int i=model.getRowCount()-1; i>=0; i--)
         model.removeRow(i);
         updater.update(model, table);
-    }//GEN-LAST:event_claerbtnActionPerformed
-
+    */
+    
+    
+    
     private void homeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeButtonActionPerformed
         if (home == null) System.out.println("Null home on User");
         else {
@@ -457,7 +437,6 @@ public class User extends javax.swing.JPanel {
     private javax.swing.JButton Deletebtn;
     private javax.swing.JButton Editbtn;
     private javax.swing.JPanel HeaderPanel;
-    private javax.swing.JButton claerbtn;
     private javax.swing.JButton homeButton;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
